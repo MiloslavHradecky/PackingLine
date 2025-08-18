@@ -6,7 +6,7 @@ from pathlib import Path
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from views.work_order_window import WorkOrderWindow
-from utils.resources import get_config_path, get_writable_path
+from utils.resources import get_config_path
 
 
 class WorkOrderController:
@@ -76,19 +76,19 @@ class WorkOrderController:
             - Loads label content and launches print controller
         """
 
-        # 📌 Processing of input / Zpracování vstupu
+        # 📌 Processing of input
         value_input = self.work_order_window.work_order_input.text().strip().upper()
         if not value_input:
             self.messenger.warning(f"Zadejte prosím výrobní příkaz!", "Work Order Ctrl")
             self.reset_input_focus()
             return
 
-        # 📁 Construct paths / Sestavení cest
+        # 📁 Construct paths
         self.orders_dir = Path("T:/Prikazy")
         self.lbl_file = self.orders_dir / f"{value_input}.lbl"
         self.nor_file = self.orders_dir / f"{value_input}.nor"
 
-        # ❌ If file not found / Příkaz neexistuje
+        # ❌ If file not found
         if not self.lbl_file.exists() or not self.nor_file.exists():
             self.lines = []
             self.found_product_name = None
@@ -134,7 +134,6 @@ class WorkOrderController:
     def load_file(self, file_path: Path) -> list[str]:
         """
         Loads text content from file.
-        Načte obsah souboru a vrátí jako list řádků.
         """
         try:
             return file_path.read_text().splitlines()
@@ -146,7 +145,6 @@ class WorkOrderController:
     def open_app_window(self, order_code, product_name):
         """
         Instantiates PrintController and launches next window.
-        Vytvoří PrintController a otevře další okno (tisk).
         """
         from controllers.print_controller import PrintController
         self.print_controller = PrintController(self.window_stack, order_code, product_name)
@@ -155,7 +153,6 @@ class WorkOrderController:
     def reset_input_focus(self):
         """
         Clears the input field and sets focus back to it.
-        Vymaže vstupní pole a nastaví znovu focus.
         """
         self.work_order_window.work_order_input.clear()
         self.work_order_window.work_order_input.setFocus()
@@ -163,7 +160,6 @@ class WorkOrderController:
     def kill_bartender_processes(self):
         """
         Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
-        Ukončí všechny běžící instance BarTender (Cmdr.exe a bartend.exe).
         """
         try:
             subprocess.run('taskkill /f /im cmdr.exe 1>nul 2>nul', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
@@ -176,7 +172,6 @@ class WorkOrderController:
     def handle_exit(self):
         """
         Closes the current window with fade-out effect.
-        Zavře aktuální okno a vrátí se zpět ve stacku.
         """
         self.kill_bartender_processes()
         self.work_order_window.effects.fade_out(self.work_order_window, duration=1000)
