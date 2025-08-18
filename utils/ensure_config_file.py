@@ -17,14 +17,36 @@ def ensure_config_file(path: str = "config.ini"):
         config.optionxform = str  # ✅ preserves the size of the letters
 
         # 📌 Default sections and values
+        config["Window"] = {
+            "title": "2N IP Verso 2.0"
+        }
+
         config["Paths"] = {
             "reports_path": "T:/reporty/",
             "orders_path": "T:/Prikazy/",
-            "trigger_path": "C:/Users/Home/Documents/Coding/Python/PyQt/Spoustece/",
+            "trigger_path": "T:/Prikazy/DataTPV/IP_Verso_HD_2/BaliciLinka/Spoustece/",
             "szv_input_file": "T:/Prikazy/DataTPV/SZV.dat",
             "bartender_path": "C:/Program Files (x86)/Seagull/BarTender Suite/bartend.exe",
             "commander_path": "C:/Program Files (x86)/Seagull/BarTender Suite/Cmdr.exe",
-            "tl_file_path": "C:/Users/Home/Documents/Coding/Python/PyQt/Spoustece/TestLine.tl"
+            "tl_file_path": "T:/Prikazy/DataTPV/IP_Verso_HD_2/BaliciLinka/Spoustece/HeliosIP.tl"
+        }
+
+        config["ProductPaths"] = {
+            "output_file_path_product": "T:/Prikazy/DataTPV/IP_Verso_HD_2/BaliciLinka/Etikety/02 product.txt"
+        }
+
+        config["Control4Paths"] = {
+            "output_file_path_c4_product": "T:/Prikazy/DataTPV/IP_Verso_HD_2/BaliciLinka/Etikety/C4-SMART.txt"
+        }
+
+        config["My2nPaths"] = {
+            "output_file_path_my2n": "T:/Prikazy/DataTPV/IP_Verso_HD_2/BaliciLinka/Etikety/my2n.txt"
+        }
+
+        config["ProductTriggerMapping"] = {
+            "product": "9155211, 9155211B, 9155211C, 9155211CB, 9155211C-C4, 9155211CB-C4, VSA-211C, VSA-211CB",
+            "control4": "9155211C-C4, 9155211CB-C4",
+            "my2n": "9155211, 9155211B, 9155211C, 9155211CB"
         }
 
         try:
