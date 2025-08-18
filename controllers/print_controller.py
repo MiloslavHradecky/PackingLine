@@ -1,13 +1,13 @@
 # 🖨️ PrintController – handles logic for serial input, validation, and print action
 # Řídí logiku vstupu serial number, validaci a spuštění tisku
 
-import re
 from pathlib import Path
 from core.logger import Logger
 from core.messenger import Messenger
 from views.print_window import PrintWindow
 from core.config_loader import ConfigLoader
 from utils.validators import Validator
+from PyQt6.QtCore import QEventLoop, QTimer
 
 
 class PrintController:
@@ -71,23 +71,6 @@ class PrintController:
         if path and path.exists():
             return path
         return None
-
-    def validate_serial_number_input(self) -> bool:
-        """
-        Validates the entered serial number against expected format.
-        Ověří, zda zadaný serial number odpovídá formátu 00-0000-0000.
-
-        :return: True if input is valid, else False
-        """
-        input_value = self.serial_input
-
-        pattern = r'^\d{2}-\d{4}-\d{4}$'
-        if not re.fullmatch(pattern, input_value):
-            self.messenger.show_info('Info', f'Serial number musí být ve formátu 00-0000-0000.')
-            self.print_window.reset_input_focus()
-            return False
-
-        return True
 
     def load_file_lbl(self):
         """
@@ -164,6 +147,11 @@ class PrintController:
                 # 💬 Inform the user about printing progress / Informace o průběhu tisku
                 self.messenger.show_timed_info('Info', f'Prosím čekejte, tisknu etiketu: {value}', 3000)
 
+                # 🛑 Vytvoření prodlevy bez blokace GUI
+                loop = QEventLoop()
+                QTimer.singleShot(3000, loop.quit)
+                loop.exec()
+
         except Exception as e:
             # 🛑 Log and display unexpected error / Zaloguj a zobraz neočekávanou chybu
             self.normal_logger.log('Error', f'Chyba zápisu {str(e)}', 'PRICON006')
@@ -209,6 +197,11 @@ class PrintController:
                 # 💬 Inform the user about printing progress / Informace o průběhu tisku
                 self.messenger.show_timed_info('Info', f'Prosím čekejte, tisknu etiketu: {value}', 3000)
 
+                # 🛑 Vytvoření prodlevy bez blokace GUI
+                loop = QEventLoop()
+                QTimer.singleShot(3000, loop.quit)
+                loop.exec()
+
         except Exception as e:
             # 🛑 Log and display unexpected error / Zaloguj a zobraz neočekávanou chybu
             self.normal_logger.log('Error', f'Chyba zápisu {str(e)}', 'PRICON011')
@@ -234,6 +227,13 @@ class PrintController:
                 try:
                     trigger_file = trigger_dir / 'SF_MY2N_A'
                     trigger_file.touch(exist_ok=True)
+                    # 💬 Inform the user about printing progress / Informace o průběhu tisku
+                    self.messenger.show_timed_info('Info', f'Prosím čekejte, tisknu etiketu: SF_MY2N_A', 3000)
+
+                    # 🛑 Vytvoření prodlevy bez blokace GUI
+                    loop = QEventLoop()
+                    QTimer.singleShot(3000, loop.quit)
+                    loop.exec()
                 except Exception as e:
                     self.normal_logger.log('Error', f'Chyba trigger souboru {str(e)}', 'PRICON012')
                     self.messenger.show_error('Error', f'{str(e)}', 'PRICON012', False)
@@ -270,7 +270,7 @@ class PrintController:
         """
 
         # === 1️⃣ Validate serial number input / Validace vstupu
-        if not self.validate_serial_number_input():
+        if not self.validator.validate_serial_format(self.serial_input):
             return
 
         # === 2️⃣ Resolve product trigger groups from config / Načtení skupin produktů podle konfigurace
@@ -315,25 +315,25 @@ class PrintController:
 
         # 📌 Execute control4-save-and-print functions as needed / Spuštění odpovídajících funkcí
         if 'control4' in triggers and lbl_lines:
-            # === 1️⃣ Validace vstupních řádků I/J/K
+            # === 1️⃣ Validation of input lines I/J/K / Validace vstupních řádků I/J/K
             if not self.validator.validate_input_exists_for_control4(lbl_lines, self.serial_input):
                 return
 
-            # === 2️⃣ Získání hlavičky a záznamu z J= a K=
+            # === 2️⃣ Getting header and record from J= and K= / Získání hlavičky a záznamu z J= a K=
             result = self.validator.extract_header_and_record_c4(lbl_lines, self.serial_input)
             if not result:
                 return
             header, record = result
 
-            # === 3️⃣ Získání hodnot z I= řádku
+            # === 3️⃣ Getting values from I= row / Získání hodnot z I= řádku
             trigger_values = self.validator.extract_trigger_values_c4(lbl_lines, self.serial_input)
             if not trigger_values:
                 return
 
-            # === 4️⃣ Spuštění zápisu pro Control4
+            # === 4️⃣ Starting enrolment for Control4 / Spuštění zápisu pro Control4
             self.control4_save_and_print(header, record, trigger_values)
 
-            # === 5️⃣ Zápis do logu
+            # === 5️⃣ Log entry / Zápis do logu
             self.normal_logger.clear_log('Info', f'Control4 {self.serial_input}')
 
         # 📌 Execute my2n-save-and-print functions as needed / Spuštění odpovídajících funkcí

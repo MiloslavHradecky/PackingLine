@@ -61,8 +61,8 @@ class WorkOrderWindow(QWidget):
         # ⏭️ Continue button
         self.next_button: QPushButton = QPushButton('Pokračuj')
 
-        # ❌ Exit button
-        self.exit_button: QPushButton = QPushButton('Ukončit')
+        # ❌ Back button
+        self.exit_button: QPushButton = QPushButton('Zpět')
 
         # 📌 Enter triggers continue
         self.work_order_input.returnPressed.connect(self.next_button.click)
