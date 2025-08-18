@@ -16,11 +16,11 @@ VSVersionInfo(
         StringTable(
           '040904B0',
           [StringStruct('CompanyName', 'MHLab'),
-           StringStruct('FileDescription', 'Manual Label Print 2N'),
+           StringStruct('FileDescription', 'EOL Line-B 2N'),
            StringStruct('FileVersion', '3.0.0'),
-           StringStruct('InternalName', 'ManualLabelPrint'),
-           StringStruct('OriginalFilename', 'ManualLabelPrint.exe'),
-           StringStruct('ProductName', 'ManualLabelPrint'),
+           StringStruct('InternalName', 'LineB'),
+           StringStruct('OriginalFilename', 'LineB.exe'),
+           StringStruct('ProductName', 'LineB'),
            StringStruct('ProductVersion', '3.0.0')]
         ),
       ]
