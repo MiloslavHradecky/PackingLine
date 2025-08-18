@@ -1,43 +1,47 @@
 # 🧭 WorkOrderController – Manages scanning logic and transitions to printing
-# Řídící třída pro zadání pracovního příkazu a přechod na tisk
 
 import subprocess
+import configparser
 from pathlib import Path
-from core.logger import Logger
-from core.messenger import Messenger
+from utils.logger import get_logger
+from utils.messenger import Messenger
 from views.work_order_window import WorkOrderWindow
-from core.config_loader import ConfigLoader
+from utils.resources import get_config_path, get_writable_path
 
 
 class WorkOrderController:
     def __init__(self, window_stack):
         """
         Initializes controller logic, event binding and file setup.
-        Inicializace controlleru, napojení tlačítek a výchozí stavy.
         """
+        # 📌 Loading the configuration file
+        config_path = get_config_path("config.ini")
+        self.config = configparser.ConfigParser()
+        self.config.optionxform = str  # 💡 Ensures letter size is maintained
+        self.config.read(config_path)
+
+        # 📌 Saving references to application windows
         self.window_stack = window_stack
         self.work_order_window = WorkOrderWindow(controller=self)
+        self.print_controller = None
+        self.print_window = None
 
-        # 🔔 User feedback system / Systém hlášení zpráv
-        self.messenger = Messenger()
+        # 🔔 User feedback system
+        self.messenger = Messenger(self.work_order_window)
 
-        # 📂 Paths and file references / Cesty a soubory
+        # 📂 Paths and file references
         self.orders_dir = None
         self.lbl_file = None
         self.nor_file = None
 
-        # 📄 Parsed data / Načtené hodnoty
+        # 📄 Parsed data
         self.lines = None
         self.found_product_name = None
 
-        self.print_controller = None
-        self.print_window = None
+        # 📌 Logger initialization
+        self.logger = get_logger("WorkOrderController")
 
-        # 📌 Logging setup / Nastavení loggeru
-        self.normal_logger = Logger(spaced=False)
-        self.spaced_logger = Logger(spaced=True)
-
-        # 📌 Button actions / Napojení tlačítek
+        # 📌 inking the button to the method
         self.work_order_window.next_button.clicked.connect(self.work_order_button_click)
         self.work_order_window.exit_button.clicked.connect(self.handle_exit)
 
@@ -46,23 +50,22 @@ class WorkOrderController:
         Launches BarTender Commander via system process.
         Spustí BarTender Commander pomocí systémového příkazu.
         """
-        config = ConfigLoader()
         commander_path = config.get_path('commander_path', section='Paths')
         tl_file_path = config.get_path('tl_file_path', section='Paths')
 
         if not commander_path or not tl_file_path:
-            self.normal_logger.log('Error', 'Cesty k BarTender Commanderu nejsou dostupné v config.ini', 'WORORCON001')
-            self.messenger.show_error('Error', 'Cesty k BarTender Commanderu nejsou dostupné v config.ini', 'WORORCON001', True)
+            self.logger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini")
+            self.messenger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini", "Work Order Ctrl")
             return
 
         try:
             process = subprocess.Popen([str(commander_path), "/START", "/MIN=SystemTray", "/NOSPLASH", str(tl_file_path)], shell=True)
 
-            self.normal_logger.log('Info', f'BarTender Commander spuštěn: {process.pid}', 'WORORCON002')
+            self.logger.info(f"BarTender Commander spuštěn: {process.pid}")
 
         except Exception as e:
-            self.normal_logger.log('Error', f'Chyba při spuštění BarTender Commanderu: {str(e)}', 'WORORCON003')
-            self.messenger.show_error('Error', f'Chyba při spuštění BarTender Commanderu: {str(e)}', 'WORORCON003', True)
+            self.logger.error(f"Chyba při spuštění BarTender Commanderu: {str(e)}")
+            self.messenger.error(f"Chyba při spuštění BarTender Commanderu: {str(e)}", "Work Order Ctrl")
 
     def work_order_button_click(self):
         """
