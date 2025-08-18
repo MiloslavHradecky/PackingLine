@@ -79,21 +79,21 @@ class WorkOrderController:
         # 📌 Processing of input / Zpracování vstupu
         value_input = self.work_order_window.work_order_input.text().strip().upper()
         if not value_input:
-            self.messenger.show_warning('Warning', f'Zadejte prosím výrobní příkaz!', 'WORORCON004')
+            self.messenger.warning(f"Zadejte prosím výrobní příkaz!", "Work Order Ctrl")
             self.reset_input_focus()
             return
 
         # 📁 Construct paths / Sestavení cest
-        self.orders_dir = Path('T:/Prikazy')
-        self.lbl_file = self.orders_dir / f'{value_input}.lbl'
-        self.nor_file = self.orders_dir / f'{value_input}.nor'
+        self.orders_dir = Path("T:/Prikazy")
+        self.lbl_file = self.orders_dir / f"{value_input}.lbl"
+        self.nor_file = self.orders_dir / f"{value_input}.nor"
 
         # ❌ If file not found / Příkaz neexistuje
         if not self.lbl_file.exists() or not self.nor_file.exists():
             self.lines = []
             self.found_product_name = None
-            self.normal_logger.log('Warning', f'Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!', 'WORORCON005')
-            self.messenger.show_warning('Warning', f'Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!', 'WORORCON005')
+            self.logger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!")
+            self.messenger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!", "Work Order Ctrl")
             self.reset_input_focus()
             return
 
@@ -107,8 +107,8 @@ class WorkOrderController:
                     product_name = parts[1].strip()
 
                     if nor_order_code != value_input:
-                        self.normal_logger.log('Warning', f'Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!', 'WORORCON006')
-                        self.messenger.show_warning('Warning', f'Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!', 'WORORCON006')
+                        self.logger.warning(f"Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!")
+                        self.messenger.warning(f"Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!", "Work Order Ctrl")
                         self.reset_input_focus()
                         return
 
@@ -121,13 +121,13 @@ class WorkOrderController:
                     self.reset_input_focus()
 
                 else:
-                    self.normal_logger.log('Warning', f'Řádek v souboru {self.nor_file} nemá očekávaný formát.', 'WORORCON007')
-                    self.messenger.show_warning('Warning', f'Řádek v souboru {self.nor_file} nemá očekávaný formát.', 'WORORCON007')
+                    self.logger.warning(f"Řádek v souboru {self.nor_file} nemá očekávaný formát.")
+                    self.messenger.warning(f"Řádek v souboru {self.nor_file} nemá očekávaný formát.", "Work Order Ctrl")
                     self.reset_input_focus()
                     return
         except Exception as e:
-            self.normal_logger.log('Error', f'Neočekávaná chyba při zpracování .NOR souboru: {e}', 'WORORCON008')
-            self.messenger.show_error('Error', f'{e}', 'WORORCON008', exit_on_close=False)
+            self.logger.error(f"Neočekávaná chyba při zpracování .NOR souboru: {e}")
+            self.messenger.error(f"Neočekávaná chyba při zpracování .NOR souboru: {e}", "Work Order Ctrl")
             self.reset_input_focus()
             return
 
@@ -139,8 +139,8 @@ class WorkOrderController:
         try:
             return file_path.read_text().splitlines()
         except Exception as e:
-            self.normal_logger.log('Error', f'Soubor {file_path} se nepodařilo načíst: {e}', 'WORORCON009')
-            self.messenger.show_error('Error', f'{e}', 'WORORCON009', False)
+            self.logger.error(f"Soubor {file_path} se nepodařilo načíst: {e}")
+            self.messenger.error(f"Soubor {file_path} se nepodařilo načíst: {e}", "Work Order Ctrl")
             return []
 
     def open_app_window(self, order_code, product_name):
@@ -170,8 +170,8 @@ class WorkOrderController:
             subprocess.run('taskkill /f /im bartend.exe 1>nul 2>nul', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
 
         except subprocess.CalledProcessError as e:
-            self.normal_logger.log('Error', f'Chyba při ukončování BarTender procesů: {str(e)}', 'WORORCON010')
-            self.messenger.show_error('Error', f'{str(e)}', 'WORORCON010', False)
+            self.logger.error(f"Chyba při ukončování BarTender procesů: {str(e)}")
+            self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Work Order Ctrl")
 
     def handle_exit(self):
         """
