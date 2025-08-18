@@ -48,10 +48,9 @@ class WorkOrderController:
     def run_bartender_commander(self) -> None:
         """
         Launches BarTender Commander via system process.
-        Spustí BarTender Commander pomocí systémového příkazu.
         """
-        commander_path = config.get_path('commander_path', section='Paths')
-        tl_file_path = config.get_path('tl_file_path', section='Paths')
+        commander_path = self.config.get("Paths", "commander_path")
+        tl_file_path = self.config.get("Paths", "tl_file_path")
 
         if not commander_path or not tl_file_path:
             self.logger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini")
@@ -70,12 +69,11 @@ class WorkOrderController:
     def work_order_button_click(self):
         """
         Triggered on 'Continue' click.
-        Spuštěno po stisknutí tlačítka 'Pokračuj'.
 
-        - Validates input
-        - Checks .lbl and .nor file existence
-        - Parses .nor file and validates order
-        - Loads label content and launches print controller
+            - Validates input
+            - Checks .lbl and .nor file existence
+            - Parses .nor file and validates order
+            - Loads label content and launches print controller
         """
 
         # 📌 Processing of input / Zpracování vstupu
