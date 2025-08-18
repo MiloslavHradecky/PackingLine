@@ -1,0 +1,105 @@
+/* ========================================= */
+/*  FONT & STYLE DEFINITIONS FOR APPLICATION */
+/*  Author: Miloslav Hradecky                */
+/*  Version: 3.0.0.0                         */
+/*  Date: 2025-08-16                         */
+/* ========================================= */
+
+/* ============================= */
+/*           BUTTONS             */
+/* ============================= */
+
+QPushButton {
+    font-family: "Arial";
+    font-size: 16pt;
+    font-weight: bold;
+
+    background-color: #1976D2;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #165AB6;
+}
+
+QPushButton:pressed {
+    background-color: #0D3F7C;
+    padding: 4px;
+    border: 2px solid #0A3563;
+}
+
+QPushButton:disabled {
+    background-color: #B0BEC5;
+    color: #ECEFF1;
+    border: none;
+}
+
+/* === Remove button === */
+
+QPushButton#removeButton {
+    font-family: "Arial";
+    font-size: 12pt;
+    font-weight: bold;
+
+    background-color: #FFFBDE;
+    color: black;
+    padding: 4px;
+    border-radius: 8px;
+    border: 2px solid #FFC107;
+}
+
+QPushButton#removeButton:hover {
+    background-color: #FFE082;
+}
+
+QPushButton#removeButton:pressed {
+    background-color: #FFB300;
+    padding: 2px;
+    border: 2px solid #FFA000;
+}
+
+/* ============================= */
+/*          INPUTS               */
+/* ============================= */
+
+QLineEdit {
+    font-family: "Arial";
+    font-size: 12pt;
+    font-weight: bold;
+
+    background-color: white;
+    padding: 5px;
+    color: black;
+    border-radius: 8px;
+    border: 2px solid #FFC107;
+}
+
+QLineEdit:disabled {
+    background-color: #ECEFF1;
+    color: #9E9E9E;
+    border: 2px solid #B0BEC5;
+}
+
+/* ============================= */
+/*         LISTBOXES             */
+/* ============================= */
+
+QListWidget {
+    font-family: "Arial";
+    font-size: 12pt;
+    font-weight: bold;
+
+    background-color: white;
+    padding: 5px;
+    color: black;
+    border-radius: 8px;
+    border: 2px solid #FFC107;
+}
+
+QListWidget::item:selected {
+    background-color: #1976D2;
+    color: white;
+}
