@@ -7,7 +7,7 @@ from utils.logger import get_logger
 def ensure_config_file(path: str = "config.ini"):
     """
     Ensures that the configuration file exists. If not, creates it with default values.
-        :param path: Path to the config file (default: 'config.ini')
+        :param path: Path to the config file (default: "config.ini")
     """
     logger = get_logger("EnsureConfig")
     config_path = get_config_path(path)
@@ -18,13 +18,13 @@ def ensure_config_file(path: str = "config.ini"):
 
         # 📌 Default sections and values
         config["Paths"] = {
+            "reports_path": "T:/reporty/",
+            "orders_path": "T:/Prikazy/",
+            "trigger_path": "C:/Users/Home/Documents/Coding/Python/PyQt/Spoustece/",
             "szv_input_file": "T:/Prikazy/DataTPV/SZV.dat",
-            "csv_input_file": "T:/Prikazy/DataTPV/ManualLabelPrint/Databaze/MLP.csv",
-            "csv_output_file": "T:/Prikazy/DataTPV/ManualLabelPrint/Etikety/label.csv",
             "bartender_path": "C:/Program Files (x86)/Seagull/BarTender Suite/bartend.exe",
-            "label_folder": "T:/Prikazy/DataTPV/ManualLabelPrint/Etikety/",
-            "orders_folder": "T:/Prikazy/",
-            "archiv_file_path": "T:/Prikazy/DataTPV/ManualLabelPrint/Archiv/"
+            "commander_path": "C:/Program Files (x86)/Seagull/BarTender Suite/Cmdr.exe",
+            "tl_file_path": "C:/Users/Home/Documents/Coding/Python/PyQt/Spoustece/TestLine.tl"
         }
 
         try:
