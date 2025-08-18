@@ -37,30 +37,6 @@ QPushButton:disabled {
     border: none;
 }
 
-/* === Remove button === */
-
-QPushButton#removeButton {
-    font-family: "Arial";
-    font-size: 12pt;
-    font-weight: bold;
-
-    background-color: #FFFBDE;
-    color: black;
-    padding: 4px;
-    border-radius: 8px;
-    border: 2px solid #FFC107;
-}
-
-QPushButton#removeButton:hover {
-    background-color: #FFE082;
-}
-
-QPushButton#removeButton:pressed {
-    background-color: #FFB300;
-    padding: 2px;
-    border: 2px solid #FFA000;
-}
-
 /* ============================= */
 /*          INPUTS               */
 /* ============================= */
@@ -81,25 +57,4 @@ QLineEdit:disabled {
     background-color: #ECEFF1;
     color: #9E9E9E;
     border: 2px solid #B0BEC5;
-}
-
-/* ============================= */
-/*         LISTBOXES             */
-/* ============================= */
-
-QListWidget {
-    font-family: "Arial";
-    font-size: 12pt;
-    font-weight: bold;
-
-    background-color: white;
-    padding: 5px;
-    color: black;
-    border-radius: 8px;
-    border: 2px solid #FFC107;
-}
-
-QListWidget::item:selected {
-    background-color: #1976D2;
-    color: white;
 }
