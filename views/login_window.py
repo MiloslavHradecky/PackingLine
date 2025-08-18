@@ -53,15 +53,15 @@ class LoginWindow(QWidget):
         layout.addWidget(self.logo)
 
         # 📌 Password field (ID card)
-        self.input_password: QLineEdit = QLineEdit()
-        self.input_password.setEchoMode(QLineEdit.EchoMode.Password)
-        self.input_password.setPlaceholderText('Naskenujte svoji ID kartu')
+        self.password_input: QLineEdit = QLineEdit()
+        self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
+        self.password_input.setPlaceholderText('Naskenujte svoji ID kartu')
 
         # 📌 Set text color for placeholder
-        self.palette = self.input_password.palette()
+        self.palette = self.password_input.palette()
         self.placeholder_color = QColor('#757575')
         self.palette.setColor(QPalette.ColorRole.PlaceholderText, self.placeholder_color)
-        self.input_password.setPalette(self.palette)
+        self.password_input.setPalette(self.palette)
 
         # 📌 Login button
         self.login_button: QPushButton = QPushButton('Přihlásit se')
@@ -70,10 +70,10 @@ class LoginWindow(QWidget):
         self.exit_button: QPushButton = QPushButton('Ukončit')
 
         # 📌 Linking the button to the login action
-        self.input_password.returnPressed.connect(self.login_button.click)  # 💡 Enter activates the button
+        self.password_input.returnPressed.connect(self.login_button.click)  # 💡 Enter activates the button
 
         # 📌 Přidání prvků do hlavního layoutu
-        layout.addWidget(self.input_password)
+        layout.addWidget(self.password_input)
         layout.addWidget(self.login_button)
         layout.addWidget(self.exit_button)
 
@@ -83,5 +83,5 @@ class LoginWindow(QWidget):
         self.activateWindow()
         self.raise_()
 
-        self.input_password.setFocus()
+        self.password_input.setFocus()
         self.effects.fade_in(self)

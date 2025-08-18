@@ -1,19 +1,24 @@
+# 🎛️ LoginController – handles login logic and post-authentication navigation
+
+import subprocess
 import configparser
-import model.user_model
+import models.user_model
 from utils.logger import get_logger
 from utils.messenger import Messenger
-from utils.resources import get_config_path, resolve_path, get_writable_path
+from utils.resources import get_config_path, get_writable_path
 
 
 class LoginController:
     """
-    The main control class of the application.
+    Main controller for the login process.
     """
 
     def __init__(self, login_window, window_stack):
         """
-        Initializes the 'LoginController' and sets its main attributes.
-            :param login_window: Reference to the login window ('LoginWindow')
+        Initializes the LoginController and connects event handlers.
+
+            :param login_window: Reference to LoginWindow
+            :param window_stack: WindowStackManager for screen navigation
         """
 
         # 📌 Loading the configuration file
@@ -25,12 +30,10 @@ class LoginController:
         # 📌 Saving references to application windows
         self.login_window = login_window
         self.window_stack = window_stack
-        self.main_window = None
-        self.product_window = None
-        self.option_controller = None
+        self.work_order_controller = None
 
         # 📌 Initializing the 'SzvDecrypt' class to decrypt logins
-        self.decrypter = model.user_model.SzvDecrypt()
+        self.decrypter = models.user_model.SzvDecrypt()
         self.selection_value_product = None
         self.value_prefix = None
 
@@ -38,57 +41,65 @@ class LoginController:
         self.logger = get_logger("LoginController")
 
         # 📌 Messenger initialization
+        self.messenger = Messenger(self.login_window)
         self.progress_box = None
 
         # 📌 Linking the button to the method
         self.login_window.login_button.clicked.connect(self.handle_login)
         self.login_window.exit_button.clicked.connect(self.handle_exit)
 
+    def kill_bartender_processes(self):
+        """
+        Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
+        """
+        try:
+            subprocess.run('taskkill /f /im cmdr.exe 1>nul 2>nul', shell=True,
+                           creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run('taskkill /f /im bartend.exe 1>nul 2>nul', shell=True,
+                           creationflags=subprocess.CREATE_NO_WINDOW)
+
+        except subprocess.CalledProcessError as e:
+            self.logger.warning(f"Chyba při ukončování BarTender procesů: {str(e)}")
+            self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Login Ctrl")
+
     def handle_login(self):
         """
-        Verifies the login password and authenticates the user.
-            - Retrieves the entered password from the 'LoginWindow'
-            - Verifies the password is correct using 'SzvDecrypt'
-            - On successful login, opens the 'ProductWindow'
-            - If an error occurs, displays a warning to the user
+        Handles login validation and user authentication.
+
+            - Retrieves password from LoginWindow
+            - Verifies password via SzvDecrypt
+            - Opens WorkOrderWindow if successful
+            - Shows warning on failure
         """
-        password = self.login_window.input_password.text().strip()
-        self.login_window.input_password.clear()
+        password = self.login_window.password_input.text().strip()
+        self.login_window.password_input.clear()
 
         try:
             if self.decrypter.check_login(password):
-                self.value_prefix = model.user_model.get_value_prefix()
-                self.open_option_window()
+                self.value_prefix = models.user_model.get_value_prefix()
+                self.kill_bartender_processes()
+                self.open_work_order_window()
             else:
                 self.logger.warning(f'Zadané heslo "{password}" není správné!')
-                Messenger.warning("Zadané heslo není správné!", "Login Ctrl")
-                self.login_window.input_password.clear()
-                self.login_window.input_password.setFocus()
+                self.messenger.warning("Zadané heslo není správné!", "Login Ctrl")
+                self.login_window.password_input.clear()
+                self.login_window.password_input.setFocus()
         except Exception as e:
             self.logger.error(f'Neočekávaný problém: {str(e)}')
-            Messenger.error(str(e), "Login Ctrl")
-            self.login_window.input_password.clear()
-            self.login_window.input_password.setFocus()
+            self.messenger.error(str(e), "Login Ctrl")
+            self.login_window.password_input.clear()
+            self.login_window.password_input.setFocus()
 
-    def open_option_window(self):
+    def open_work_order_window(self):
         """
-        Opens the 'OptionWindow' for product selection.
+        Opens the WorkOrderWindow upon successful login.
 
-            - After successful login, the 'LoginWindow' will close
-            - 'OptionWindow' stores a reference to 'ControllerApp'
+            - Fades out login window
+            - Pushes next window to stack
         """
-
-        # 📌 Loading paths to files
-        raw_path = self.config.get('Paths', 'archiv_file_path')
-        archiv_path = resolve_path(raw_path)
-
-        # 📌 Check for the existence of the folder and create it if it does not exist
-        if not archiv_path.exists():
-            archiv_path.mkdir(parents=True, exist_ok=True)
-
-        from controller.option_controller import OptionController
-        self.option_controller = OptionController(self.window_stack)
-        self.window_stack.push(self.option_controller.option_window)
+        from controllers.work_order_controller import WorkOrderController
+        self.work_order_controller = WorkOrderController(self.window_stack)
+        self.window_stack.push(self.work_order_controller.work_order_window)
 
     def handle_exit(self):
         """Closes the LoginWindow and exits the application."""
