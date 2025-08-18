@@ -12,6 +12,7 @@ from utils.resources import resource_path
 from utils.system_info import log_system_info
 from utils.ensure_config_file import ensure_config_file
 from utils.single_instance import SingleInstanceChecker
+from utils.messenger import Messenger
 
 ensure_logs_dir()
 window_stack = WindowStackManager()  # ✅ Window stack manager for navigation between UI windows
@@ -29,7 +30,8 @@ def main():
     checker = SingleInstanceChecker("MlpUniqueAppKey")
     if checker.is_running():
         app = QApplication([])
-        Messenger.error("Upozornění - Aplikace už běží! 🚫", "Main")
+        messenger = Messenger(None)
+        messenger.error("Upozornění - Aplikace už běží! 🚫", "Main")
         sys.exit(0)
 
     app = QApplication([])
@@ -46,6 +48,12 @@ def main():
     # 💾 Check the config file
     ensure_config_file()
 
+    # 📌 Show splash screen
+    splash = SplashScreen()
+
+    # 📌 Creating a Messenger with the splash parent
+    messenger = Messenger(splash)
+
     def launch_login():
         login_window = LoginWindow()
         login_controller = LoginController(login_window, window_stack)
@@ -53,8 +61,7 @@ def main():
         window_stack.push(login_window)
         login_window.effects.fade_in(login_window, duration=2000)
 
-    # 📌 Show splash screen and then launch login window
-    splash = SplashScreen()
+    # 📌 Launch login window
     splash.start(launch_login)
 
     app.exec()
