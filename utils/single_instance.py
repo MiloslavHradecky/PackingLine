@@ -2,7 +2,7 @@ from PyQt6.QtCore import QSharedMemory
 
 
 class SingleInstanceChecker:
-    def __init__(self, key="MlpUniqueAppKey"):
+    def __init__(self, key="LinebUniqueAppKey"):
         self.key = key
         self.shared_memory = QSharedMemory(self.key)
 

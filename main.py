@@ -27,7 +27,7 @@ def main():
     - Starts application event loop via app.exec()
     """
     # 🔒 Single launch check
-    checker = SingleInstanceChecker("MlpUniqueAppKey")
+    checker = SingleInstanceChecker("LinebUniqueAppKey")
     if checker.is_running():
         app = QApplication([])
         messenger = Messenger(None)

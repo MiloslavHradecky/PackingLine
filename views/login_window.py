@@ -1,3 +1,5 @@
+# 🔐 LoginWindow – GUI login screen with password entry for ID card systems
+
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QPalette, QColor, QPixmap, QIcon
@@ -18,7 +20,6 @@ class LoginWindow(QWidget):
         Initializes the 'LoginWindow' and sets its visual appearance.
             - Receives a 'controller' that manages the login logic
             - Sets the icon of the window
-            - Defines fonts, colors and overall UI layout
         """
         super().__init__()
 
