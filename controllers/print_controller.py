@@ -108,113 +108,114 @@ class PrintController:
     def control4_save_and_print(self, header: str, record: str, trigger_values: list[str]) -> None:
         """
         Extracts header and record for the scanned serial number and writes them to Control4 output file.
-        Načte hlavičku a záznam z řádků .lbl pro naskenovaný serial number a zapíše je do výstupního souboru Control4.
 
-        - Hledá řádky začínající na: SERIAL+I= a SERIAL+J= a SERIAL+K=
-        - Pokud najde hlavičku i záznam, zapíše je do výstupního souboru
+            - Searches for lines beginning with: SERIAL+I= and SERIAL+J= and SERIAL+K=
+            - If it finds both the header and the record, it writes them to the output file.
 
-        :param header: extracted header line / extrahovaná hlavička z .lbl
-        :param record: extracted record line / extrahovaný záznam z .lbl
-        :param trigger_values: list of trigger filenames / seznam názvů souborů spouštěče
+            :param header: extracted header line
+            :param record: extracted record line
+            :param trigger_values: list of trigger filenames
         """
-        # 📁 Retrieve output file path from config / Získání cesty k výstupnímu souboru z konfigurace
-        output_path = self.config.get_path('output_file_path_c4_product', section='Control4Paths')
-        if not output_path:
-            self.normal_logger.log('Error', f'Cesta k výstupnímu souboru product nebyla nalezena.', 'PRICON004')
-            self.messenger.show_error('Error', f'Cesta k výstupnímu souboru product nebyla nalezena.', 'PRICON004', False)
+        # 📁 Retrieve output file path from config
+        raw_output_path = self.config.get("Control4Paths", "output_file_path_c4_product")
+        if not raw_output_path:
+            self.logger.error(f"Cesta k výstupnímu souboru product nebyla nalezena.")
+            self.messenger.error(f"Cesta k výstupnímu souboru product nebyla nalezena.", "Print Ctrl")
             self.print_window.reset_input_focus()
             return
 
+        output_path = Path(raw_output_path)
+
         try:
-            # 💾 Write header and record to file / Zápis hlavičky a záznamu do souboru
+            # 💾 Write header and record to file
             with output_path.open('w') as file:
                 file.write(header + '\n')
                 file.write(record + '\n')
 
-            # 🗂️ Retrieve trigger directory from config / Získání složky pro spouštěče z konfigurace
+            # 🗂️ Retrieve trigger directory from config
             trigger_dir = self.get_trigger_dir()
             if not trigger_dir or not trigger_dir.exists():
-                self.normal_logger.log('Error', f'Složka trigger_path neexistuje nebo není zadána.', 'PRICON005')
-                self.messenger.show_error('Error', f'Složka trigger_path neexistuje nebo není zadána.', 'PRICON005', False)
+                self.logger.error(f"Složka trigger_path neexistuje nebo není zadána.")
+                self.messenger.error(f"Složka trigger_path neexistuje nebo není zadána.", "Print Ctrl")
                 self.print_window.reset_input_focus()
                 return
 
-            # ✂️ Create trigger files from values / Vytvoření souborů podle hodnot I=
+            # ✂️ Create trigger files from values I=
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
-                # 💬 Inform the user about printing progress / Informace o průběhu tisku
-                self.messenger.show_timed_info('Info', f'Prosím čekejte, tisknu etiketu: {value}', 3000)
+                # 💬 Inform the user about printing progress
+                self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: {value}")
 
-                # 🛑 Vytvoření prodlevy bez blokace GUI
+                # 🛑 Creating a delay without blocking the GUI
                 loop = QEventLoop()
                 QTimer.singleShot(3000, loop.quit)
                 loop.exec()
 
         except Exception as e:
-            # 🛑 Log and display unexpected error / Zaloguj a zobraz neočekávanou chybu
-            self.normal_logger.log('Error', f'Chyba zápisu {str(e)}', 'PRICON006')
-            self.messenger.show_error('Error', f'{str(e)}', 'PRICON006', False)
+            # 🛑 Log and display unexpected error
+            self.logger.error(f"Chyba zápisu {str(e)}")
+            self.messenger.error(f"Chyba zápisu {str(e)}", "Print Ctrl")
             self.print_window.reset_input_focus()
 
     def product_save_and_print(self, header: str, record: str, trigger_values: list[str]) -> None:
         """
         Extracts header and record for the scanned serial number and writes them to product output file.
-        Načte hlavičku a záznam z řádků .lbl pro naskenovaný serial number a zapíše je do výstupního souboru product.
 
-        :param header: extracted header line / extrahovaná hlavička z .lbl
-        :param record: extracted record line / extrahovaný záznam z .lbl
-        :param trigger_values: list of trigger filenames / seznam názvů souborů spouštěče
+            :param header: extracted header line
+            :param record: extracted record line
+            :param trigger_values: list of trigger filenames
         """
 
-        # 📁 Retrieve output file path from config / Získání cesty k výstupnímu souboru z konfigurace
-        output_path = self.config.get_path('output_file_path_product', section='ProductPaths')
-        if not output_path:
-            self.normal_logger.log('Warning', f'Cesta k výstupnímu souboru product nebyla nalezena.', 'PRICON009')
-            self.messenger.show_warning('Warning', f'Cesta k výstupnímu souboru product nebyla nalezena.', 'PRICON009')
+        # 📁 Retrieve output file path from config
+        raw_output_path = self.config.get("ProductPaths", "output_file_path_product")
+        if not raw_output_path:
+            self.logger.warning(f"Cesta k výstupnímu souboru product nebyla nalezena.")
+            self.messenger.warning(f"Cesta k výstupnímu souboru product nebyla nalezena.", "Print Ctrl")
             self.print_window.reset_input_focus()
             return
 
+        output_path = Path(raw_output_path)
+
         try:
-            # 💾 Write header and record to file / Zápis hlavičky a záznamu do souboru
+            # 💾 Write header and record to file
             with output_path.open('w') as file:
                 file.write(header + '\n')
                 file.write(record + '\n')
 
-            # 🗂️ Retrieve trigger directory from config / Získání složky pro spouštěče z konfigurace
+            # 🗂️ Retrieve trigger directory from config
             trigger_dir = self.get_trigger_dir()
             if not trigger_dir or not trigger_dir.exists():
-                self.normal_logger.log('Warning', f'Složka trigger_path neexistuje nebo není zadána.', 'PRICON010')
-                self.messenger.show_warning('Warning', f'Složka trigger_path neexistuje nebo není zadána.', 'PRICON010')
+                self.logger.warning(f"Složka trigger_path neexistuje nebo není zadána.")
+                self.messenger.warning(f"Složka trigger_path neexistuje nebo není zadána.", "Print Ctrl")
                 self.print_window.reset_input_focus()
                 return
 
-            # ✂️ Create trigger files from values / Vytvoření souborů podle hodnot B=
+            # ✂️ Create trigger files from values B=
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
-                # 💬 Inform the user about printing progress / Informace o průběhu tisku
-                self.messenger.show_timed_info('Info', f'Prosím čekejte, tisknu etiketu: {value}', 3000)
+                # 💬 Inform the user about printing progress
+                self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: {value}")
 
-                # 🛑 Vytvoření prodlevy bez blokace GUI
+                # 🛑 Creating a delay without blocking the GUI
                 loop = QEventLoop()
                 QTimer.singleShot(3000, loop.quit)
                 loop.exec()
 
         except Exception as e:
-            # 🛑 Log and display unexpected error / Zaloguj a zobraz neočekávanou chybu
-            self.normal_logger.log('Error', f'Chyba zápisu {str(e)}', 'PRICON011')
-            self.messenger.show_error('Error', f'{str(e)}', 'PRICON011', False)
+            # 🛑 Log and display unexpected error
+            self.logger.error(f"Chyba zápisu {str(e)}")
+            self.messenger.error(f"Chyba zápisu {str(e)}", "Print Ctrl")
             self.print_window.reset_input_focus()
 
     def my2n_save_and_print(self, serial_number: str, token: str, output_path: Path) -> None:
         """
         Writes extracted My2N token and serial number to output file and creates trigger file.
-        Zapíše získaný My2N token a serial do výstupního souboru a vytvoří trigger soubor.
 
-        :param serial_number: serial number from input / seriové číslo z inputu
-        :param token: extracted My2N token / získaný bezpečnostní kód
-        :param output_path: path to output file / cesta k výstupnímu souboru
+            :param serial_number: serial number from input
+            :param token: extracted My2N token
+            :param output_path: path to output file
         """
         try:
             with output_path.open('w') as file:
@@ -226,30 +227,29 @@ class PrintController:
                 try:
                     trigger_file = trigger_dir / 'SF_MY2N_A'
                     trigger_file.touch(exist_ok=True)
-                    # 💬 Inform the user about printing progress / Informace o průběhu tisku
-                    self.messenger.show_timed_info('Info', f'Prosím čekejte, tisknu etiketu: SF_MY2N_A', 3000)
+                    # 💬 Inform the user about printing progress
+                    self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: SF_MY2N_A")
 
-                    # 🛑 Vytvoření prodlevy bez blokace GUI
+                    # 🛑 Creating a delay without blocking the GUI
                     loop = QEventLoop()
                     QTimer.singleShot(3000, loop.quit)
                     loop.exec()
                 except Exception as e:
-                    self.normal_logger.log('Error', f'Chyba trigger souboru {str(e)}', 'PRICON012')
-                    self.messenger.show_error('Error', f'{str(e)}', 'PRICON012', False)
+                    self.logger.error(f"Chyba trigger souboru {str(e)}")
+                    self.messenger.error(f"Chyba trigger souboru {str(e)}", "Print Ctrl")
             else:
-                self.normal_logger.log('Error', 'Trigger složka není definována nebo neexistuje.', 'PRICON013')
-                self.messenger.show_error('Error', 'Složka pro trigger není dostupná.', 'PRICON013', False)
+                self.logger.error(f"Trigger složka není definována nebo neexistuje.")
+                self.messenger.error(f"Složka pro trigger není dostupná.", "Print Ctrl")
 
         except Exception as e:
-            self.normal_logger.log('Error', f'Chyba zápisu: {str(e)}', 'PRICON014')
-            self.messenger.show_error('Error', f'{str(e)}', 'PRICON014', False)
+            self.logger.error(f"Chyba zápisu: {str(e)}")
+            self.messenger.error(f"Chyba zápisu: {str(e)}", "Print Ctrl")
 
     def get_trigger_groups_for_product(self) -> list[str]:
         """
         Returns all trigger groups (product, control4, my2n) that match product_name from config.
-        Vrátí všechny skupiny (product, control4, my2n), které obsahují zadaný produkt z configu.
 
-        :return: List of matching group names / Seznam shodných skupin
+            :return: List of matching group names
         """
         product_name = self.product_name
 
@@ -260,7 +260,7 @@ class PrintController:
             if product_name in items:
                 matching.append(section_key)
 
-        return matching  # e.g. ['product', 'my2n']
+        return matching  # ✅ e.g. ['product', 'my2n']
 
     def print_button_click(self):
         """
