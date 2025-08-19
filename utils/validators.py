@@ -1,26 +1,25 @@
 # 🔑 Validator - Validates all inputs
-# Validuje všechny vstupy
 
 import re
 from pathlib import Path
-from core.logger import Logger
-from core.messenger import Messenger
-from utils.szv_utils import get_value_prefix
+from utils.logger import get_logger
+from utils.messenger import Messenger
+from models.user_model import get_value_prefix
 
 
 class Validator:
     def __init__(self, print_window):
         self.print_window = print_window
-        self.messenger = Messenger(parent=self.print_window)
 
-        # 📝 Logging setup / Nastavení loggeru
-        self.normal_logger = Logger(spaced=False)
-        self.spaced_logger = Logger(spaced=True)
+        # 📌 Messenger initialization
+        self.messenger = Messenger(self.print_window)
+
+        # 📌 Logger initialization
+        self.logger = get_logger("Validator")
 
     def validate_serial_format(self, serial_number: str) -> bool:
         """
         Validates the serial number format 00-0000-0000.
-        Ověří, zda serial odpovídá formátu 00-0000-0000.
         """
         pattern = r'^\d{2}-\d{4}-\d{4}$'
         if not re.fullmatch(pattern, serial_number):
