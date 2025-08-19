@@ -38,6 +38,7 @@ class PrintController:
 
         # 🔔 User feedback system
         self.messenger = Messenger(self.print_window)
+        self.progress_box = None
 
         # 📌 Logger initialization
         self.logger = get_logger("PrintController")
@@ -141,6 +142,9 @@ class PrintController:
                 self.print_window.reset_input_focus()
                 return
 
+            # 📌 We will display a progress box
+            self.messenger.show_progress_box("Zahajuji tisk etiket...")
+
             # ✂️ Create trigger files from values I=
             for value in trigger_values:
                 target_file = trigger_dir / value
@@ -149,6 +153,9 @@ class PrintController:
                 self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: {value}")
                 QApplication.processEvents()
                 QTimer.singleShot(1000, lambda: None)
+
+            # 📌 Close the progress box after completion
+            self.messenger.close_progress_box()
 
         except Exception as e:
             # 🛑 Log and display unexpected error
@@ -176,6 +183,9 @@ class PrintController:
         output_path = Path(raw_output_path)
 
         try:
+            # 📌 We will display a progress box
+            self.messenger.show_progress_box("Zahajuji tisk etiket...")
+
             # 💾 Write header and record to file
             with output_path.open('w') as file:
                 file.write(header + '\n')
@@ -197,6 +207,9 @@ class PrintController:
                 self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: {value}")
                 QApplication.processEvents()
                 QTimer.singleShot(1000, lambda: None)
+
+            # 📌 Close the progress box with confirmation
+            self.finalize_print_process()
 
         except Exception as e:
             # 🛑 Log and display unexpected error
@@ -258,6 +271,22 @@ class PrintController:
                 matching.append(group_name)
 
         return matching  # ✅ e.g. ['product', 'my2n']
+
+    def finalize_print_process(self, delay=3000):
+        """Completing the printing process - closing the progress box."""
+
+        # 📌 UI updates
+        self._update_ui_after_print()
+
+        # 📌 Automatic closing of progress box after 'delay' seconds
+        QTimer.singleShot(delay, lambda: self.messenger.close_progress_box())
+
+    def _update_ui_after_print(self):
+        """UI update after successful printing."""
+        self.messenger.update_progress_text('✅ Tisk byl úspěšně dokončen!')
+        self.messenger.set_progress_no_buttons()
+
+        self.print_window.reset_input_focus()
 
     def print_button_click(self):
         """

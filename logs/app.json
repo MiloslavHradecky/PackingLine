@@ -14,3 +14,17 @@
 {"timestamp": "2025-08-19 15:57:02,219", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (pta) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
 {"timestamp": "2025-08-19 15:57:02,219", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"pta\" není správné!"}
 {"timestamp": "2025-08-19 15:57:12,678", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 16:09:07,567", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 16:09:07,570", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 16:09:17,382", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 16:09:28,375", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 21780"}
+{"timestamp": "2025-08-19 16:09:42,180", "level": "INFO", "module": "PrintController", "message": "9155211C 54-4956-0198"}
+{"timestamp": "2025-08-19 16:09:42,198", "level": "INFO", "module": "PrintController", "message": "My2N token: Q5C7-ILRI-ECDT-47ZD"}
+{"timestamp": "2025-08-19 16:09:58,884", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 16:21:37,016", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 16:21:37,020", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 16:21:50,015", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 16:21:57,530", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 14760"}
+{"timestamp": "2025-08-19 16:22:05,008", "level": "INFO", "module": "PrintController", "message": "9155211C 54-4907-0318"}
+{"timestamp": "2025-08-19 16:22:05,026", "level": "INFO", "module": "PrintController", "message": "My2N token: 6TT3-KGL5-4QSO-4KKR"}
+{"timestamp": "2025-08-19 16:22:18,086", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}

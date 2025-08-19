@@ -17,3 +17,19 @@
 2025-08-19 15:57:02,219 | WARNING | LoginController         | Zadané heslo "pta" není správné!
 2025-08-19 15:57:12,678 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-19 16:09:07,567 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 16:09:07,570 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 16:09:17,382 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 16:09:28,375 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 21780
+2025-08-19 16:09:42,180 | INFO    | PrintController         | 9155211C 54-4956-0198
+2025-08-19 16:09:42,198 | INFO    | PrintController         | My2N token: Q5C7-ILRI-ECDT-47ZD
+2025-08-19 16:09:58,884 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-19 16:21:37,016 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 16:21:37,020 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 16:21:50,015 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 16:21:57,530 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 14760
+2025-08-19 16:22:05,008 | INFO    | PrintController         | 9155211C 54-4907-0318
+2025-08-19 16:22:05,026 | INFO    | PrintController         | My2N token: 6TT3-KGL5-4QSO-4KKR
+2025-08-19 16:22:18,086 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
