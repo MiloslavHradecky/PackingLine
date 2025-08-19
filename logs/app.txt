@@ -45,3 +45,35 @@
 2025-08-19 16:41:17,829 | ERROR   | Validators              | Neplatný formát serial number.
 2025-08-19 16:41:31,330 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-19 16:50:25,381 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 16:50:25,385 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 16:50:34,522 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 16:51:15,754 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 11124
+2025-08-19 16:51:35,147 | INFO    | PrintController         | 9155211C 
+2025-08-19 16:51:35,147 | ERROR   | Validators              | Neplatný formát serial number.
+2025-08-19 16:51:52,130 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-19 16:59:01,023 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 16:59:01,026 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 16:59:10,244 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 16:59:19,701 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 8720
+2025-08-19 16:59:32,868 | INFO    | PrintController         | 9155211C 
+2025-08-19 16:59:32,868 | ERROR   | Validators              | Neplatný formát serial number.
+2025-08-19 16:59:45,124 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-19 17:01:54,952 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 17:01:54,956 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 17:02:04,750 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 17:02:12,526 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 4864
+2025-08-19 17:02:31,144 | INFO    | PrintController         | 9155211C 
+2025-08-19 17:02:31,144 | ERROR   | Validators              | Neplatný formát serial number.
+2025-08-19 17:02:52,590 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-19 17:04:09,101 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 17:04:09,104 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 17:04:18,793 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 17:04:26,731 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 1684
+2025-08-19 17:04:35,855 | INFO    | PrintController         | 9155211C 54-4907-2078
+2025-08-19 17:04:35,882 | INFO    | PrintController         | My2N token: 4AJC-UB2N-LLD4-TRVX
+2025-08-19 17:05:13,476 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+

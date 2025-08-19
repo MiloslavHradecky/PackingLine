@@ -8,7 +8,7 @@ from views.print_window import PrintWindow
 from utils.resources import get_config_path
 from utils.validators import Validator
 from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication, QMessageBox
 
 
 class PrintController:
@@ -38,7 +38,7 @@ class PrintController:
 
         # 🔔 User feedback system
         self.messenger = Messenger(self.print_window)
-        self.progress_box = None
+        self.progress_box = QMessageBox(self.print_window or None)
 
         # 📌 Logger initialization
         self.logger = get_logger("PrintController")
@@ -290,8 +290,6 @@ class PrintController:
         """UI update after successful printing."""
         self.messenger.update_progress_text('✅ Tisk byl úspěšně dokončen!')
         self.messenger.set_progress_no_buttons()
-
-        self.print_window.reset_input_focus()
 
     def print_button_click(self):
         """

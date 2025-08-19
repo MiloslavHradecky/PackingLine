@@ -39,3 +39,31 @@
 {"timestamp": "2025-08-19 16:41:17,829", "level": "INFO", "module": "PrintController", "message": "9155211C "}
 {"timestamp": "2025-08-19 16:41:17,829", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
 {"timestamp": "2025-08-19 16:41:31,330", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 16:50:25,381", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 16:50:25,385", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 16:50:34,522", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 16:51:15,754", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 11124"}
+{"timestamp": "2025-08-19 16:51:35,147", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-19 16:51:35,147", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-19 16:51:52,130", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 16:59:01,023", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 16:59:01,026", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 16:59:10,244", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 16:59:19,701", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 8720"}
+{"timestamp": "2025-08-19 16:59:32,868", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-19 16:59:32,868", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-19 16:59:45,124", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 17:01:54,952", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 17:01:54,956", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 17:02:04,750", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 17:02:12,526", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 4864"}
+{"timestamp": "2025-08-19 17:02:31,144", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-19 17:02:31,144", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-19 17:02:52,590", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 17:04:09,101", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 17:04:09,104", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 17:04:18,793", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 17:04:26,731", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 1684"}
+{"timestamp": "2025-08-19 17:04:35,855", "level": "INFO", "module": "PrintController", "message": "9155211C 54-4907-2078"}
+{"timestamp": "2025-08-19 17:04:35,882", "level": "INFO", "module": "PrintController", "message": "My2N token: 4AJC-UB2N-LLD4-TRVX"}
+{"timestamp": "2025-08-19 17:05:13,476", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
