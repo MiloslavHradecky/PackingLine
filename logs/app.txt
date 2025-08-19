@@ -7,3 +7,13 @@
 2025-08-19 14:56:38,801 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
 2025-08-19 14:56:56,698 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-19 15:55:10,228 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-19 15:55:10,230 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-19 15:55:19,872 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-19 15:55:29,312 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 12712
+2025-08-19 15:56:00,426 | INFO    | PrintController         | 9155211C 54-4217-2718
+2025-08-19 15:56:03,448 | INFO    | PrintController         | My2N token: HMIS-DOJU-RYJK-3JLW
+2025-08-19 15:57:02,219 | WARNING | SzvDecrypt              | Zadané heslo (pta) nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-08-19 15:57:02,219 | WARNING | LoginController         | Zadané heslo "pta" není správné!
+2025-08-19 15:57:12,678 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+

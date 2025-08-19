@@ -7,7 +7,8 @@ from utils.messenger import Messenger
 from views.print_window import PrintWindow
 from utils.resources import get_config_path
 from utils.validators import Validator
-from PyQt6.QtCore import QEventLoop, QTimer
+from PyQt6.QtCore import QTimer
+from PyQt6.QtWidgets import QApplication
 
 
 class PrintController:
@@ -146,11 +147,8 @@ class PrintController:
                 target_file.touch(exist_ok=True)
                 # 💬 Inform the user about printing progress
                 self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: {value}")
-
-                # 🛑 Creating a delay without blocking the GUI
-                loop = QEventLoop()
-                QTimer.singleShot(3000, loop.quit)
-                loop.exec()
+                QApplication.processEvents()
+                QTimer.singleShot(1000, lambda: None)
 
         except Exception as e:
             # 🛑 Log and display unexpected error
@@ -197,11 +195,8 @@ class PrintController:
                 target_file.touch(exist_ok=True)
                 # 💬 Inform the user about printing progress
                 self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: {value}")
-
-                # 🛑 Creating a delay without blocking the GUI
-                loop = QEventLoop()
-                QTimer.singleShot(3000, loop.quit)
-                loop.exec()
+                QApplication.processEvents()
+                QTimer.singleShot(1000, lambda: None)
 
         except Exception as e:
             # 🛑 Log and display unexpected error
@@ -229,11 +224,9 @@ class PrintController:
                     trigger_file.touch(exist_ok=True)
                     # 💬 Inform the user about printing progress
                     self.messenger.update_progress_text(f"Prosím čekejte, tisknu etiketu: SF_MY2N_A")
+                    QApplication.processEvents()
+                    QTimer.singleShot(1000, lambda: None)
 
-                    # 🛑 Creating a delay without blocking the GUI
-                    loop = QEventLoop()
-                    QTimer.singleShot(3000, loop.quit)
-                    loop.exec()
                 except Exception as e:
                     self.logger.error(f"Chyba trigger souboru {str(e)}")
                     self.messenger.error(f"Chyba trigger souboru {str(e)}", "Print Ctrl")

@@ -5,3 +5,12 @@
 {"timestamp": "2025-08-19 14:56:26,601", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
 {"timestamp": "2025-08-19 14:56:38,801", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
 {"timestamp": "2025-08-19 14:56:56,698", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 15:55:10,228", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 15:55:10,230", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 15:55:19,872", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 15:55:29,312", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 12712"}
+{"timestamp": "2025-08-19 15:56:00,426", "level": "INFO", "module": "PrintController", "message": "9155211C 54-4217-2718"}
+{"timestamp": "2025-08-19 15:56:03,448", "level": "INFO", "module": "PrintController", "message": "My2N token: HMIS-DOJU-RYJK-3JLW"}
+{"timestamp": "2025-08-19 15:57:02,219", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (pta) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-08-19 15:57:02,219", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"pta\" není správné!"}
+{"timestamp": "2025-08-19 15:57:12,678", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
