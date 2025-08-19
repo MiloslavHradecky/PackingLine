@@ -340,8 +340,8 @@ class PrintController:
 
         # 📌 Execute my2n-save-and-print functions as needed
         if 'my2n' in triggers:
-            reports_path = self.config.get("Paths", "reports_path")
-            output_path = self.config.get("My2nPaths", "output_file_path_my2n")
+            reports_path = Path(self.config.get("Paths", "reports_path"))
+            output_path = Path(self.config.get("My2nPaths", "output_file_path_my2n"))
 
             if not reports_path or not output_path:
                 self.logger.error(f"Cesty k reportu nebo výstupu nejsou definovány.")
