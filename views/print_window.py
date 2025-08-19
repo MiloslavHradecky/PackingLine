@@ -1,11 +1,10 @@
 # 🖨️ PrintWindow – UI for serial number input and print action
-# Uživatelské rozhraní pro zadání výrobního čísla a tisk
 
 from pathlib import Path
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QFont, QPalette, QColor, QPixmap, QIcon
-from effects.window_effects_manager import WindowEffectsManager
+from utils.window_effects_manager import WindowEffectsManager
 
 
 class PrintWindow(QWidget):
