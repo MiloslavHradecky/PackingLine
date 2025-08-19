@@ -252,97 +252,100 @@ class PrintController:
             :return: List of matching group names
         """
         product_name = self.product_name
-
         matching = []
-        for section_key in self.config.config.options('ProductTriggerMapping'):
-            raw_list = self.config.config.get('ProductTriggerMapping', section_key)
-            items = [i.strip() for i in raw_list.split(',')]
+
+        if not self.config.has_section("ProductTriggerMapping"):
+            self.logger.warning("Sekce 'ProductTriggerMapping' nebyla nalezena v configu.")
+            return matching
+
+        for group_name in self.config.options("ProductTriggerMapping"):
+            raw_list = self.config.get("ProductTriggerMapping", group_name)
+            items = [item.strip() for item in raw_list.split(",")]
             if product_name in items:
-                matching.append(section_key)
+                matching.append(group_name)
 
         return matching  # ✅ e.g. ['product', 'my2n']
 
     def print_button_click(self):
         """
         Handles print button action by validating input and triggering appropriate save-and-print methods.
-        Obsluhuje kliknutí na tlačítko 'Print' validací vstupu a spuštěním příslušných metod podle konfigurace.
         """
 
-        # === 1️⃣ Validate serial number input / Validace vstupu
+        # === 1️⃣ Validate serial number input
         if not self.validator.validate_serial_format(self.serial_input):
             return
 
-        # === 2️⃣ Resolve product trigger groups from config / Načtení skupin produktů podle konfigurace
+        # === 2️⃣ Resolve product trigger groups from config
         triggers = self.get_trigger_groups_for_product()
 
-        # === 3️⃣ Load corresponding .lbl file lines / Načtení řádků ze souboru .lbl
+        # === 3️⃣ Load corresponding .lbl file lines
         lbl_lines = self.load_file_lbl()
         if not lbl_lines:
-            self.normal_logger.log('Error', f'Soubor .lbl nelze načíst nebo je prázdný!', 'PRICON015')
-            self.messenger.show_error('Error', 'Soubor .lbl nelze načíst nebo je prázdný!', 'PRICON015', False)
+            self.logger.error(f"Soubor .lbl nelze načíst nebo je prázdný!")
+            self.messenger.error(f"Soubor .lbl nelze načíst nebo je prázdný!", "Print Ctrl")
             return
 
-        # 📌 Execute save-and-print functions as needed / Spuštění odpovídajících funkcí
+        # 📌 Execute save-and-print functions as needed
         if 'product' in triggers and lbl_lines:
 
-            # === 1️⃣ Validate presence of required lines / Validace existence B/D/E řádků
+            # === 1️⃣ Validate presence of required lines B/D/E lines
             if not self.validator.validate_input_exists_for_product(lbl_lines, self.serial_input):
                 return
 
-            # === 2️⃣ Extract header and record / Získání D= a E= řádků
+            # === 2️⃣ Extract header and record D= a E= lines
             result = self.validator.extract_header_and_record(lbl_lines, self.serial_input)
             if not result:
                 return
 
             header, record = result
 
-            # === 3️⃣ Inject prefix to record / Vložení prefixu do správného pole
+            # === 3️⃣ Inject prefix to record
             new_record = self.validator.validate_and_inject_balice(header, record)
             if new_record is None:
                 return
 
-            # === 4️⃣ Inject prefix to record / Vložení prefixu do správného pole
+            # === 4️⃣ Inject prefix to record
             trigger_values = self.validator.extract_trigger_values(lbl_lines, self.serial_input)
             if not trigger_values:
                 return
 
-            # === 5️⃣ Save and print / Spuštění zápisu výstupního souboru
+            # === 5️⃣ Save and print
             self.product_save_and_print(header, new_record, trigger_values)
 
             # === 6️⃣ Log success
-            self.normal_logger.clear_log('Info', f'{self.product_name} {self.serial_input}')
+            self.logger.info(f"{self.product_name} {self.serial_input}")
 
-        # 📌 Execute control4-save-and-print functions as needed / Spuštění odpovídajících funkcí
+        # 📌 Execute control4-save-and-print functions as needed
         if 'control4' in triggers and lbl_lines:
-            # === 1️⃣ Validation of input lines I/J/K / Validace vstupních řádků I/J/K
+            # === 1️⃣ Validation of input lines I/J/K
             if not self.validator.validate_input_exists_for_control4(lbl_lines, self.serial_input):
                 return
 
-            # === 2️⃣ Getting header and record from J= and K= / Získání hlavičky a záznamu z J= a K=
+            # === 2️⃣ Getting header and record from J= and K=
             result = self.validator.extract_header_and_record_c4(lbl_lines, self.serial_input)
             if not result:
                 return
             header, record = result
 
-            # === 3️⃣ Getting values from I= row / Získání hodnot z I= řádku
+            # === 3️⃣ Getting values from I= row
             trigger_values = self.validator.extract_trigger_values_c4(lbl_lines, self.serial_input)
             if not trigger_values:
                 return
 
-            # === 4️⃣ Starting enrolment for Control4 / Spuštění zápisu pro Control4
+            # === 4️⃣ Starting enrolment for Control4
             self.control4_save_and_print(header, record, trigger_values)
 
-            # === 5️⃣ Log entry / Zápis do logu
-            self.normal_logger.clear_log('Info', f'Control4 {self.serial_input}')
+            # === 5️⃣ Log entry
+            self.logger.info(f"Control4 {self.serial_input}")
 
-        # 📌 Execute my2n-save-and-print functions as needed / Spuštění odpovídajících funkcí
+        # 📌 Execute my2n-save-and-print functions as needed
         if 'my2n' in triggers:
-            reports_path = self.config.get_path('reports_path', section='Paths')
-            output_path = self.config.get_path('output_file_path_my2n', section='My2nPaths')
+            reports_path = self.config.get("Paths", "reports_path")
+            output_path = self.config.get("My2nPaths", "output_file_path_my2n")
 
             if not reports_path or not output_path:
-                self.normal_logger.log('Error', 'Cesty k reportu nebo výstupu nejsou definovány.', 'PRICON016')
-                self.messenger.show_error('Error', 'Chybí konfigurace cest pro My2N.', 'PRICON016', False)
+                self.logger.error(f"Cesty k reportu nebo výstupu nejsou definovány.")
+                self.messenger.error(f"Chybí konfigurace cest pro My2N.", "Print Ctrl")
                 return
 
             token = self.validator.extract_my2n_token(self.serial_input, reports_path)
@@ -350,14 +353,12 @@ class PrintController:
                 return
 
             self.my2n_save_and_print(self.serial_input, token, output_path)
-            self.normal_logger.clear_log('Info', f'My2N token: {token}')
+            self.logger.info(f"My2N token: {token}")
 
-        self.normal_logger.add_blank_line()
         self.print_window.reset_input_focus()
 
     def handle_exit(self):
         """
         Closes PrintWindow and returns to the previous window.
-        Zavře PrintWindow a vrátí se na předchozí okno ve stacku.
         """
         self.print_window.effects.fade_out(self.print_window, duration=1000)
