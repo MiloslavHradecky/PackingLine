@@ -183,9 +183,6 @@ class PrintController:
         output_path = Path(raw_output_path)
 
         try:
-            # 📌 We will display a progress box
-            self.messenger.show_progress_box("Zahajuji tisk etiket...")
-
             # 💾 Write header and record to file
             with output_path.open('w') as file:
                 file.write(header + '\n')
@@ -198,6 +195,9 @@ class PrintController:
                 self.messenger.warning(f"Složka trigger_path neexistuje nebo není zadána.", "Print Ctrl")
                 self.print_window.reset_input_focus()
                 return
+
+            # 📌 We will display a progress box
+            self.messenger.show_progress_box("Zahajuji tisk etiket...")
 
             # ✂️ Create trigger files from values B=
             for value in trigger_values:
@@ -226,13 +226,12 @@ class PrintController:
             :param output_path: path to output file
         """
         try:
-            # 📌 We will display a progress box
-            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...")
-
             with output_path.open('w') as file:
                 file.write('"L Vyrobni cislo dlouhe","L Bezpecnostni cislo","P Vyrobni cislo","P Bezpecnostni kod"\n')
                 file.write(f'"Serial number:","My2N Security Code:","{serial_number}","{token}"\n')
 
+            # 📌 We will display a progress box
+            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...")
             trigger_dir = self.get_trigger_dir()
             if trigger_dir and trigger_dir.exists():
                 try:

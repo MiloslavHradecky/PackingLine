@@ -28,3 +28,14 @@
 {"timestamp": "2025-08-19 16:22:05,008", "level": "INFO", "module": "PrintController", "message": "9155211C 54-4907-0318"}
 {"timestamp": "2025-08-19 16:22:05,026", "level": "INFO", "module": "PrintController", "message": "My2N token: 6TT3-KGL5-4QSO-4KKR"}
 {"timestamp": "2025-08-19 16:22:18,086", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-19 16:37:37,102", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-19 16:37:37,106", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-19 16:37:47,620", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-19 16:37:58,620", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 13088"}
+{"timestamp": "2025-08-19 16:38:08,199", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-19 16:38:08,200", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-19 16:39:38,369", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-19 16:39:38,370", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-19 16:41:17,829", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-19 16:41:17,829", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-19 16:41:31,330", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
