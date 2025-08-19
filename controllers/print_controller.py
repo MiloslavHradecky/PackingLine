@@ -226,6 +226,9 @@ class PrintController:
             :param output_path: path to output file
         """
         try:
+            # 📌 We will display a progress box
+            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...")
+
             with output_path.open('w') as file:
                 file.write('"L Vyrobni cislo dlouhe","L Bezpecnostni cislo","P Vyrobni cislo","P Bezpecnostni kod"\n')
                 file.write(f'"Serial number:","My2N Security Code:","{serial_number}","{token}"\n')
@@ -246,6 +249,9 @@ class PrintController:
             else:
                 self.logger.error(f"Trigger složka není definována nebo neexistuje.")
                 self.messenger.error(f"Složka pro trigger není dostupná.", "Print Ctrl")
+
+            # 📌 Close the progress box with confirmation
+            self.finalize_print_process()
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")
