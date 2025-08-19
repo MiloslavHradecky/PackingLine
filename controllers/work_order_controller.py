@@ -41,7 +41,7 @@ class WorkOrderController:
         # 📌 Logger initialization
         self.logger = get_logger("WorkOrderController")
 
-        # 📌 inking the button to the method
+        # 📌 Linking the button to the method
         self.work_order_window.next_button.clicked.connect(self.work_order_button_click)
         self.work_order_window.exit_button.clicked.connect(self.handle_exit)
 

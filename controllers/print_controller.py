@@ -1,11 +1,11 @@
 # 🖨️ PrintController – handles logic for serial input, validation, and print action
-# Řídí logiku vstupu serial number, validaci a spuštění tisku
 
+import configparser
 from pathlib import Path
-from core.logger import Logger
-from core.messenger import Messenger
+from utils.logger import get_logger
+from utils.messenger import Messenger
 from views.print_window import PrintWindow
-from core.config_loader import ConfigLoader
+from utils.resources import get_config_path
 from utils.validators import Validator
 from PyQt6.QtCore import QEventLoop, QTimer
 
@@ -13,36 +13,35 @@ from PyQt6.QtCore import QEventLoop, QTimer
 class PrintController:
     """
     Main logic controller for print operations in the application.
-    Hlavní řídicí třída pro tiskové operace v aplikaci.
 
-    - Handles serial number validation, .lbl file parsing, and configuration-based output decisions
-    - Manages dynamic printing for multiple product types based on config-defined mappings
-    - Generates structured text files and trigger signals for label printing systems
-    - Operates with PrintWindow GUI and connects button actions to appropriate processing
-
-    - Řídí validaci sériových čísel, parsování .lbl souborů a rozhodování podle konfigurace
-    - Obsluhuje dynamické tisky pro různé typy produktů dle mapování v config.ini
-    - Generuje strukturované výstupní soubory i spouštěcí soubory pro tiskové systémy
-    - Komunikuje s PrintWindow GUI a propojuje tlačítka s odpovídajícím zpracováním
+        - Handles serial number validation, .lbl file parsing, and configuration-based output decisions
+        - Manages dynamic printing for multiple product types based on config-defined mappings
+        - Generates structured text files and trigger signals for label printing systems
+        - Operates with PrintWindow GUI and connects button actions to appropriate processing
     """
 
     def __init__(self, window_stack, order_code: str, product_name: str):
         """
         Initializes the print controller and connects signals.
-        Inicializuje PrintController a napojí akce tlačítek.
         """
+        # 📌 Loading the configuration file
+        config_path = get_config_path("config.ini")
+        self.config = configparser.ConfigParser()
+        self.config.optionxform = str  # 💡 Ensures letter size is maintained
+        self.config.read(config_path)
+
+        # 📌 Saving references to application windows
         self.window_stack = window_stack
         self.print_window = PrintWindow(order_code, product_name, controller=self)
         self.validator = Validator(self.print_window)
 
-        self.messenger = Messenger(parent=self.print_window)
-        self.config = ConfigLoader()
+        # 🔔 User feedback system
+        self.messenger = Messenger(self.print_window)
 
-        # 📝 Logging setup / Nastavení loggeru
-        self.normal_logger = Logger(spaced=False)
-        self.spaced_logger = Logger(spaced=True)
+        # 📌 Logger initialization
+        self.logger = get_logger("PrintController")
 
-        # 🔗 Button actions / Napojení tlačítek
+        # 🔗 linking the button to the method
         self.print_window.print_button.clicked.connect(self.print_button_click)
         self.print_window.exit_button.clicked.connect(self.handle_exit)
 
@@ -50,7 +49,6 @@ class PrintController:
     def serial_input(self) -> str:
         """
         Returns cleaned serial number from input field.
-        Vrací očištěný serial number ze vstupního pole.
         """
         return self.print_window.serial_number_input.text().strip().upper()
 
@@ -58,51 +56,52 @@ class PrintController:
     def product_name(self) -> str:
         """
         Returns cleaned product name from print window.
-        Vrací očištěný název produktu z print window.
         """
         return self.print_window.product_name.strip().upper()
 
     def get_trigger_dir(self) -> Path | None:
         """
         Returns trigger directory path from config.
-        Vrací cestu ke složce trigger souborů z config.ini.
         """
-        path = self.config.get_path('trigger_path', section='Paths')
-        if path and path.exists():
-            return path
+        raw_path = self.config.get("Paths", "trigger_path")
+        if raw_path:
+            path = Path(raw_path)
+            if path.exists():
+                return path
         return None
 
     def load_file_lbl(self):
         """
         Loads the .lbl file based on order_code and config path.
-        Načte .lbl soubor podle kódu příkazu a cesty z config.ini.
 
-        :return: List of lines or empty list if not found / Seznam řádků nebo prázdný list
+            :return: List of lines or empty list if not found
         """
-        # 🎯 Getting path from config.ini / Získání cesty z config.ini
-        orders_path = self.config.get_path('orders_path', section='Paths')
+        # 🎯 Getting path from config.ini
+        raw_orders_path = self.config.get("Paths", "orders_path")
 
-        if not orders_path:
-            self.normal_logger.log('Error', f'Konfigurační cesta {orders_path} nebyla nalezena!', 'PRICON001')
-            self.messenger.show_error('Error', f'Konfigurační cesta {orders_path} nebyla nalezena!', 'PRICON001', False)
+        if not raw_orders_path:
+            self.logger.error(f"Konfigurační cesta {raw_orders_path} nebyla nalezena!")
+            self.messenger.error(f"Konfigurační cesta {raw_orders_path} nebyla nalezena!", "Print Ctrl")
             self.print_window.reset_input_focus()
             return []
 
-        # 🧩 Build path to .lbl file / Sestavení cesty k .lbl souboru
+        orders_path = Path(raw_orders_path)
+
+        # 🧩 Build path to .lbl file
         lbl_file = orders_path / f'{self.print_window.order_code}.lbl'
 
         if not lbl_file.exists():
-            self.normal_logger.log('Warning', f'Soubor {lbl_file} neexistuje.', 'PRICON002')
-            self.messenger.show_info('Warning', f'Soubor {lbl_file} neexistuje.', 'PRICON002')
+            self.logger.warning(f"Soubor {lbl_file} neexistuje.")
+            self.messenger.warning(f"Soubor {lbl_file} neexistuje.", "Print Ctrl")
             self.print_window.reset_input_focus()
             return []
 
         try:
-            # 📄 Load the contents of a file / Načtení obsahu souboru
+            # 📄 Load the contents of a file
             return lbl_file.read_text().splitlines()
         except Exception as e:
-            self.normal_logger.log('Error', f'Chyba načtení souboru {str(e)}', 'PRICON003')
-            self.messenger.show_error('Error', f'{str(e)}', 'PRICON003', False)
+            self.logger.error(f"Chyba načtení souboru {str(e)}")
+            self.messenger.error(f"Chyba načtení souboru {str(e)}", "Print Ctrl")
             self.print_window.reset_input_focus()
             return []
 
