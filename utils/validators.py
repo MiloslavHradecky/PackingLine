@@ -43,7 +43,7 @@ class Validator:
         if missing_keys:
             joined = ', '.join(missing_keys)
             self.logger.error(f"Nebyly nalezeny všechny klíčové řádky: {joined}")
-            self.messenger.show_error('Error', f'Některé klíčové řádky v souboru .lbl chybí!', 'VALIDATOR001', False)
+            self.messenger.error(f"Některé klíčové řádky v souboru .lbl chybí!", "Validators")
             self.print_window.reset_input_focus()
             return False
 
@@ -52,7 +52,6 @@ class Validator:
     def validate_and_inject_balice(self, header: str, record: str) -> str | None:
         """
         Validates and injects prefix to 'P Znacka balice' field.
-        Zkontroluje správnost, provede injekci do record, nebo vrátí None při chybě.
         """
         header_fields = header.split('","')
         record_fields = record.split('","')
@@ -61,7 +60,7 @@ class Validator:
             index = header_fields.index('P Znacka balice')
             if index >= len(record_fields):
                 self.logger.error(f"Neplatný index pole 'P Znacka balice'")
-                self.messenger.show_error('Error', 'Neplatný index pole v record.', 'VALIDATOR002', False)
+                self.messenger.error(f"Neplatný index pole v record.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
@@ -71,14 +70,13 @@ class Validator:
 
         except ValueError:
             self.logger.error("Pole 'P Znacka balice' chybí.")
-            self.messenger.show_error('Error', 'Pole v header nebylo nalezeno.', 'VALIDATOR003', False)
+            self.messenger.error(f"Pole v header nebylo nalezeno.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
     def extract_header_and_record(self, lbl_lines: list[str], serial: str) -> tuple[str, str] | None:
         """
         Extracts D= and E= lines from lbl_lines.
-        Extrahuje řádky D= a E= z lbl souboru.
         """
         key_d = f'{serial}D='
         key_e = f'{serial}E='
@@ -93,7 +91,7 @@ class Validator:
 
         if not header or not record:
             self.logger.error(f"Nebyly nalezeny hlavička nebo záznam pro '{serial}'.")
-            self.messenger.show_error('Error', f'Nebyly nalezeny hlavička nebo záznam pro "{serial}".', 'VALIDATOR004', False)
+            self.messenger.error(f"Nebyly nalezeny hlavička nebo záznam pro '{serial}'.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
@@ -102,7 +100,6 @@ class Validator:
     def extract_trigger_values(self, lbl_lines: list[str], serial: str) -> list[str] | None:
         """
         Extracts values from B= line.
-        Extrahuje hodnoty ze řádku B=.
         """
         key_b = f'{serial}B='
         for line in lbl_lines:
@@ -112,14 +109,13 @@ class Validator:
                 return values
 
         self.logger.error(f"Řádek \'{key_b}\' nebyl nalezen.")
-        self.messenger.show_error('Error', f'Řádek \"{key_b}\" nebyl nalezen.', 'VALIDATOR005', False)
+        self.messenger.error(f"Řádek \'{key_b}\' nebyl nalezen.", "Validators")
         self.print_window.reset_input_focus()
         return None
 
     def extract_header_and_record_c4(self, lbl_lines: list[str], serial: str) -> tuple[str, str] | None:
         """
         Extracts J= and K= lines for Control4.
-        Extrahuje řádky J= a K= pro Control4.
         """
         key_j = f'{serial}J='
         key_k = f'{serial}K='
@@ -134,7 +130,7 @@ class Validator:
 
         if not header or not record:
             self.logger.error(f"Nebyly nalezeny J/K řádky pro serial '{serial}'.")
-            self.messenger.show_error('Error', f'Nebyly nalezeny J/K řádky pro serial "{serial}".', 'VALIDATOR006', False)
+            self.messenger.error(f"Nebyly nalezeny J/K řádky pro serial '{serial}'.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
@@ -143,7 +139,6 @@ class Validator:
     def extract_trigger_values_c4(self, lbl_lines: list[str], serial: str) -> list[str] | None:
         """
         Extracts values from I= line for Control4.
-        Extrahuje hodnoty z řádku I= pro Control4.
         """
         key_i = f'{serial}I='
         for line in lbl_lines:
@@ -152,18 +147,18 @@ class Validator:
                 return [val.strip() for val in raw_value.split(';') if val.strip()]
 
         self.logger.error(f"Řádek \'{key_i}\' nebyl nalezen.")
-        self.messenger.show_error('Error', f'Řádek \"{key_i}\" nebyl nalezen.', 'VALIDATOR007', False)
+        self.messenger.error(f"Řádek \'{key_i}\' nebyl nalezen.", "Validators")
         self.print_window.reset_input_focus()
         return None
 
     def validate_input_exists_for_control4(self, lbl_lines: list[str], serial: str) -> bool:
         """
         Validates that all key lines for a given serial number exist in lbl_lines.
-        Ověří, že existují řádky SERIAL+I=, J=, K= pro daný serial number.
+        Checks that the lines SERIAL+I=, J=, K= exist for the given serial number.
 
-        :param lbl_lines: Seznam řádků z .lbl souboru
-        :param serial: Zadaný serial number
-        :return: True pokud všechny existují, jinak False + zobrazí warning
+            :param lbl_lines: List of lines from the .lbl file
+            :param serial: Specified serial number
+            :return: True if all exist, otherwise False + displays a warning
         """
         keys = [f'{serial}I=', f'{serial}J=', f'{serial}K=']
         missing_keys = [key for key in keys if not any(line.startswith(key) for line in lbl_lines)]
@@ -171,7 +166,7 @@ class Validator:
         if missing_keys:
             joined = ', '.join(missing_keys)
             self.logger.error(f"Nebyly nalezeny všechny klíčové řádky: {joined}")
-            self.messenger.show_error('Error', f'Některé klíčové řádky v souboru .lbl chybí!', 'VALIDATOR008', False)
+            self.messenger.error(f"Některé klíčové řádky v souboru .lbl chybí!", "Validators")
             self.print_window.reset_input_focus()
             return False
 
@@ -180,12 +175,11 @@ class Validator:
     def extract_my2n_token(self, serial_number: str, reports_path: Path) -> str | None:
         """
         Extracts My2N token from report file.
-        Získá My2N token ze souboru s reportem.
         """
         parts = serial_number.split('-')
         if len(parts) != 3:
             self.logger.error(f"Neplatný formát serial number.")
-            self.messenger.show_error('Error', f'Neplatný formát serial number.', 'VALIDATOR009', False)
+            self.messenger.error(f"Neplatný formát serial number.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
@@ -197,7 +191,7 @@ class Validator:
         source_file = reports_path / subdir1 / subdir2 / file_name
         if not source_file.exists():
             self.logger.error(f"Report soubor {source_file} neexistuje.")
-            self.messenger.show_error('Error', f'Report soubor {source_file} neexistuje.', 'VALIDATOR010', False)
+            self.messenger.error(f"Report soubor {source_file} neexistuje.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
@@ -206,28 +200,28 @@ class Validator:
             token_line = next((line for line in reversed(lines) if 'my2n token:' in line.lower()), None)
             if not token_line:
                 self.logger.error(f"V souboru nebyl nalezen žádný My2N token.")
-                self.messenger.show_error('Error', 'V souboru nebyl nalezen žádný My2N token.', 'VALIDATOR011', False)
+                self.messenger.error(f"V souboru nebyl nalezen žádný My2N token.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
-            # 🧠 Find the position of the token in the line (case-insensitive search, but case-sensitive extraction) / Najdi pozici tokenu v řádku (case-insensitive hledání, ale case-sensitive extrakce)
+            # 🧠 Find the position of the token in the line (case-insensitive search, but case-sensitive extraction)
             token_prefix = 'my2n token:'
             lower_line = token_line.lower()
             prefix_index = lower_line.find(token_prefix)
 
             if prefix_index == -1:
-                # Tohle by nemělo nastat, ale pro jistotu
+                # 📌 This should not happen, but just to be sure
                 self.logger.error(f"Chyba při zpracování řádku s tokenem.")
-                self.messenger.show_error('Error', 'Chyba při zpracování řádku s tokenem.', 'VALIDATOR012', False)
+                self.messenger.error(f"Chyba při zpracování řádku s tokenem.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
-            # ✂️ Extract the token from the original line / Extrahuj token z původního řádku
+            # ✂️ Extract the token from the original line
             token_value = token_line[prefix_index + len(token_prefix):].strip()
 
             if not token_value:
                 self.logger.error(f"My2N token je prázdný.")
-                self.messenger.show_error('Error', 'My2N token byl nalezen, ale neobsahuje žádnou hodnotu.', 'VALIDATOR013', False)
+                self.messenger.error(f"My2N token byl nalezen, ale neobsahuje žádnou hodnotu.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
@@ -235,6 +229,6 @@ class Validator:
 
         except Exception as e:
             self.logger.error(f"Chyba čtení nebo extrakce: {str(e)}")
-            self.messenger.show_error('Error', f'{str(e)}', 'VALIDATOR014', False)
+            self.messenger.error(f'{str(e)}', "Validators")
             self.print_window.reset_input_focus()
             return None
