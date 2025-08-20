@@ -183,3 +183,27 @@
 2025-08-20 16:47:26,512 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
 2025-08-20 16:47:35,118 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-20 19:49:39,705 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-20 19:49:39,712 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-20 19:49:50,817 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 19:49:57,245 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 5496
+2025-08-20 19:50:18,593 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-20 19:50:23,703 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-20 19:50:37,315 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 19:53:27,127 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-20 19:53:27,134 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-20 19:53:37,651 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 19:53:43,600 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 3856
+2025-08-20 19:54:03,034 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-20 19:54:08,144 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-20 19:54:39,548 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 19:56:49,124 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-20 19:56:49,130 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-20 19:56:59,355 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 19:57:05,398 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 3984
+2025-08-20 19:57:24,148 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-20 19:57:34,227 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-20 19:57:45,410 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
