@@ -10,6 +10,7 @@ from utils.validators import Validator
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QMessageBox
 from controllers.print_logic_controller import PrintLogicController
+from controllers.print_loader_controller import PrintLoaderController
 
 
 class PrintController:
@@ -40,6 +41,7 @@ class PrintController:
         # 🔔 User feedback system
         self.messenger = Messenger(self.print_window)
         self.progress_box = QMessageBox(self.print_window or None)
+        self.loader = PrintLoaderController(self.messenger)
 
         # 📌 Logger initialization
         self.logger = get_logger("PrintController")
@@ -70,52 +72,6 @@ class PrintController:
         Returns cleaned product name from print window.
         """
         return self.print_window.product_name.strip().upper()
-
-    def get_trigger_dir(self) -> Path | None:
-        """
-        Returns trigger directory path from config.
-        """
-        raw_path = self.config.get("Paths", "trigger_path")
-        if raw_path:
-            path = Path(raw_path)
-            if path.exists():
-                return path
-        return None
-
-    def load_file_lbl(self):
-        """
-        Loads the .lbl file based on order_code and config path.
-
-            :return: List of lines or empty list if not found
-        """
-        # 🎯 Getting path from config.ini
-        raw_orders_path = self.config.get("Paths", "orders_path")
-
-        if not raw_orders_path:
-            self.logger.error(f"Konfigurační cesta {raw_orders_path} nebyla nalezena!")
-            self.messenger.error(f"Konfigurační cesta {raw_orders_path} nebyla nalezena!", "Print Ctrl")
-            self.print_window.reset_input_focus()
-            return []
-
-        orders_path = Path(raw_orders_path)
-
-        # 🧩 Build path to .lbl file
-        lbl_file = orders_path / f'{self.print_window.order_code}.lbl'
-
-        if not lbl_file.exists():
-            self.logger.warning(f"Soubor {lbl_file} neexistuje.")
-            self.messenger.warning(f"Soubor {lbl_file} neexistuje.", "Print Ctrl")
-            self.print_window.reset_input_focus()
-            return []
-
-        try:
-            # 📄 Load the contents of a file
-            return lbl_file.read_text().splitlines()
-        except Exception as e:
-            self.logger.error(f"Chyba načtení souboru {str(e)}")
-            self.messenger.error(f"Chyba načtení souboru {str(e)}", "Print Ctrl")
-            self.print_window.reset_input_focus()
-            return []
 
     def get_trigger_groups_for_product(self) -> list[str]:
         """
@@ -165,7 +121,10 @@ class PrintController:
         triggers = self.get_trigger_groups_for_product()
 
         # === 3️⃣ Load corresponding .lbl file lines
-        lbl_lines = self.load_file_lbl()
+        lbl_lines = self.loader.load_lbl_file(
+            order_code=self.print_window.order_code,
+            reset_focus_callback=self.print_window.reset_input_focus
+        )
         if not lbl_lines:
             self.logger.error(f"Soubor .lbl nelze načíst nebo je prázdný!")
             self.messenger.error(f"Soubor .lbl nelze načíst nebo je prázdný!", "Print Ctrl")
