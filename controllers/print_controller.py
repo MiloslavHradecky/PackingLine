@@ -7,8 +7,6 @@ from utils.messenger import Messenger
 from views.print_window import PrintWindow
 from utils.resources import get_config_path
 from utils.validators import Validator
-from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QApplication
 from controllers.print_logic_controller import PrintLogicController
 from controllers.print_loader_controller import PrintLoaderController
 from controllers.print_config_controller import PrintConfigController
@@ -50,8 +48,7 @@ class PrintController:
         self.logic = PrintLogicController(
             config=self.config,
             messenger=self.messenger,
-            print_window=self.print_window,
-            finalize_callback=self.finalize_print_process
+            print_window=self.print_window
         )
 
         # 📌 Initialization of print config
@@ -77,12 +74,6 @@ class PrintController:
         Returns cleaned product name from print window.
         """
         return self.print_window.product_name.strip().upper()
-
-    def finalize_print_process(self, delay=5000):
-        """Updates progress box text and closes it after a delay."""
-        self.messenger.update_progress_text('✅ Tisk byl úspěšně dokončen!')
-        QApplication.processEvents()
-        QTimer.singleShot(delay, self.messenger.close_progress_box)
 
     def print_button_click(self):
         """

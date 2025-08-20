@@ -1,16 +1,13 @@
 from pathlib import Path
 from utils.logger import get_logger
-import time
-from PyQt6.QtCore import QTimer
 
 
 class PrintLogicController:
-    def __init__(self, config, messenger, print_window, finalize_callback):
+    def __init__(self, config, messenger, print_window):
         self.config = config
         self.logger = get_logger("PrintLogicController")
         self.messenger = messenger
         self.print_window = print_window
-        self.finalize = finalize_callback  # ✅ method from the main controller
 
     def product_save_and_print(self, header: str, record: str, trigger_values: list[str]) -> None:
         """
@@ -38,17 +35,9 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etiket...", timeout_ms=0)
-
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
-
-            # Změní text po 2 sekundách
-            QTimer.singleShot(2000, lambda: self.messenger.update_progress_text("✅ Tisk byl úspěšně dokončen!"))
-
-            # Zavře box po 5 sekundách a zavolá finalize
-            QTimer.singleShot(5000, lambda: (self.messenger.close_progress_box(), self.finalize()))
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")
@@ -84,17 +73,9 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etiket pro Control4...", timeout_ms=0)
-
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
-
-                # Změní text po 2 sekundách
-                QTimer.singleShot(2000, lambda: self.messenger.update_progress_text("✅ Tisk byl úspěšně dokončen!"))
-
-                # Zavře box po 5 sekundách a zavolá finalize
-                QTimer.singleShot(5000, lambda: (self.messenger.close_progress_box(), self.finalize()))
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")
@@ -126,16 +107,8 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...", timeout_ms=0)
-
             trigger_file = trigger_dir / 'SF_MY2N_A'
             trigger_file.touch(exist_ok=True)
-
-            # Změní text po 2 sekundách
-            QTimer.singleShot(2000, lambda: self.messenger.update_progress_text("✅ Tisk byl úspěšně dokončen!"))
-
-            # Zavře box po 5 sekundách a zavolá finalize
-            QTimer.singleShot(5000, lambda: (self.messenger.close_progress_box(), self.finalize()))
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")
@@ -150,7 +123,6 @@ class PrintLogicController:
         if not raw_path:
             self.logger.error("Trigger path není definován.")
             self.messenger.error("Trigger path není definován.", "Print Logic Ctrl")
-            self.messenger.close_progress_box()
             self.print_window.reset_input_focus()
             return None
 
@@ -158,7 +130,6 @@ class PrintLogicController:
         if not path.exists():
             self.logger.error(f"Trigger složka neexistuje: {path}")
             self.messenger.error(f"Trigger složka neexistuje: {path}", "Print Logic Ctrl")
-            self.messenger.close_progress_box()
             self.print_window.reset_input_focus()
             return None
 

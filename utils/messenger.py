@@ -1,7 +1,6 @@
 from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget
 from PyQt6.QtGui import QIcon
 from utils.resources import resource_path
-from utils.progress_box import ProgressBox
 
 
 class Messenger:
@@ -58,25 +57,3 @@ class Messenger:
         box.show()
         self.center_dialog(box)
         box.exec()
-
-    def show_progress_box(self, text='Příprava tisku...', timeout_ms=3000):
-        """Displays a progress box with text."""
-        if not self.progress_box:
-            self.progress_box = ProgressBox(self.parent, text, timeout_ms)
-        else:
-            self.progress_box.update_text(text)
-
-        self.progress_box.show()
-        self.center_dialog(self.progress_box)
-
-    def update_progress_text(self, text):
-        """Updates the text of the progress box."""
-        if self.progress_box:
-            self.progress_box.update_text(text)
-
-    def close_progress_box(self):
-        """Closes the progress box and frees the memory."""
-        if self.progress_box and self.progress_box.isVisible():
-            self.progress_box.close()
-            self.progress_box.deleteLater()
-            self.progress_box = None
