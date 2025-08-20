@@ -1,5 +1,6 @@
-from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget
+from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget, QDialog, QLabel, QVBoxLayout
 from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import QTimer, Qt
 from utils.resources import resource_path
 
 
@@ -11,9 +12,9 @@ class Messenger:
             self.parent = parent
         else:
             self.parent = None
-        self.progress_box = None
+        self.auto_info_box = None
 
-    def center_dialog(self, dialog: QMessageBox):
+    def center_dialog(self, dialog: QWidget):
         """Centers the dialog relative to parent or screen."""
         QApplication.instance().processEvents()
         dialog.adjustSize()
@@ -57,3 +58,32 @@ class Messenger:
         box.show()
         self.center_dialog(box)
         box.exec()
+
+    def auto_info_dialog(self, message: str, timeout_ms: int = 1500, title: str = "Zpracování"):
+        dialog = QDialog(self.parent)
+        dialog.setWindowTitle(title)
+        dialog.setWindowModality(Qt.WindowModality.NonModal)
+
+        # ✅ Nastavení ikonky v záhlaví
+        dialog.setWindowIcon(QIcon(str(Messenger.icon_path)))
+
+        # ✅ WindowFlags — zobrazí záhlaví s ikonou, ale bez tlačítek
+        dialog.setWindowFlags(
+            Qt.WindowType.Window |
+            Qt.WindowType.WindowTitleHint |
+            Qt.WindowType.CustomizeWindowHint
+        )
+
+        dialog.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
+
+        layout = QVBoxLayout()
+        label = QLabel(message)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(label)
+        dialog.setLayout(layout)
+
+        dialog.resize(300, 100)
+        self.center_dialog(dialog)
+        dialog.show()
+
+        QTimer.singleShot(timeout_ms, dialog.close)

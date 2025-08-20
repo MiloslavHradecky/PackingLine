@@ -179,6 +179,7 @@ class PrintController:
             self.logic.my2n_save_and_print(self.serial_input, token)
             self.logger.info(f"My2N token: {token}")
 
+        self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=1500)
         self.restore_ui()
 
 
