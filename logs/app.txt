@@ -85,3 +85,12 @@
 2025-08-19 17:15:47,444 | INFO    | PrintController         | My2N token: XAQG-M2PW-OIF4-GJPT
 2025-08-19 17:16:00,352 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-20 14:07:59,235 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 14:07:59,240 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 14:08:23,113 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 14:08:34,440 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 10392
+2025-08-20 14:08:52,195 | ERROR   | PrintLogicController    | Chyba zápisu: 'ProgressBox' object has no attribute 'setStandardButtons'
+2025-08-20 14:08:58,125 | INFO    | PrintController         | 9155211C 
+2025-08-20 14:08:58,126 | ERROR   | Validators              | Neplatný formát serial number.
+2025-08-20 14:10:35,315 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+

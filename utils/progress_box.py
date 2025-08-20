@@ -1,11 +1,11 @@
 from PyQt6.QtWidgets import QDialog, QLabel, QVBoxLayout
 from PyQt6.QtGui import QIcon
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from utils.resources import resource_path
 
 
 class ProgressBox(QDialog):
-    def __init__(self, parent=None, text='Probíhá tisk...'):
+    def __init__(self, parent=None, text='Probíhá tisk...', timeout_ms=3000):
         super().__init__(parent)
         self.setWindowTitle("Tisk")
         self.setWindowIcon(QIcon(str(resource_path("views/assets/message.ico"))))
@@ -18,6 +18,9 @@ class ProgressBox(QDialog):
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         self.setLayout(layout)
+
+        # ⏳ Automatic closure after timeout_ms milliseconds
+        QTimer.singleShot(timeout_ms, self.close)
 
     def update_text(self, text: str):
         self.label.setText(text)

@@ -74,3 +74,11 @@
 {"timestamp": "2025-08-19 17:15:47,420", "level": "INFO", "module": "PrintController", "message": "9155211C 54-4217-0712"}
 {"timestamp": "2025-08-19 17:15:47,444", "level": "INFO", "module": "PrintController", "message": "My2N token: XAQG-M2PW-OIF4-GJPT"}
 {"timestamp": "2025-08-19 17:16:00,352", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-20 14:07:59,235", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-20 14:07:59,240", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-20 14:08:23,113", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-20 14:08:34,440", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 10392"}
+{"timestamp": "2025-08-20 14:08:52,195", "level": "ERROR", "module": "PrintLogicController", "message": "Chyba zápisu: 'ProgressBox' object has no attribute 'setStandardButtons'"}
+{"timestamp": "2025-08-20 14:08:58,125", "level": "INFO", "module": "PrintController", "message": "9155211C "}
+{"timestamp": "2025-08-20 14:08:58,126", "level": "ERROR", "module": "Validators", "message": "Neplatný formát serial number."}
+{"timestamp": "2025-08-20 14:10:35,315", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
