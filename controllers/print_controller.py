@@ -86,6 +86,7 @@ class PrintController:
 
         # === 1️⃣ Validate serial number input
         if not self.validator.validate_serial_format(self.serial_input):
+            self.delayed_restore_ui()
             return
 
         # === 2️⃣ Resolve product trigger groups from config
@@ -96,6 +97,7 @@ class PrintController:
         if not lbl_lines:
             self.logger.error(f"Soubor .lbl nelze načíst nebo je prázdný!")
             self.messenger.error(f"Soubor .lbl nelze načíst nebo je prázdný!", "Print Ctrl")
+            self.delayed_restore_ui()
             return
 
         # 📌 Execute save-and-print functions as needed
@@ -103,11 +105,13 @@ class PrintController:
 
             # === 1️⃣ Validate presence of required lines B/D/E lines
             if not self.validator.validate_input_exists_for_product(lbl_lines, self.serial_input):
+                self.delayed_restore_ui()
                 return
 
             # === 2️⃣ Extract header and record D= a E= lines
             result = self.validator.extract_header_and_record(lbl_lines, self.serial_input)
             if not result:
+                self.delayed_restore_ui()
                 return
 
             header, record = result
@@ -115,11 +119,13 @@ class PrintController:
             # === 3️⃣ Inject prefix to record
             new_record = self.validator.validate_and_inject_balice(header, record)
             if new_record is None:
+                self.delayed_restore_ui()
                 return
 
             # === 4️⃣ Inject prefix to record
             trigger_values = self.validator.extract_trigger_values(lbl_lines, self.serial_input)
             if not trigger_values:
+                self.delayed_restore_ui()
                 return
 
             # === 5️⃣ Save and print
@@ -132,17 +138,20 @@ class PrintController:
         if 'control4' in triggers and lbl_lines:
             # === 1️⃣ Validation of input lines I/J/K
             if not self.validator.validate_input_exists_for_control4(lbl_lines, self.serial_input):
+                self.delayed_restore_ui()
                 return
 
             # === 2️⃣ Getting header and record from J= and K=
             result = self.validator.extract_header_and_record_c4(lbl_lines, self.serial_input)
             if not result:
+                self.delayed_restore_ui()
                 return
             header, record = result
 
             # === 3️⃣ Getting values from I= row
             trigger_values = self.validator.extract_trigger_values_c4(lbl_lines, self.serial_input)
             if not trigger_values:
+                self.delayed_restore_ui()
                 return
 
             # === 4️⃣ Starting enrolment for Control4
@@ -159,24 +168,36 @@ class PrintController:
             if not reports_path or not output_path:
                 self.logger.error(f"Cesty k reportu nebo výstupu nejsou definovány.")
                 self.messenger.error(f"Chybí konfigurace cest pro My2N.", "Print Ctrl")
+                self.delayed_restore_ui()
                 return
 
             token = self.validator.extract_my2n_token(self.serial_input, reports_path)
             if not token:
+                self.delayed_restore_ui()
                 return
 
             self.logic.my2n_save_and_print(self.serial_input, token)
             self.logger.info(f"My2N token: {token}")
 
-        QTimer.singleShot(2000, lambda: (
-            print("no"),
-            self.print_window.print_button.setDisabled(False),
-            self.print_window.serial_number_input.setDisabled(False),
-            self.print_window.reset_input_focus()
-        ))
+        self.restore_ui()
+
 
     def handle_exit(self):
         """
         Closes PrintWindow and returns to the previous window.
         """
         self.print_window.effects.fade_out(self.print_window, duration=500)
+
+    def delayed_restore_ui(self, delay_ms=500):
+        QTimer.singleShot(delay_ms, lambda: (
+            self.print_window.print_button.setDisabled(False),
+            self.print_window.serial_number_input.setDisabled(False),
+            self.print_window.reset_input_focus()
+        ))
+
+    def restore_ui(self, delay_ms=3000):
+        QTimer.singleShot(delay_ms, lambda: (
+            self.print_window.print_button.setDisabled(False),
+            self.print_window.serial_number_input.setDisabled(False),
+            self.print_window.reset_input_focus()
+        ))
