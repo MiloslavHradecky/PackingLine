@@ -1,5 +1,6 @@
 from pathlib import Path
 from utils.logger import get_logger
+import time
 
 
 class PrintLogicController:
@@ -42,6 +43,7 @@ class PrintLogicController:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
 
+            time.sleep(5)
             self.messenger.close_progress_box()
             self.finalize()
 
@@ -85,6 +87,7 @@ class PrintLogicController:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
 
+            time.sleep(5)
             self.messenger.close_progress_box()
             self.finalize()
 
@@ -123,6 +126,7 @@ class PrintLogicController:
             trigger_file = trigger_dir / 'SF_MY2N_A'
             trigger_file.touch(exist_ok=True)
 
+            time.sleep(5)
             self.messenger.close_progress_box()
             self.finalize()
 
