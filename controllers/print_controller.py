@@ -2,6 +2,7 @@
 
 import configparser
 from pathlib import Path
+from PyQt6.QtCore import QTimer
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from views.print_window import PrintWindow
@@ -79,6 +80,9 @@ class PrintController:
         """
         Handles print button action by validating input and triggering appropriate save-and-print methods.
         """
+
+        self.print_window.print_button.setDisabled(True)
+        self.print_window.serial_number_input.setDisabled(True)
 
         # === 1️⃣ Validate serial number input
         if not self.validator.validate_serial_format(self.serial_input):
@@ -164,7 +168,12 @@ class PrintController:
             self.logic.my2n_save_and_print(self.serial_input, token)
             self.logger.info(f"My2N token: {token}")
 
-        self.print_window.reset_input_focus()
+        QTimer.singleShot(2000, lambda: (
+            print("no"),
+            self.print_window.print_button.setDisabled(False),
+            self.print_window.serial_number_input.setDisabled(False),
+            self.print_window.reset_input_focus()
+        ))
 
     def handle_exit(self):
         """

@@ -236,3 +236,37 @@
 {"timestamp": "2025-08-20 21:10:13,907", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8304"}
 {"timestamp": "2025-08-20 21:10:13,914", "level": "INFO", "module": "PrintController", "message": "My2N token: D2SX-7F3L-PIOJ-3JCD"}
 {"timestamp": "2025-08-20 21:12:06,574", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-20 21:24:35,868", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-20 21:24:35,879", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-20 21:24:48,118", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-20 21:24:56,693", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 3076"}
+{"timestamp": "2025-08-20 21:24:56,831", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-20 21:25:06,646", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8304"}
+{"timestamp": "2025-08-20 21:25:06,652", "level": "INFO", "module": "PrintController", "message": "My2N token: D2SX-7F3L-PIOJ-3JCD"}
+{"timestamp": "2025-08-20 21:25:30,840", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-20 21:25:36,752", "level": "WARNING", "module": "WorkOrderController", "message": "Soubor T:\\Prikazy\\23H7308.lbl nebo T:\\Prikazy\\23H7308.nor nebyl nalezen!"}
+{"timestamp": "2025-08-20 21:25:44,384", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-20 22:25:22,172", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-20 22:25:22,181", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-20 22:25:30,225", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-20 22:25:38,201", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 6700"}
+{"timestamp": "2025-08-20 22:25:38,384", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-20 22:26:48,070", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8304"}
+{"timestamp": "2025-08-20 22:26:48,114", "level": "INFO", "module": "PrintController", "message": "My2N token: D2SX-7F3L-PIOJ-3JCD"}
+{"timestamp": "2025-08-20 22:27:15,436", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-20 22:28:41,029", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-20 22:28:41,035", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-20 22:28:48,441", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-20 22:28:54,172", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 6176"}
+{"timestamp": "2025-08-20 22:28:54,312", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-20 22:29:07,370", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8304"}
+{"timestamp": "2025-08-20 22:29:07,375", "level": "INFO", "module": "PrintController", "message": "My2N token: D2SX-7F3L-PIOJ-3JCD"}
+{"timestamp": "2025-08-20 22:29:15,344", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-20 22:36:39,717", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-20 22:36:39,724", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-20 22:36:46,307", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-20 22:36:51,419", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 2356"}
+{"timestamp": "2025-08-20 22:36:51,570", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-20 22:37:00,937", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8304"}
+{"timestamp": "2025-08-20 22:37:00,944", "level": "INFO", "module": "PrintController", "message": "My2N token: D2SX-7F3L-PIOJ-3JCD"}
+{"timestamp": "2025-08-20 22:37:15,199", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
