@@ -104,7 +104,7 @@ class LoginController:
     def handle_exit(self):
         """Closes the LoginWindow and exits the application."""
         self.logger.info("Aplikace byla ukončena uživatelem.")
-        self.login_window.effects.fade_out(self.login_window, duration=3000)
+        self.login_window.effects.fade_out(self.login_window, duration=1000)
 
         # 📌 Adding a blank line to the TXT log
         try:

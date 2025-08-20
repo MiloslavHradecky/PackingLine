@@ -170,4 +170,4 @@ class PrintController:
         """
         Closes PrintWindow and returns to the previous window.
         """
-        self.print_window.effects.fade_out(self.print_window, duration=1000)
+        self.print_window.effects.fade_out(self.print_window, duration=500)

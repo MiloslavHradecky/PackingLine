@@ -7,7 +7,7 @@ from utils.resources import resource_path
 
 
 class SplashScreen(QSplashScreen):
-    def __init__(self, logo_path=None, spinner_path=None, duration_ms=5000):
+    def __init__(self, logo_path=None, spinner_path=None, duration_ms=2000):
         logo_path = resource_path("views/assets/splash_logo.png") if logo_path is None else logo_path
         spinner_path = resource_path("views/assets/spinner.gif") if spinner_path is None else spinner_path
         pixmap = QPixmap(str(logo_path)).scaled(1200, 800, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)

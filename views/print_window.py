@@ -102,7 +102,7 @@ class PrintWindow(QWidget):
         self.serial_number_input.setFocus()
 
         # ✨ Launch animation
-        self.effects.fade_in(self, duration=1000)
+        self.effects.fade_in(self, duration=500)
 
     def reset_input_focus(self):
         """

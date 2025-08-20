@@ -174,4 +174,4 @@ class WorkOrderController:
         Closes the current window with fade-out effect.
         """
         self.kill_bartender_processes()
-        self.work_order_window.effects.fade_out(self.work_order_window, duration=1000)
+        self.work_order_window.effects.fade_out(self.work_order_window, duration=500)
