@@ -82,6 +82,7 @@ class PrintController:
         """
 
         self.print_window.print_button.setDisabled(True)
+        self.print_window.exit_button.setDisabled(True)
         self.print_window.serial_number_input.setDisabled(True)
 
         # === 1️⃣ Validate serial number input
@@ -179,7 +180,7 @@ class PrintController:
             self.logic.my2n_save_and_print(self.serial_input, token)
             self.logger.info(f"My2N token: {token}")
 
-        self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=1500)
+        self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=3000)
         self.restore_ui()
 
 
@@ -192,6 +193,7 @@ class PrintController:
     def delayed_restore_ui(self, delay_ms=500):
         QTimer.singleShot(delay_ms, lambda: (
             self.print_window.print_button.setDisabled(False),
+            self.print_window.exit_button.setDisabled(False),
             self.print_window.serial_number_input.setDisabled(False),
             self.print_window.reset_input_focus()
         ))
@@ -199,6 +201,7 @@ class PrintController:
     def restore_ui(self, delay_ms=3000):
         QTimer.singleShot(delay_ms, lambda: (
             self.print_window.print_button.setDisabled(False),
+            self.print_window.exit_button.setDisabled(False),
             self.print_window.serial_number_input.setDisabled(False),
             self.print_window.reset_input_focus()
         ))

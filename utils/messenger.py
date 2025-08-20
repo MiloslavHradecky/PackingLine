@@ -59,9 +59,10 @@ class Messenger:
         self.center_dialog(box)
         box.exec()
 
-    def auto_info_dialog(self, message: str, timeout_ms: int = 1500, title: str = "Zpracování"):
+    def auto_info_dialog(self, message: str, timeout_ms: int = 3000, title: str = "Zpracování"):
         dialog = QDialog(self.parent)
         dialog.setWindowTitle(title)
+        dialog.setObjectName("PrintInfoDialog")
         dialog.setWindowModality(Qt.WindowModality.NonModal)
 
         # ✅ WindowFlags — zobrazí záhlaví s ikonou, ale bez tlačítek
@@ -83,7 +84,7 @@ class Messenger:
         layout.addWidget(label)
         dialog.setLayout(layout)
 
-        dialog.setMinimumSize(400, 200)
+        dialog.setMinimumSize(300, 100)
         dialog.adjustSize()
         self.center_dialog(dialog)
         dialog.show()

@@ -419,3 +419,43 @@
 2025-08-21 00:13:33,249 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
 2025-08-21 00:13:58,062 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-21 00:16:24,013 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 00:16:24,021 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 00:16:29,932 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-21 00:16:33,694 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 5548
+2025-08-21 00:16:33,812 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-21 00:16:43,274 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-21 00:16:43,279 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-21 00:17:05,060 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-21 00:17:35,995 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 00:17:36,001 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 00:17:42,377 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-21 00:17:45,939 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 9584
+2025-08-21 00:17:46,068 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-21 00:17:55,902 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-21 00:17:55,907 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-21 00:18:15,567 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-21 00:19:51,417 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 00:19:51,424 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 00:19:58,467 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-21 00:20:02,775 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 8964
+2025-08-21 00:20:02,917 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-21 00:21:11,359 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-21 00:21:11,364 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-21 00:21:24,388 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-21 00:24:37,484 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 00:24:37,492 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 00:24:43,461 | WARNING | SzvDecrypt              | Zadané heslo (pt) nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-08-21 00:24:43,462 | WARNING | LoginController         | Zadané heslo "pt" není správné!
+2025-08-21 00:24:57,820 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-21 00:25:02,808 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 1320
+2025-08-21 00:25:02,951 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-21 00:25:13,533 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-21 00:25:13,539 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-21 00:25:39,490 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-21 00:25:39,495 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-21 00:25:49,470 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
