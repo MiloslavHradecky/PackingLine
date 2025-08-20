@@ -78,7 +78,7 @@ class PrintController:
         """
         return self.print_window.product_name.strip().upper()
 
-    def finalize_print_process(self, delay=3000):
+    def finalize_print_process(self, delay=5000):
         """Updates progress box text and closes it after a delay."""
         self.messenger.update_progress_text('✅ Tisk byl úspěšně dokončen!')
         QApplication.processEvents()
