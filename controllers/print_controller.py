@@ -11,6 +11,7 @@ from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QMessageBox
 from controllers.print_logic_controller import PrintLogicController
 from controllers.print_loader_controller import PrintLoaderController
+from controllers.print_config_controller import PrintConfigController
 
 
 class PrintController:
@@ -49,10 +50,15 @@ class PrintController:
         # 📌 Initialization of print logic
         self.logic = PrintLogicController(
             config=self.config,
-            logger=self.logger,
             messenger=self.messenger,
             print_window=self.print_window,
             finalize_callback=self.finalize_print_process
+        )
+
+        # 📌 Initialization of print config
+        self.config_controller = PrintConfigController(
+            config=self.config,
+            messenger=self.messenger
         )
 
         # 🔗 linking the button to the method
@@ -72,27 +78,6 @@ class PrintController:
         Returns cleaned product name from print window.
         """
         return self.print_window.product_name.strip().upper()
-
-    def get_trigger_groups_for_product(self) -> list[str]:
-        """
-        Returns all trigger groups (product, control4, my2n) that match product_name from config.
-
-            :return: List of matching group names
-        """
-        product_name = self.product_name
-        matching = []
-
-        if not self.config.has_section("ProductTriggerMapping"):
-            self.logger.warning("Sekce 'ProductTriggerMapping' nebyla nalezena v configu.")
-            return matching
-
-        for group_name in self.config.options("ProductTriggerMapping"):
-            raw_list = self.config.get("ProductTriggerMapping", group_name)
-            items = [item.strip() for item in raw_list.split(",")]
-            if product_name in items:
-                matching.append(group_name)
-
-        return matching  # ✅ e.g. ['product', 'my2n']
 
     def finalize_print_process(self, delay=3000):
         """Completing the printing process - closing the progress box."""
@@ -118,7 +103,7 @@ class PrintController:
             return
 
         # === 2️⃣ Resolve product trigger groups from config
-        triggers = self.get_trigger_groups_for_product()
+        triggers = self.config_controller.get_trigger_groups_for_product(self.product_name)
 
         # === 3️⃣ Load corresponding .lbl file lines
         lbl_lines = self.loader.load_lbl_file(

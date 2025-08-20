@@ -1,12 +1,13 @@
 from pathlib import Path
 from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication
+from utils.logger import get_logger
 
 
 class PrintLogicController:
-    def __init__(self, config, logger, messenger, print_window, finalize_callback):
+    def __init__(self, config, messenger, print_window, finalize_callback):
         self.config = config
-        self.logger = logger
+        self.logger = get_logger("PrintLogicController")
         self.messenger = messenger
         self.print_window = print_window
         self.finalize = finalize_callback  # ✅ method from the main controller
