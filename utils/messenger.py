@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget
 from PyQt6.QtGui import QIcon
 from utils.resources import resource_path
+from utils.progress_box import ProgressBox
 
 
 class Messenger:
@@ -61,14 +62,10 @@ class Messenger:
     def show_progress_box(self, text='Příprava tisku...'):
         """Displays a progress box with text."""
         if not self.progress_box:
-            self.progress_box = QMessageBox(self.parent or None)
-            self.progress_box.setIcon(QMessageBox.Icon.Information)
-            self.progress_box.setWindowIcon(QIcon(str(Messenger.icon_path)))
-            self.progress_box.setWindowTitle('Probíhá tisk...')
-            self.progress_box.setStandardButtons(QMessageBox.StandardButton.NoButton)
-            self.progress_box.setFixedSize(400, 200)
+            self.progress_box = ProgressBox(self.parent, text)
+        else:
+            self.progress_box.update_text(text)
 
-        self.progress_box.setText(text)
         self.progress_box.show()
         self.center_dialog(self.progress_box)
         QApplication.instance().processEvents()
@@ -76,8 +73,7 @@ class Messenger:
     def update_progress_text(self, text):
         """Updates the text of the progress box."""
         if self.progress_box:
-            self.progress_box.setText(text)
-            self.progress_box.repaint()
+            self.progress_box.update_text(text)
 
     def set_progress_no_buttons(self):
         """Removes the buttons in the progress box."""
