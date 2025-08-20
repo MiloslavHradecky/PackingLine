@@ -8,7 +8,7 @@ from views.print_window import PrintWindow
 from utils.resources import get_config_path
 from utils.validators import Validator
 from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtWidgets import QApplication
 from controllers.print_logic_controller import PrintLogicController
 from controllers.print_loader_controller import PrintLoaderController
 from controllers.print_config_controller import PrintConfigController
@@ -41,7 +41,6 @@ class PrintController:
 
         # 🔔 User feedback system
         self.messenger = Messenger(self.print_window)
-        self.progress_box = QMessageBox(self.print_window or None)
         self.loader = PrintLoaderController(self.messenger)
 
         # 📌 Logger initialization
@@ -80,18 +79,10 @@ class PrintController:
         return self.print_window.product_name.strip().upper()
 
     def finalize_print_process(self, delay=3000):
-        """Completing the printing process - closing the progress box."""
-
-        # 📌 UI updates
-        self._update_ui_after_print()
-
-        # 📌 Automatic closing of progress box after 'delay' seconds
-        QTimer.singleShot(delay, lambda: self.messenger.close_progress_box())
-
-    def _update_ui_after_print(self):
-        """UI update after successful printing."""
+        """Updates progress box text and closes it after a delay."""
         self.messenger.update_progress_text('✅ Tisk byl úspěšně dokončen!')
-        self.messenger.set_progress_no_buttons()
+        QApplication.processEvents()
+        QTimer.singleShot(delay, self.messenger.close_progress_box)
 
     def print_button_click(self):
         """
@@ -106,10 +97,7 @@ class PrintController:
         triggers = self.config_controller.get_trigger_groups_for_product(self.product_name)
 
         # === 3️⃣ Load corresponding .lbl file lines
-        lbl_lines = self.loader.load_lbl_file(
-            order_code=self.print_window.order_code,
-            reset_focus_callback=self.print_window.reset_input_focus
-        )
+        lbl_lines = self.loader.load_lbl_file(order_code=self.print_window.order_code)
         if not lbl_lines:
             self.logger.error(f"Soubor .lbl nelze načíst nebo je prázdný!")
             self.messenger.error(f"Soubor .lbl nelze načíst nebo je prázdný!", "Print Ctrl")

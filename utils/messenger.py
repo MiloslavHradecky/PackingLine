@@ -68,7 +68,6 @@ class Messenger:
 
         self.progress_box.show()
         self.center_dialog(self.progress_box)
-        QApplication.instance().processEvents()
 
     def update_progress_text(self, text):
         """Updates the text of the progress box."""
@@ -77,7 +76,7 @@ class Messenger:
 
     def close_progress_box(self):
         """Closes the progress box and frees the memory."""
-        if self.progress_box:
+        if self.progress_box and self.progress_box.isVisible():
             self.progress_box.close()
             self.progress_box.deleteLater()
             self.progress_box = None

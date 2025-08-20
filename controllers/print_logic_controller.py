@@ -1,6 +1,4 @@
 from pathlib import Path
-from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QApplication
 from utils.logger import get_logger
 
 
@@ -38,15 +36,13 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etiket...")
+            self.messenger.show_progress_box("Zahajuji tisk etiket...", timeout_ms=5000)
 
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
-                self.messenger.update_progress_text(f"Tisknu etiketu: {value}")
-                QApplication.processEvents()
-                QTimer.singleShot(1000, lambda: None)
 
+            self.messenger.close_progress_box()
             self.finalize()
 
         except Exception as e:
@@ -83,15 +79,13 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etiket pro Control4...")
+            self.messenger.show_progress_box("Zahajuji tisk etiket pro Control4...", timeout_ms=5000)
 
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
-                self.messenger.update_progress_text(f"Tisknu etiketu: {value}")
-                QApplication.processEvents()
-                QTimer.singleShot(1000, lambda: None)
 
+            self.messenger.close_progress_box()
             self.finalize()
 
         except Exception as e:
@@ -124,14 +118,12 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...")
+            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...", timeout_ms=5000)
 
             trigger_file = trigger_dir / 'SF_MY2N_A'
             trigger_file.touch(exist_ok=True)
-            self.messenger.update_progress_text("Tisknu etiketu: SF_MY2N_A")
-            QApplication.processEvents()
-            QTimer.singleShot(1000, lambda: None)
 
+            self.messenger.close_progress_box()
             self.finalize()
 
         except Exception as e:
@@ -147,6 +139,7 @@ class PrintLogicController:
         if not raw_path:
             self.logger.error("Trigger path není definován.")
             self.messenger.error("Trigger path není definován.", "Print Logic Ctrl")
+            self.messenger.close_progress_box()
             self.print_window.reset_input_focus()
             return None
 
@@ -154,6 +147,7 @@ class PrintLogicController:
         if not path.exists():
             self.logger.error(f"Trigger složka neexistuje: {path}")
             self.messenger.error(f"Trigger složka neexistuje: {path}", "Print Logic Ctrl")
+            self.messenger.close_progress_box()
             self.print_window.reset_input_focus()
             return None
 

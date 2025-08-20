@@ -94,3 +94,76 @@
 2025-08-20 14:08:58,126 | ERROR   | Validators              | Neplatný formát serial number.
 2025-08-20 14:10:35,315 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-20 14:27:44,676 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 14:27:44,679 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 14:27:55,268 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 14:28:03,373 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 3628
+2025-08-20 14:28:13,760 | ERROR   | PrintLogicController    | Chyba zápisu: 'Messenger' object has no attribute 'set_progress_no_buttons'
+2025-08-20 14:28:38,887 | INFO    | PrintController         | 9155211C 
+2025-08-20 14:28:38,888 | ERROR   | Validators              | Neplatný formát serial number.
+2025-08-20 14:28:56,795 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 14:37:16,246 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 14:37:16,250 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 14:37:26,105 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 14:37:32,303 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 13728
+2025-08-20 14:37:43,955 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 14:37:43,971 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 15:00:01,894 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 15:28:37,672 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 15:28:37,676 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 15:28:47,796 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 15:28:55,736 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 19320
+2025-08-20 15:29:07,489 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 15:29:07,505 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 15:29:21,791 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 15:31:40,435 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 15:31:40,438 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 15:31:50,716 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 15:31:57,188 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 4288
+2025-08-20 15:32:05,095 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 15:32:05,111 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 15:32:22,087 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 15:39:13,846 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 15:39:13,850 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 15:39:23,564 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 15:39:29,042 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 7368
+2025-08-20 15:39:37,822 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 15:39:37,835 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 15:40:43,990 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 15:47:54,190 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 15:47:54,194 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 15:48:03,640 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 15:48:10,031 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 4316
+2025-08-20 15:48:19,997 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 15:48:20,012 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 15:48:33,078 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 15:57:13,728 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 15:57:13,732 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 15:57:22,590 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 15:57:27,505 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 17236
+2025-08-20 15:57:34,668 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 15:57:34,684 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 15:57:46,788 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 16:13:19,993 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 16:13:19,997 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 16:13:29,778 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 16:13:35,490 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 22488
+2025-08-20 16:13:43,355 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 16:13:43,369 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 16:14:06,992 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-20 16:15:00,727 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-20 16:15:00,730 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-20 16:15:09,968 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-20 16:15:14,846 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 6704
+2025-08-20 16:15:22,141 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-20 16:15:22,155 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-20 16:15:39,784 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
