@@ -104,7 +104,6 @@ class PrintLogicController:
 
             :param serial_number: serial number from input
             :param token: extracted My2N token
-            :param output_path: path to output file
         """
         raw_output_path = self.config.get("My2nPaths", "output_file_path_my2n")
         if not raw_output_path:

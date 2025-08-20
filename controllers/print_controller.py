@@ -8,7 +8,7 @@ from views.print_window import PrintWindow
 from utils.resources import get_config_path
 from utils.validators import Validator
 from PyQt6.QtCore import QTimer
-from PyQt6.QtWidgets import QApplication, QMessageBox
+from PyQt6.QtWidgets import QMessageBox
 from controllers.print_logic_controller import PrintLogicController
 
 
@@ -43,6 +43,15 @@ class PrintController:
 
         # 📌 Logger initialization
         self.logger = get_logger("PrintController")
+
+        # 📌 Initialization of print logic
+        self.logic = PrintLogicController(
+            config=self.config,
+            logger=self.logger,
+            messenger=self.messenger,
+            print_window=self.print_window,
+            finalize_callback=self.finalize_print_process
+        )
 
         # 🔗 linking the button to the method
         self.print_window.print_button.clicked.connect(self.print_button_click)
@@ -187,7 +196,7 @@ class PrintController:
                 return
 
             # === 5️⃣ Save and print
-            self.product_save_and_print(header, new_record, trigger_values)
+            self.logic.product_save_and_print(header, new_record, trigger_values)
 
             # === 6️⃣ Log success
             self.logger.info(f"{self.product_name} {self.serial_input}")
@@ -210,7 +219,7 @@ class PrintController:
                 return
 
             # === 4️⃣ Starting enrolment for Control4
-            self.control4_save_and_print(header, record, trigger_values)
+            self.logic.control4_save_and_print(header, record, trigger_values)
 
             # === 5️⃣ Log entry
             self.logger.info(f"Control4 {self.serial_input}")
@@ -229,7 +238,7 @@ class PrintController:
             if not token:
                 return
 
-            self.my2n_save_and_print(self.serial_input, token, output_path)
+            self.logic.my2n_save_and_print(self.serial_input, token)
             self.logger.info(f"My2N token: {token}")
 
         self.print_window.reset_input_focus()
