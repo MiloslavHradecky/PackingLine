@@ -118,6 +118,7 @@ class WorkOrderController:
                     # 📌 Tady zavoláme další okno:
                     self.run_bartender_commander()
                     self.open_app_window(order_code=value_input, product_name=product_name)
+                    self.logger.info(f"Příkaz: {value_input}")
                     self.reset_input_focus()
 
                 else:
