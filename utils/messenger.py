@@ -64,25 +64,27 @@ class Messenger:
         dialog.setWindowTitle(title)
         dialog.setWindowModality(Qt.WindowModality.NonModal)
 
-        # ✅ Nastavení ikonky v záhlaví
-        dialog.setWindowIcon(QIcon(str(Messenger.icon_path)))
-
         # ✅ WindowFlags — zobrazí záhlaví s ikonou, ale bez tlačítek
         dialog.setWindowFlags(
             Qt.WindowType.Window |
             Qt.WindowType.WindowTitleHint |
+            Qt.WindowType.WindowSystemMenuHint |
             Qt.WindowType.CustomizeWindowHint
         )
+        # ✅ Nastavení ikonky v záhlaví
+        dialog.setWindowIcon(QIcon(str(Messenger.icon_path)))
 
         dialog.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
 
         layout = QVBoxLayout()
         label = QLabel(message)
+        label.setObjectName("PrintInfoLabel")
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(label)
         dialog.setLayout(layout)
 
-        dialog.resize(300, 100)
+        dialog.setMinimumSize(400, 200)
+        dialog.adjustSize()
         self.center_dialog(dialog)
         dialog.show()
 
