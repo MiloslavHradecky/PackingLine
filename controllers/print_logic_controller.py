@@ -1,6 +1,7 @@
 from pathlib import Path
 from utils.logger import get_logger
 import time
+from PyQt6.QtCore import QTimer
 
 
 class PrintLogicController:
@@ -37,15 +38,17 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etiket...", timeout_ms=5000)
+            self.messenger.show_progress_box("Zahajuji tisk etiket...", timeout_ms=0)
 
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
 
-            time.sleep(5)
-            self.messenger.close_progress_box()
-            self.finalize()
+            # Změní text po 2 sekundách
+            QTimer.singleShot(2000, lambda: self.messenger.update_progress_text("✅ Tisk byl úspěšně dokončen!"))
+
+            # Zavře box po 5 sekundách a zavolá finalize
+            QTimer.singleShot(5000, lambda: (self.messenger.close_progress_box(), self.finalize()))
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")
@@ -81,15 +84,17 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etiket pro Control4...", timeout_ms=5000)
+            self.messenger.show_progress_box("Zahajuji tisk etiket pro Control4...", timeout_ms=0)
 
             for value in trigger_values:
                 target_file = trigger_dir / value
                 target_file.touch(exist_ok=True)
 
-            time.sleep(5)
-            self.messenger.close_progress_box()
-            self.finalize()
+                # Změní text po 2 sekundách
+                QTimer.singleShot(2000, lambda: self.messenger.update_progress_text("✅ Tisk byl úspěšně dokončen!"))
+
+                # Zavře box po 5 sekundách a zavolá finalize
+                QTimer.singleShot(5000, lambda: (self.messenger.close_progress_box(), self.finalize()))
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")
@@ -121,14 +126,16 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...", timeout_ms=5000)
+            self.messenger.show_progress_box("Zahajuji tisk etikety pro My2N...", timeout_ms=0)
 
             trigger_file = trigger_dir / 'SF_MY2N_A'
             trigger_file.touch(exist_ok=True)
 
-            time.sleep(5)
-            self.messenger.close_progress_box()
-            self.finalize()
+            # Změní text po 2 sekundách
+            QTimer.singleShot(2000, lambda: self.messenger.update_progress_text("✅ Tisk byl úspěšně dokončen!"))
+
+            # Zavře box po 5 sekundách a zavolá finalize
+            QTimer.singleShot(5000, lambda: (self.messenger.close_progress_box(), self.finalize()))
 
         except Exception as e:
             self.logger.error(f"Chyba zápisu: {str(e)}")

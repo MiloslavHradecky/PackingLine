@@ -28,7 +28,7 @@ class ProgressBox(QDialog):
 
     def showEvent(self, event):
         super().showEvent(event)
-        QTimer.singleShot(self.timeout_ms, self.close)
+        # QTimer.singleShot(self.timeout_ms, self.close)
 
     def update_text(self, text: str):
         self.label.setText(text)

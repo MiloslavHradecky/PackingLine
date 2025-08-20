@@ -82,7 +82,6 @@ class PrintController:
         """Updates progress box text and closes it after a delay."""
         self.messenger.update_progress_text('✅ Tisk byl úspěšně dokončen!')
         QApplication.processEvents()
-        time.sleep(5)
         QTimer.singleShot(delay, self.messenger.close_progress_box)
 
     def print_button_click(self):
