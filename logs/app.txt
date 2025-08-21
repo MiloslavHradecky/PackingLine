@@ -492,3 +492,8 @@
 2025-08-21 21:47:27,976 | ERROR   | PathValidator           | 
 Následující cesty jsou neplatné nebo chybí:
 2025-08-21 21:47:33,003 | ERROR   | PathValidator           |  - tl_file_path: C:\Users\Home\Documents\Coding\Python\PyQt\Spoustece\TestLine.tl
+2025-08-21 21:53:49,818 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 21:53:49,824 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 21:53:49,836 | WARNING | PathValidator           | Cesta nebo soubor neexistuje: tl_file_path → C:\Users\Home\Documents\Coding\Python\PyQt\Spoustece\TestLine.tl
+2025-08-21 21:55:12,662 | ERROR   | PathValidator           | Následující cesty jsou neplatné nebo chybí soubor:
+2025-08-21 21:55:16,128 | ERROR   | PathValidator           |  - tl_file_path: C:\Users\Home\Documents\Coding\Python\PyQt\Spoustece\TestLine.tl

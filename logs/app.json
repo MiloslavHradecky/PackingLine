@@ -435,3 +435,8 @@
 {"timestamp": "2025-08-21 21:46:49,699", "level": "WARNING", "module": "PathValidator", "message": "Cesta neexistuje: tl_file_path → C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}
 {"timestamp": "2025-08-21 21:47:27,976", "level": "ERROR", "module": "PathValidator", "message": "\nNásledující cesty jsou neplatné nebo chybí:"}
 {"timestamp": "2025-08-21 21:47:33,003", "level": "ERROR", "module": "PathValidator", "message": " - tl_file_path: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}
+{"timestamp": "2025-08-21 21:53:49,818", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-21 21:53:49,824", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-21 21:53:49,836", "level": "WARNING", "module": "PathValidator", "message": "Cesta nebo soubor neexistuje: tl_file_path → C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}
+{"timestamp": "2025-08-21 21:55:12,662", "level": "ERROR", "module": "PathValidator", "message": "Následující cesty jsou neplatné nebo chybí soubor:"}
+{"timestamp": "2025-08-21 21:55:16,128", "level": "ERROR", "module": "PathValidator", "message": " - tl_file_path: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}

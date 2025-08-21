@@ -8,13 +8,14 @@ from controllers.login_controller import LoginController
 from views.splash_screen import SplashScreen
 from utils.window_stack import WindowStackManager
 from utils.ensure_logs_dir import ensure_logs_dir
-from utils.resources import resource_path
+from utils.resources import resource_path, get_writable_path
 from utils.system_info import log_system_info
 from utils.ensure_config_file import ensure_config_file
 from utils.single_instance import SingleInstanceChecker
 from utils.messenger import Messenger
 from configparser import ConfigParser
 from utils.path_validation import PathValidator
+from utils.logger import get_logger
 
 ensure_logs_dir()
 window_stack = WindowStackManager()  # ✅ Window stack manager for navigation between UI windows
@@ -33,7 +34,7 @@ def main():
     if checker.is_running():
         app = QApplication([])
         messenger = Messenger(None)
-        messenger.error(f"Upozornění - Aplikace už běží! 🚫", "Main")
+        messenger.error(f"Upozornění - Aplikace už běží!", "Main")
         sys.exit(0)
 
     app = QApplication([])
@@ -57,7 +58,19 @@ def main():
     validator = PathValidator(config)
     if not validator.validate():
         messenger = Messenger(None)
-        messenger.error(f"Konfigurace obsahuje neplatné cesty. Aplikace bude ukončena. 🚫", "Main")
+        messenger.error(f"Konfigurace obsahuje neplatné cesty. Aplikace bude ukončena.", "Main")
+
+        # 📌 Logger initialization
+        logger = get_logger("Main")
+
+        # 📌 Adding a blank line to the TXT log
+        try:
+            log_file_txt = get_writable_path("logs/app.txt")
+            with open(log_file_txt, "a", encoding="utf-8") as f:
+                f.write("\n")
+        except Exception as e:
+            logger.warning(f"Nepodařilo se zapsat prázdný řádek do logu: {e}")
+
         sys.exit(1)
 
     # 📌 Show splash screen
