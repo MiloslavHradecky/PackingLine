@@ -13,6 +13,8 @@ from utils.system_info import log_system_info
 from utils.ensure_config_file import ensure_config_file
 from utils.single_instance import SingleInstanceChecker
 from utils.messenger import Messenger
+from configparser import ConfigParser
+from utils.path_validation import PathValidator
 
 ensure_logs_dir()
 window_stack = WindowStackManager()  # ✅ Window stack manager for navigation between UI windows
@@ -31,7 +33,7 @@ def main():
     if checker.is_running():
         app = QApplication([])
         messenger = Messenger(None)
-        messenger.error("Upozornění - Aplikace už běží! 🚫", "Main")
+        messenger.error(f"Upozornění - Aplikace už běží! 🚫", "Main")
         sys.exit(0)
 
     app = QApplication([])
@@ -47,6 +49,16 @@ def main():
 
     # 💾 Check the config file
     ensure_config_file()
+
+    # 📁 Load and validate config paths
+    config = ConfigParser()
+    config.read("settings/config.ini")
+
+    validator = PathValidator(config)
+    if not validator.validate():
+        messenger = Messenger(None)
+        messenger.error(f"Konfigurace obsahuje neplatné cesty. Aplikace bude ukončena. 🚫", "Main")
+        sys.exit(1)
 
     # 📌 Show splash screen
     splash = SplashScreen()
