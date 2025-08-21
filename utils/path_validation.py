@@ -1,6 +1,6 @@
 from utils.logger import get_logger
 from utils.messenger import Messenger
-from resources import resolve_path
+from utils.resources import resolve_path
 
 
 class PathValidator:
