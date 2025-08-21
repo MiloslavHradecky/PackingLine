@@ -459,3 +459,12 @@
 2025-08-21 00:25:39,495 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
 2025-08-21 00:25:49,470 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-21 14:21:28,482 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29
+2025-08-21 14:21:28,485 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-08-21 14:21:42,588 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-21 14:21:52,415 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 5540
+2025-08-21 14:21:52,493 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-21 14:22:18,773 | INFO    | PrintController         | 9155211C 54-5301-1757
+2025-08-21 14:22:18,790 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
+2025-08-21 14:22:32,250 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
