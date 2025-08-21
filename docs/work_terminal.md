@@ -11,7 +11,7 @@ cd "C:\GitWork\Python\PyQt\PackingLine\"
 ### 2. Create a .spec file
 
 ```Powershell
-& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" --name=PackingLine --version-file=version.txt --noconfirm --onefile --noconsole --windowed --icon=view\assets\main.ico main.py
+& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" --name=LineB --version-file=version.txt --noconfirm --onefile --noconsole --windowed --icon=views\assets\main.ico main.py
 ```
 
 ### 3. Edit the created .spec file
@@ -54,7 +54,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='PackingLine',
+    name='LineB',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -75,5 +75,5 @@ exe = EXE(
 ### 4. Create an .exe
 
 ```Powershell
-& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" PackingLine.spec
+& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" LineB.spec
 ```
