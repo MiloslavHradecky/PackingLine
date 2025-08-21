@@ -183,7 +183,6 @@ class PrintController:
         self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=3000)
         self.restore_ui()
 
-
     def handle_exit(self):
         """
         Closes PrintWindow and returns to the previous window.

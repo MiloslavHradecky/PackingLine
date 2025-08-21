@@ -1,13 +1,14 @@
-# 🖨️ ManualLabelPrint
+# 🖨️ PackingLine
 
-Desktop application for printing labels using MLP database based on Qt.
+Desktop application that simulates line - B on an EOL tester based on Qt.
 
 ---
 
 ## 📋 Description
 
-Desktop application for printing labels, built in Python with PyQt6.
-Structured according to MVC and distributed as '.exe' for Windows 11+.
+A desktop application that simulates line - B on an EOL tester.
+Created in Python with PyQt6.
+Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 
 ---
 
@@ -15,6 +16,7 @@ Structured according to MVC and distributed as '.exe' for Windows 11+.
 
 - **Python 3.10+**
 - **PyQt6**
+- **BarTender Integration**
 - **BarTender Commander Integration**
 - **ConfigParser**
 
@@ -23,18 +25,16 @@ Structured according to MVC and distributed as '.exe' for Windows 11+.
 ## 📂 Structure
 
 ```
-📦 ManualLabelPrint/
+📦 PackingLine/
 │
-├── controller/
-│   ├── check_snc_controller.py
+├── controllers/
 │   ├── login_controller.py
-│   ├── manual_controller.py
-│   ├── manual_pcs_controller.py
-│   ├── multipack_controller.py
-│   ├── option_controller.py
-│   ├── product_controller.py
-│   ├── serialization_controller.py
-│   └── service_controller.py
+│   ├── print_config_controller.py
+│   ├── print_controller.py
+│   ├── print_loader_controller.py
+│   ├── print_logic_controller.py
+│   ├── work_order_controller.py
+│   └── product_controller.py
 │
 ├── docs/
 │   ├── home_terminal.md
@@ -45,8 +45,15 @@ Structured according to MVC and distributed as '.exe' for Windows 11+.
 │   ├── app.json
 │   └── app.txt
 │
-├── model/
+├── models/
 │   └── user_model.py
+│
+├── settings/
+│   ├── config.ini
+│   ├── create_config.py
+│   ├── create_config_home_verso_2.0.py
+│   ├── create_config_work_test_verso_2.0.py
+│   └── create_test_config.py
 │
 ├── utils/
 │   ├── ensure_config_file.py
@@ -56,35 +63,27 @@ Structured according to MVC and distributed as '.exe' for Windows 11+.
 │   ├── resources.py
 │   ├── single_instance.py
 │   ├── system_info.py
+│   ├── validators.py
 │   ├── window_effects_manager.py
 │   └── window_stack.py
 │
-├── view/
+├── views/
 │   ├── assets/
-│   │   ├── barcode.png
 │   │   ├── login.tiff
 │   │   ├── main.ico
 │   │   ├── message.ico
-│   │   ├── option.png
-│   │   ├── order.png
-│   │   ├── printer.png
-│   │   ├── product.png
-│   │   ├── service.png
+│   │   ├── print.png
 │   │   ├── spinner.gif
-│   │   └── splash_logo.png
+│   │   ├── splash_logo.png
+│   │   └── work_order_find.png
 │   │
 │   ├── themes/
 │   │   └── style.qss
 │   │
 │   ├── login_window.py
-│   ├── manual_pcs_window.py
-│   ├── manual_window.py
-│   ├── multipack_window.py
-│   ├── option_window.py
-│   ├── product_window.py
-│   ├── serialization_window.py
-│   ├── service_window.py
-│   └── splash_screen.py
+│   ├── print_window.py
+│   ├── splash_screen.py
+│   └── work_order_window.py
 │
 ├── .gitignore
 ├── config.ini
