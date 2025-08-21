@@ -1,11 +1,18 @@
+import configparser
 from utils.logger import get_logger
 from utils.messenger import Messenger
-from utils.resources import resolve_path
+from utils.resources import get_config_path
 
 
 class PathValidator:
-    def __init__(self, config):
-        self.config = config
+    def __init__(self):
+
+        # 📌 Loading the configuration file
+        config_path = get_config_path("config.ini")
+        self.config = configparser.ConfigParser()
+        self.config.optionxform = str  # 💡 Ensures letter size is maintained
+        self.config.read(config_path)
+
         self.logger = get_logger("PathValidator")
         self.messenger = Messenger()
         self.keys = [
@@ -23,7 +30,7 @@ class PathValidator:
         for key in self.keys:
             try:
                 raw = self.config.get("Paths", key)
-                path = resolve_path(raw)
+                path = get_config_path(raw)
                 if not path.exists():
                     self.logger.warning(f"Cesta nebo soubor neexistuje: {key} → {path}")
                     self.messenger.warning(f"Cesta nebo soubor neexistuje:\n{path}", "Path Validation")

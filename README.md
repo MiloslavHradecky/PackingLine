@@ -60,6 +60,7 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │   ├── ensure_logs_dir.py
 │   ├── logger.py
 │   ├── messenger.py
+│   ├── path_validation.py
 │   ├── resources.py
 │   ├── single_instance.py
 │   ├── system_info.py

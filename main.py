@@ -55,7 +55,7 @@ def main():
     config = ConfigParser()
     config.read("settings/config.ini")
 
-    validator = PathValidator(config)
+    validator = PathValidator()
     if not validator.validate():
         messenger = Messenger(None)
         messenger.error(f"Konfigurace obsahuje neplatné cesty. Aplikace bude ukončena.", "Main")
