@@ -468,3 +468,7 @@
 2025-08-21 14:22:18,790 | INFO    | PrintController         | My2N token: RG77-EE3C-DM6E-PNJ7
 2025-08-21 14:22:32,250 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-21 21:06:48,628 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 21:06:48,636 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 21:06:58,629 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
