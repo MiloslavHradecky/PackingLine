@@ -1,17 +1,17 @@
 # Commands to create an exe file
 
-## ManualLabelPrint
+## PackingLine
 
 ### 1. Open a session in a given folder
 
 ```Powershell
-cd "C:\GitWork\Python\PyQt\ManualLabelPrint\"
+cd "C:\GitWork\Python\PyQt\PackingLine\"
 ```
 
 ### 2. Create a .spec file
 
 ```Powershell
-& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" --name=ManualLabelPrint --version-file=version.txt --noconfirm --onefile --noconsole --windowed --icon=view\assets\main.ico main.py
+& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" --name=PackingLine --version-file=version.txt --noconfirm --onefile --noconsole --windowed --icon=view\assets\main.ico main.py
 ```
 
 ### 3. Edit the created .spec file
@@ -25,22 +25,18 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        ('view/assets/barcode.png', 'view/assets'),
-        ('view/assets/login.tiff', 'view/assets'),
-        ('view/assets/main.ico', 'view/assets'),
-        ('view/assets/message.ico', 'view/assets'),
-        ('view/assets/option.png', 'view/assets'),
-        ('view/assets/order.png', 'view/assets'),
-        ('view/assets/printer.png', 'view/assets'),
-        ('view/assets/product.png', 'view/assets'),
-        ('view/assets/service.png', 'view/assets'),
-        ('view/assets/spinner.gif', 'view/assets'),
-        ('view/assets/splash_logo.png', 'view/assets'),
-        ('view/themes/style.qss', 'view/themes'),
-        ('controller/', 'controller'),
-        ('model/', 'model'),
+        ('views/assets/login.tiff', 'views/assets'),
+        ('views/assets/main.ico', 'views/assets'),
+        ('views/assets/message.ico', 'views/assets'),
+        ('views/assets/print.png', 'views/assets'),
+        ('views/assets/work_order_find.png', 'views/assets'),
+        ('views/assets/spinner.gif', 'views/assets'),
+        ('views/assets/splash_logo.png', 'views/assets'),
+        ('views/themes/style.qss', 'views/themes'),
+        ('controllers/', 'controllers'),
+        ('models/', 'models'),
         ('utils/', 'utils'),
-        ('view/', 'view'),
+        ('views/', 'views'),
     ],
     hiddenimports=[],
     hookspath=[],
@@ -58,7 +54,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='ManualLabelPrint',
+    name='PackingLine',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -72,12 +68,12 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     version='version.txt',
-    icon=['view/assets/main.ico'],
+    icon=['views/assets/main.ico'],
 )
 ```
 
 ### 4. Create an .exe
 
 ```Powershell
-& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" ManualLabelPrint.spec
+& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" PackingLine.spec
 ```
