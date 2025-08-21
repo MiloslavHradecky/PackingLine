@@ -421,3 +421,17 @@
 {"timestamp": "2025-08-21 21:32:07,298", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
 {"timestamp": "2025-08-21 21:32:07,304", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
 {"timestamp": "2025-08-21 21:32:47,570", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-21 21:40:29,025", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-21 21:40:29,032", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-21 21:40:29,044", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-21 21:40:37,756", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-21 21:40:48,864", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 10164"}
+{"timestamp": "2025-08-21 21:40:49,027", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-21 21:41:08,675", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8304"}
+{"timestamp": "2025-08-21 21:41:08,713", "level": "INFO", "module": "PrintController", "message": "My2N token: D2SX-7F3L-PIOJ-3JCD"}
+{"timestamp": "2025-08-21 21:41:19,003", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-21 21:46:49,680", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-21 21:46:49,686", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-21 21:46:49,699", "level": "WARNING", "module": "PathValidator", "message": "Cesta neexistuje: tl_file_path → C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}
+{"timestamp": "2025-08-21 21:47:27,976", "level": "ERROR", "module": "PathValidator", "message": "\nNásledující cesty jsou neplatné nebo chybí:"}
+{"timestamp": "2025-08-21 21:47:33,003", "level": "ERROR", "module": "PathValidator", "message": " - tl_file_path: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}

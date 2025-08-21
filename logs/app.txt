@@ -476,3 +476,19 @@
 2025-08-21 21:32:07,304 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
 2025-08-21 21:32:47,570 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-21 21:40:29,025 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 21:40:29,032 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 21:40:29,044 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-08-21 21:40:37,756 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-21 21:40:48,864 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 10164
+2025-08-21 21:40:49,027 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-21 21:41:08,675 | INFO    | PrintController         | 9155211C 54-5301-8304
+2025-08-21 21:41:08,713 | INFO    | PrintController         | My2N token: D2SX-7F3L-PIOJ-3JCD
+2025-08-21 21:41:19,003 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-21 21:46:49,680 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 21:46:49,686 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 21:46:49,699 | WARNING | PathValidator           | Cesta neexistuje: tl_file_path → C:\Users\Home\Documents\Coding\Python\PyQt\Spoustece\TestLine.tl
+2025-08-21 21:47:27,976 | ERROR   | PathValidator           | 
+Následující cesty jsou neplatné nebo chybí:
+2025-08-21 21:47:33,003 | ERROR   | PathValidator           |  - tl_file_path: C:\Users\Home\Documents\Coding\Python\PyQt\Spoustece\TestLine.tl
