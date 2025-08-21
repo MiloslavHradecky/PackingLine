@@ -418,3 +418,6 @@
 {"timestamp": "2025-08-21 21:06:48,628", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
 {"timestamp": "2025-08-21 21:06:48,636", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
 {"timestamp": "2025-08-21 21:06:58,629", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-21 21:32:07,298", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-21 21:32:07,304", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-21 21:32:47,570", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}

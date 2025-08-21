@@ -472,3 +472,7 @@
 2025-08-21 21:06:48,636 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
 2025-08-21 21:06:58,629 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-21 21:32:07,298 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-21 21:32:07,304 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-21 21:32:47,570 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
