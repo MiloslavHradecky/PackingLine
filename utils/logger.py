@@ -1,12 +1,26 @@
-from pathlib import Path
+# utils/logger.py
+
+"""
+Utility for initializing and configuring application-wide logging.
+
+Provides a logger with both plain-text and JSON output, each with rotation.
+"""
+
+# 🧱 Standard library
 import logging
 import json
+from pathlib import Path
 from logging.handlers import RotatingFileHandler
+
+# 🧠 First-party (project-specific)
 from utils.resources import get_writable_path
 
 
 # --- Custom JSON formatter ---
 class JsonFormatter(logging.Formatter):
+    """
+    Custom formatter for logging in JSON format.
+    """
 
     def format(self, record):
         log_record = {
@@ -20,6 +34,15 @@ class JsonFormatter(logging.Formatter):
 
 # --- Logger initialization ---
 def get_logger(name: str) -> logging.Logger:
+    """
+    Initializes and returns a logger with both TXT and JSON rotating handlers.
+
+    Args:
+        name (str): Name of the logger (usually the module name).
+
+    Returns:
+        logging.Logger: Configured logger instance.
+    """
     log_file_txt = get_writable_path("logs/app.txt")
     log_file_json = get_writable_path("logs/app.json")
 

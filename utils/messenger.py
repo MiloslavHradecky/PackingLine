@@ -1,13 +1,33 @@
+# utils/messenger.py
+
+"""
+Utility class for displaying message dialogs in a PyQt6 application.
+
+Provides error, info, and warning dialogs, as well as timed non-blocking info popups.
+"""
+
+# 🎨 PyQt6 imports
 from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget, QDialog, QLabel, QVBoxLayout
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QTimer, Qt
+
+# 🧠 First-party
 from utils.resources import resource_path
 
 
 class Messenger:
+    """
+    Wrapper class for displaying various message dialogs with consistent styling.
+    """
     icon_path = resource_path("views/assets/message.ico")
 
     def __init__(self, parent=None):
+        """
+        Initializes the Messenger with an optional parent widget.
+
+        Args:
+            parent (QWidget, optional): Parent widget for dialog positioning.
+        """
         if isinstance(parent, QWidget):
             self.parent = parent
         else:
@@ -15,7 +35,12 @@ class Messenger:
         self.auto_info_box = None
 
     def center_dialog(self, dialog: QWidget):
-        """Centers the dialog relative to parent or screen."""
+        """
+        Centers the dialog relative to the parent widget or screen.
+
+        Args:
+            dialog (QWidget): The dialog to center.
+        """
         QApplication.instance().processEvents()
         dialog.adjustSize()
         rect = dialog.frameGeometry()
@@ -30,6 +55,13 @@ class Messenger:
         dialog.move(rect.topLeft())
 
     def error(self, message: str, title: str = "Error"):
+        """
+        Displays a blocking error dialog.
+
+        Args:
+            message (str): The error message to display.
+            title (str): Dialog window title.
+        """
         box = QMessageBox(self.parent)
         box.setIcon(QMessageBox.Icon.Critical)
         box.setWindowTitle(title)
@@ -40,6 +72,13 @@ class Messenger:
         box.exec()
 
     def info(self, message: str, title: str = "Information"):
+        """
+        Displays a blocking informational dialog.
+
+        Args:
+            message (str): The info message to display.
+            title (str): Dialog window title.
+        """
         box = QMessageBox(self.parent)
         box.setIcon(QMessageBox.Icon.Information)
         box.setWindowTitle(title)
@@ -50,6 +89,13 @@ class Messenger:
         box.exec()
 
     def warning(self, message: str, title: str = "Warning"):
+        """
+        Displays a blocking warning dialog.
+
+        Args:
+            message (str): The warning message to display.
+            title (str): Dialog window title.
+        """
         box = QMessageBox(self.parent)
         box.setIcon(QMessageBox.Icon.Warning)
         box.setWindowTitle(title)
@@ -60,19 +106,27 @@ class Messenger:
         box.exec()
 
     def auto_info_dialog(self, message: str, timeout_ms: int = 3000, title: str = "Zpracování"):
+        """
+        Displays a non-blocking info dialog that automatically closes after a timeout.
+
+        Args:
+            message (str): The message to display.
+            timeout_ms (int): Time in milliseconds before the dialog closes.
+            title (str): Dialog window title.
+        """
         dialog = QDialog(self.parent)
         dialog.setWindowTitle(title)
         dialog.setObjectName("PrintInfoDialog")
         dialog.setWindowModality(Qt.WindowModality.NonModal)
 
-        # ✅ WindowFlags — zobrazí záhlaví s ikonou, ale bez tlačítek
+        # ✅ WindowFlags - displays a header with an icon, but no buttons
         dialog.setWindowFlags(
             Qt.WindowType.Window |
             Qt.WindowType.WindowTitleHint |
             Qt.WindowType.WindowSystemMenuHint |
             Qt.WindowType.CustomizeWindowHint
         )
-        # ✅ Nastavení ikonky v záhlaví
+        # ✅ Header icon settings
         dialog.setWindowIcon(QIcon(str(Messenger.icon_path)))
 
         dialog.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)

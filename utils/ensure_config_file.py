@@ -1,5 +1,16 @@
 # utils/ensure_config_file.py
+
+"""
+Utility for ensuring the existence of the application's configuration file.
+
+If the config file is missing, this module creates it with default sections and values
+required for the PackingLine system to operate correctly.
+"""
+
+# 🧱 Standard library
 from configparser import ConfigParser
+
+# 🧠 First-party (project-specific)
 from utils.resources import get_config_path
 from utils.logger import get_logger
 
@@ -7,7 +18,9 @@ from utils.logger import get_logger
 def ensure_config_file(path: str = "config.ini"):
     """
     Ensures that the configuration file exists. If not, creates it with default values.
-        :param path: Path to the config file (default: "config.ini")
+
+    Args:
+        path (str): Path to the config file (default: "config.ini").
     """
     logger = get_logger("EnsureConfig")
     config_path = get_config_path(path)

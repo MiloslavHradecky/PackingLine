@@ -1,14 +1,37 @@
 # 🔑 Validator - Validates all inputs
 
+"""
+Validator module for checking input formats, extracting values from .lbl files,
+and injecting data into records. Provides error logging and user messaging.
+"""
+
+# 🧱 Standard library
 import re
 from pathlib import Path
+
+# 🧠 First-party
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from models.user_model import get_value_prefix
 
 
 class Validator:
+    """
+    Validator class for checking input formats, extracting structured data from .lbl files,
+    and injecting values into records. Provides error logging and user feedback via Messenger.
+
+    Attributes:
+        print_window: UI window reference for user interaction.
+        messenger (Messenger): Handles user-facing messages.
+        logger: Logger instance for internal diagnostics.
+    """
     def __init__(self, print_window):
+        """
+        Initializes the Validator with UI window, logger, and messenger.
+
+        Args:
+            print_window: Reference to the UI window for user interaction.
+        """
         self.print_window = print_window
 
         # 📌 Messenger initialization
@@ -19,7 +42,13 @@ class Validator:
 
     def validate_serial_format(self, serial_number: str) -> bool:
         """
-        Validates the serial number format 00-0000-0000.
+        Validates the serial number format '00-0000-0000'.
+
+        Args:
+            serial_number (str): Serial number to validate.
+
+        Returns:
+            bool: True if valid, False otherwise.
         """
         pattern = r'^\d{2}-\d{4}-\d{4}$'
         if not re.fullmatch(pattern, serial_number):
@@ -30,12 +59,14 @@ class Validator:
 
     def validate_input_exists_for_product(self, lbl_lines: list[str], serial: str) -> bool:
         """
-        Validates that all key lines for a given serial number exist in lbl_lines.
-        Checks that the lines SERIAL+B=, D=, E= exist for the given serial number.
+        Validates that required lines (B=, D=, E=) exist for a given serial number.
 
-            :param lbl_lines: List of lines from the .lbl file
-            :param serial: Specified serial number
-            :return: True if all exist, otherwise False + displays a warning
+        Args:
+            lbl_lines (list[str]): Lines from the .lbl file.
+            serial (str): Serial number to check.
+
+        Returns:
+            bool: True if all lines exist, False otherwise.
         """
         keys = [f'{serial}B=', f'{serial}D=', f'{serial}E=']
         missing_keys = [key for key in keys if not any(line.startswith(key) for line in lbl_lines)]
@@ -51,7 +82,14 @@ class Validator:
 
     def validate_and_inject_balice(self, header: str, record: str) -> str | None:
         """
-        Validates and injects prefix to 'P Znacka balice' field.
+        Injects prefix into the 'P Znacka balice' field in the record.
+
+        Args:
+            header (str): Header line from .lbl file.
+            record (str): Record line from .lbl file.
+
+        Returns:
+            str | None: Modified record or None if injection fails.
         """
         header_fields = header.split('","')
         record_fields = record.split('","')
@@ -76,7 +114,14 @@ class Validator:
 
     def extract_header_and_record(self, lbl_lines: list[str], serial: str) -> tuple[str, str] | None:
         """
-        Extracts D= and E= lines from lbl_lines.
+        Extracts D= and E= lines for a given serial number.
+
+        Args:
+            lbl_lines (list[str]): Lines from the .lbl file.
+            serial (str): Serial number to extract.
+
+        Returns:
+            tuple[str, str] | None: Header and record if found, else None.
         """
         key_d = f'{serial}D='
         key_e = f'{serial}E='
@@ -99,7 +144,14 @@ class Validator:
 
     def extract_trigger_values(self, lbl_lines: list[str], serial: str) -> list[str] | None:
         """
-        Extracts values from B= line.
+        Extracts values from B= line for a given serial number.
+
+        Args:
+            lbl_lines (list[str]): Lines from the .lbl file.
+            serial (str): Serial number to extract.
+
+        Returns:
+            list[str] | None: List of values or None if not found.
         """
         key_b = f'{serial}B='
         for line in lbl_lines:
@@ -115,7 +167,14 @@ class Validator:
 
     def extract_header_and_record_c4(self, lbl_lines: list[str], serial: str) -> tuple[str, str] | None:
         """
-        Extracts J= and K= lines for Control4.
+        Extracts J= and K= lines for Control4 serial number.
+
+        Args:
+            lbl_lines (list[str]): Lines from the .lbl file.
+            serial (str): Serial number to extract.
+
+        Returns:
+            tuple[str, str] | None: Header and record if found, else None.
         """
         key_j = f'{serial}J='
         key_k = f'{serial}K='
@@ -138,7 +197,14 @@ class Validator:
 
     def extract_trigger_values_c4(self, lbl_lines: list[str], serial: str) -> list[str] | None:
         """
-        Extracts values from I= line for Control4.
+        Extracts values from I= line for Control4 serial number.
+
+        Args:
+            lbl_lines (list[str]): Lines from the .lbl file.
+            serial (str): Serial number to extract.
+
+        Returns:
+            list[str] | None: List of values or None if not found.
         """
         key_i = f'{serial}I='
         for line in lbl_lines:
@@ -153,12 +219,14 @@ class Validator:
 
     def validate_input_exists_for_control4(self, lbl_lines: list[str], serial: str) -> bool:
         """
-        Validates that all key lines for a given serial number exist in lbl_lines.
-        Checks that the lines SERIAL+I=, J=, K= exist for the given serial number.
+        Validates that required lines (I=, J=, K=) exist for Control4 serial number.
 
-            :param lbl_lines: List of lines from the .lbl file
-            :param serial: Specified serial number
-            :return: True if all exist, otherwise False + displays a warning
+        Args:
+            lbl_lines (list[str]): Lines from the .lbl file.
+            serial (str): Serial number to check.
+
+        Returns:
+            bool: True if all lines exist, False otherwise.
         """
         keys = [f'{serial}I=', f'{serial}J=', f'{serial}K=']
         missing_keys = [key for key in keys if not any(line.startswith(key) for line in lbl_lines)]
@@ -174,7 +242,18 @@ class Validator:
 
     def extract_my2n_token(self, serial_number: str, reports_path: Path) -> str | None:
         """
-        Extracts My2N token from report file.
+        Extracts the My2N token from a report file based on the serial number.
+
+        The method constructs the expected file path using the serial number format '00-0000-0000',
+        then searches the file for a line containing 'my2n token:' (case-insensitive).
+        If found, it extracts and returns the token value.
+
+        Args:
+            serial_number (str): Serial number in format '00-0000-0000'.
+            reports_path (Path): Base path to the reports directory.
+
+        Returns:
+            str | None: Extracted token string if found, otherwise None.
         """
         parts = serial_number.split('-')
         if len(parts) != 3:

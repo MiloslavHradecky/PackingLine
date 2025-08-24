@@ -1,8 +1,25 @@
+# utils/system_info.py
+
+"""
+Utility for logging basic system information at application startup.
+
+Captures and logs the current version, computer name, and IP address.
+"""
+
+# 🧱 Standard library
 import socket
 import platform
+
+# 🧠 First-party
 from utils.logger import get_logger
 
 def log_system_info(version: str):
+    """
+    Logs system information including application version, computer name, and IP address.
+
+    Args:
+        version (str): Current version of the application.
+    """
     logger = get_logger("SystemInfo")
 
     # 📌 IP address
