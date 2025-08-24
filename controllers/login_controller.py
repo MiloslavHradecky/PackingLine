@@ -64,7 +64,6 @@ class LoginController:
 
         # 📌 Messenger initialization
         self.messenger = Messenger(self.login_window)
-        self.progress_box = None
 
         # 📌 Linking the button to the method
         self.login_window.login_button.clicked.connect(self.handle_login)

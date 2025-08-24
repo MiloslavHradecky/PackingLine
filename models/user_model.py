@@ -67,23 +67,13 @@ class SzvDecrypt:
         # 📌 Inicializace loggeru
         self.logger = get_logger("SzvDecrypt")
 
+        # 📌 Messenger initialization
+        self.messenger = Messenger()
+
         # 📌 Uchovávání dekódovaných hodnot
         self.value_surname = None
         self.value_name = None
         self.value_prefix = None
-
-    def log_decoded_file(self):
-        """
-        Logs each decoded line from the encrypted input file.
-        """
-        try:
-            with Path(self.szv_input_file).open('r') as infile:
-                for line in infile:
-                    byte_array = bytearray.fromhex(line.strip())
-                    decoded_line = self.decoding_line(byte_array)
-                    self.logger.info(f"Dekódovaný řádek: {decoded_line}")
-        except Exception as e:
-            self.logger.error(f"Při čtení souboru došlo k chybě: {str(e)}")
 
     @staticmethod
     def decoding_line(encoded_data):
@@ -144,7 +134,7 @@ class SzvDecrypt:
 
         except Exception as e:
             self.logger.error(f"Neočekávaná chyba při ověřování hesla: {str(e)}")
-            Messenger.error(str(e), "Přihlášení")
+            self.messenger.error(f"{str(e)}", "Přihlášení")
             return False
 
     def decoding_file(self):
@@ -163,7 +153,7 @@ class SzvDecrypt:
                     decoded_lines.append([hashlib.sha256(decoded_line[0].encode()).hexdigest(), ','.join(decoded_line)])
         except Exception as e:
             self.logger.error(f"Při čtení souboru došlo k chybě: {str(e)}")
-            Messenger.error(str(e), "Přihlášení")
+            self.messenger.error(f"{str(e)}", "Přihlášení")
             return False
 
         return decoded_lines

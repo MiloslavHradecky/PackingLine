@@ -3,3 +3,28 @@
 {"timestamp": "2025-08-21 23:55:18,173", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
 {"timestamp": "2025-08-21 23:55:26,215", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
 {"timestamp": "2025-08-21 23:55:31,029", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-24 21:35:12,502", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-24 21:35:12,510", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-24 21:35:12,538", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-24 21:35:25,110", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-24 21:35:29,698", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-24 21:35:29,705", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-24 21:35:29,726", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-24 21:35:36,604", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-24 21:35:47,832", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-24 22:03:22,571", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-24 22:03:22,577", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-24 22:03:22,599", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-24 22:03:30,835", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-24 22:03:44,346", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (ptg) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-08-24 22:03:44,347", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"ptg\" není správné!"}
+{"timestamp": "2025-08-24 22:03:50,500", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (pta) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-08-24 22:03:50,501", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"pta\" není správné!"}
+{"timestamp": "2025-08-24 22:03:53,842", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-24 22:20:04,466", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-24 22:20:04,473", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-24 22:20:04,498", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-24 22:20:11,876", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (ptg) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-08-24 22:20:11,877", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"ptg\" není správné!"}
+{"timestamp": "2025-08-24 22:20:21,365", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-24 22:20:25,881", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}

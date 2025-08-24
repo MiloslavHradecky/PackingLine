@@ -4,3 +4,32 @@
 2025-08-21 23:55:26,215 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
 2025-08-21 23:55:31,029 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-24 21:35:12,502 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-24 21:35:12,510 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-24 21:35:12,538 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-08-24 21:35:25,110 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-24 21:35:29,698 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-24 21:35:29,705 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-24 21:35:29,726 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-08-24 21:35:36,604 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-24 21:35:47,832 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-24 22:03:22,571 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-24 22:03:22,577 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-24 22:03:22,599 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-08-24 22:03:30,835 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-24 22:03:44,346 | WARNING | SzvDecrypt              | Zadané heslo (ptg) nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-08-24 22:03:44,347 | WARNING | LoginController         | Zadané heslo "ptg" není správné!
+2025-08-24 22:03:50,500 | WARNING | SzvDecrypt              | Zadané heslo (pta) nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-08-24 22:03:50,501 | WARNING | LoginController         | Zadané heslo "pta" není správné!
+2025-08-24 22:03:53,842 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-08-24 22:20:04,466 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-24 22:20:04,473 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-24 22:20:04,498 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-08-24 22:20:11,876 | WARNING | SzvDecrypt              | Zadané heslo (ptg) nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-08-24 22:20:11,877 | WARNING | LoginController         | Zadané heslo "ptg" není správné!
+2025-08-24 22:20:21,365 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-24 22:20:25,881 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
