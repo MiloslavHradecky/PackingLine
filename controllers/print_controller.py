@@ -1,13 +1,26 @@
 # 🖨️ PrintController – handles logic for serial input, validation, and print action
 
+"""
+Controller for managing print operations in the PackingLine application.
+
+Handles serial number validation, .lbl file parsing, and dynamic printing logic
+based on configuration mappings. Supports multiple product types and printing
+protocols (product, control4, my2n), and interacts with the PrintWindow UI.
+"""
+
+# 🧱 Standard library
 import configparser
 from pathlib import Path
+
+# 🧩 Third-party libraries
 from PyQt6.QtCore import QTimer
+
+# 🧠 First-party (project-specific)
 from utils.logger import get_logger
 from utils.messenger import Messenger
-from views.print_window import PrintWindow
 from utils.resources import get_config_path
 from utils.validators import Validator
+from views.print_window import PrintWindow
 from controllers.print_logic_controller import PrintLogicController
 from controllers.print_loader_controller import PrintLoaderController
 from controllers.print_config_controller import PrintConfigController
@@ -15,17 +28,27 @@ from controllers.print_config_controller import PrintConfigController
 
 class PrintController:
     """
-    Main logic controller for print operations in the application.
+    Main controller for managing print-related logic and UI interactions.
 
-        - Handles serial number validation, .lbl file parsing, and configuration-based output decisions
-        - Manages dynamic printing for multiple product types based on config-defined mappings
-        - Generates structured text files and trigger signals for label printing systems
-        - Operates with PrintWindow GUI and connects button actions to appropriate processing
+    Attributes:
+        window_stack (WindowStackManager): Navigation stack for UI windows.
+        print_window (PrintWindow): The active print window instance.
+        config (ConfigParser): Loaded configuration file.
+        validator (Validator): Validates serial input and .lbl file structure.
+        messenger (Messenger): Displays messages and dialogs to the user.
+        loader (PrintLoaderController): Loads .lbl files from disk.
+        logic (PrintLogicController): Executes save-and-print operations.
+        config_controller (PrintConfigController): Resolves trigger groups from config.
     """
 
     def __init__(self, window_stack, order_code: str, product_name: str):
         """
-        Initializes the print controller and connects signals.
+        Initializes the PrintController and connects UI signals.
+
+        Args:
+            window_stack (WindowStackManager): UI navigation stack.
+            order_code (str): Order code for the current print job.
+            product_name (str): Name of the product being printed.
         """
         # 📌 Loading the configuration file
         config_path = get_config_path("config.ini")
@@ -65,20 +88,29 @@ class PrintController:
     @property
     def serial_input(self) -> str:
         """
-        Returns cleaned serial number from input field.
+        Returns the cleaned serial number from the input field.
+
+        Returns:
+            str: Uppercase, trimmed serial number.
         """
         return self.print_window.serial_number_input.text().strip().upper()
 
     @property
     def product_name(self) -> str:
         """
-        Returns cleaned product name from print window.
+        Returns the cleaned product name from the print window.
+
+        Returns:
+            str: Uppercase, trimmed product name.
         """
         return self.print_window.product_name.strip().upper()
 
     def print_button_click(self):
         """
-        Handles print button action by validating input and triggering appropriate save-and-print methods.
+        Handles the print button click event.
+
+        Validates input, resolves trigger groups, loads .lbl file,
+        and executes appropriate save-and-print logic based on product type.
         """
 
         self.print_window.print_button.setDisabled(True)
@@ -185,11 +217,17 @@ class PrintController:
 
     def handle_exit(self):
         """
-        Closes PrintWindow and returns to the previous window.
+        Handles exit button click by fading out the PrintWindow.
         """
         self.print_window.effects.fade_out(self.print_window, duration=500)
 
     def delayed_restore_ui(self, delay_ms=500):
+        """
+        Restores UI controls after a short delay.
+
+        Args:
+            delay_ms (int): Delay in milliseconds before restoring UI.
+        """
         QTimer.singleShot(delay_ms, lambda: (
             self.print_window.print_button.setDisabled(False),
             self.print_window.exit_button.setDisabled(False),
@@ -198,6 +236,12 @@ class PrintController:
         ))
 
     def restore_ui(self, delay_ms=3000):
+        """
+        Restores UI controls after a longer delay (default 3 seconds).
+
+        Args:
+            delay_ms (int): Delay in milliseconds before restoring UI.
+        """
         QTimer.singleShot(delay_ms, lambda: (
             self.print_window.print_button.setDisabled(False),
             self.print_window.exit_button.setDisabled(False),
