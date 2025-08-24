@@ -1,8 +1,17 @@
 # 🧭 WorkOrderController – Manages scanning logic and transitions to printing
 
+"""
+Controller responsible for handling work order input, validating associated files,
+and transitioning to the print phase. Also manages launching BarTender Commander
+and terminating related processes.
+"""
+
+# 🧱 Standard library
 import subprocess
 import configparser
 from pathlib import Path
+
+# 🧠 First-party (project-specific)
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from views.work_order_window import WorkOrderWindow
@@ -10,9 +19,27 @@ from utils.resources import get_config_path
 
 
 class WorkOrderController:
+    """
+    Handles scanning logic, file validation, and transition to PrintController.
+
+    Attributes:
+        config (ConfigParser): Loaded configuration file.
+        window_stack (WindowStackManager): Navigation stack for UI windows.
+        work_order_window (WorkOrderWindow): UI window for work order input.
+        messenger (Messenger): Displays messages and errors to the user.
+        logger (Logger): Logs events and errors.
+        orders_dir (Path): Directory containing .lbl and .nor files.
+        lbl_file (Path): Path to the .lbl file.
+        nor_file (Path): Path to the .nor file.
+        lines (list[str]): Parsed lines from .lbl file.
+        found_product_name (str): Product name extracted from .nor file.
+    """
     def __init__(self, window_stack):
         """
-        Initializes controller logic, event binding and file setup.
+        Initializes controller logic, event binding, and config loading.
+
+        Args:
+            window_stack (WindowStackManager): UI navigation stack.
         """
         # 📌 Loading the configuration file
         config_path = get_config_path("config.ini")
@@ -73,7 +100,7 @@ class WorkOrderController:
             - Validates input
             - Checks .lbl and .nor file existence
             - Parses .nor file and validates order
-            - Loads label content and launches print controller
+            - Loads label content and launches PrintController
         """
 
         # 📌 Processing of input
@@ -115,7 +142,6 @@ class WorkOrderController:
                     self.found_product_name = product_name
                     self.lines = self.load_file(self.lbl_file)
 
-                    # 📌 Tady zavoláme další okno:
                     self.run_bartender_commander()
                     self.open_app_window(order_code=value_input, product_name=product_name)
                     self.logger.info(f"Příkaz: {value_input}")
@@ -135,6 +161,12 @@ class WorkOrderController:
     def load_file(self, file_path: Path) -> list[str]:
         """
         Loads text content from file.
+
+        Args:
+            file_path (Path): Path to the file.
+
+        Returns:
+            list[str]: Lines from the file or empty list on error.
         """
         try:
             return file_path.read_text().splitlines()
@@ -146,6 +178,10 @@ class WorkOrderController:
     def open_app_window(self, order_code, product_name):
         """
         Instantiates PrintController and launches next window.
+
+        Args:
+            order_code (str): Order code for the print job.
+            product_name (str): Product name extracted from .nor file.
         """
         from controllers.print_controller import PrintController
         self.print_controller = PrintController(self.window_stack, order_code, product_name)
