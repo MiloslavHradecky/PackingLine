@@ -1,7 +1,23 @@
-import hashlib
+# 🔐 SzvDecrypt – handles login verification by decrypting credentials stored in an encrypted file
+
+"""
+Handles login verification by decrypting credentials stored in an encrypted file.
+
+Provides functionality to:
+- Read and decode login data using XOR-based decryption
+- Verify user passwords against SHA-256 hashes
+- Extract user metadata (name, surname, prefix) upon successful login
+
+Used primarily by the LoginController during authentication.
+"""
+
+# 🧱 Standard library
 import configparser
-from utils.logger import get_logger
+import hashlib
 from pathlib import Path
+
+# 🧠 First-party (project-specific)
+from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path, resolve_path
 
@@ -11,24 +27,31 @@ value_prefix = None
 
 def get_value_prefix():
     """
-    Returns the value 'value_prefix' without using 'global'.
-        :return: current value of 'value_prefix'
+    Returns the current value of the global 'value_prefix'.
+
+    Returns:
+        str | None: The current value of 'value_prefix'.
     """
     return value_prefix
 
 
 class SzvDecrypt:
     """
-    Class for decrypting the file and verifying the login using the SHA-256 hash.
-        - Reads an encrypted file containing login credentials
-        - Decodes the contents of the file using an XOR operation
-        - Verifies the user password against stored values
+    Decrypts login credentials and verifies user authentication using SHA-256.
+
+    Responsibilities:
+        - Load encrypted login file from config
+        - Decode file contents using XOR-based logic
+        - Match input password against stored hashes
+        - Extract user metadata upon successful login
     """
 
     def __init__(self, config_file='config.ini'):
         """
-        Initializes the SzvDecrypt class and sets the path to the input file and logger.
-            :param config_file: The path to the configuration file ('config.ini').
+        Initializes the SzvDecrypt instance and loads configuration.
+
+        Args:
+            config_file (str): Path to the configuration file.
         """
 
         # 📌 Loading the configuration file
@@ -51,7 +74,7 @@ class SzvDecrypt:
 
     def log_decoded_file(self):
         """
-        Logs the decoded content of the input file, if any.
+        Logs each decoded line from the encrypted input file.
         """
         try:
             with Path(self.szv_input_file).open('r') as infile:
@@ -65,9 +88,13 @@ class SzvDecrypt:
     @staticmethod
     def decoding_line(encoded_data):
         """
-        Decodes the given encoded data by XOR operation.
-            :param encoded_data: Encoded data as 'bytearray'.
-            :return: Decoded data as a list of strings.
+        Decodes a single line of encrypted data using XOR logic.
+
+        Args:
+            encoded_data (bytearray): Encrypted byte data.
+
+        Returns:
+            list[str]: Decoded string segments.
         """
         int_xor = len(encoded_data) % 32
         decoded_data = bytearray(len(encoded_data))
@@ -80,9 +107,13 @@ class SzvDecrypt:
 
     def check_login(self, password):
         """
-        Checks whether the password entered matches any of the decoded lines in the input file.
-            :param password: Password to be verified.
-            :return: 'True' if the password matches, otherwise 'False'.
+        Verifies the given password against stored credentials.
+
+        Args:
+            password (str): Password entered by the user.
+
+        Returns:
+            bool: True if password matches, False otherwise.
         """
         global value_prefix  # ✅ Umožňuje upravit globální proměnnou
         try:
@@ -118,8 +149,10 @@ class SzvDecrypt:
 
     def decoding_file(self):
         """
-        Reads and decodes the contents of the input file.
-            :return: a list of decoded lines, where each line is a list containing the password hash and decoded data.
+        Reads and decodes all lines from the encrypted input file.
+
+        Returns:
+            list[list[str]] | bool: List of decoded lines or False on error.
         """
         decoded_lines = []
         try:
