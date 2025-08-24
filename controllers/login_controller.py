@@ -1,8 +1,14 @@
 # 🎛️ LoginController – handles login logic and post-authentication navigation
 
+# 🧱 Standard library
 import subprocess
 import configparser
-import models.user_model
+
+# 🧩 Third-party libraries
+# (none in this file)
+
+# 🧠 First-party (project-specific)
+from models.user_model import SzvDecrypt, get_value_prefix
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path, get_writable_path
@@ -10,15 +16,24 @@ from utils.resources import get_config_path, get_writable_path
 
 class LoginController:
     """
-    Main controller for the login process.
+    Controller responsible for handling login logic and post-authentication navigation.
+
+    Attributes:
+        login_window (LoginWindow): Reference to the login window UI.
+        window_stack (WindowStackManager): Manages window transitions.
+        config (ConfigParser): Parsed configuration file.
+        decrypter (SzvDecrypt): Handles password decryption.
+        messenger (Messenger): Displays messages to the user.
+        logger (Logger): Logs messages and errors.
     """
 
     def __init__(self, login_window, window_stack):
         """
-        Initializes the LoginController and connects event handlers.
+        Initializes the LoginController and connects UI event handlers.
 
-            :param login_window: Reference to LoginWindow
-            :param window_stack: WindowStackManager for screen navigation
+        Args:
+            login_window (LoginWindow): The login window instance.
+            window_stack (WindowStackManager): Stack manager for window navigation.
         """
 
         # 📌 Loading the configuration file
@@ -64,11 +79,13 @@ class LoginController:
 
     def handle_login(self):
         """
-        Handles login validation and user authentication.
+        Validates user credentials and navigates to the next window if successful.
 
-            - Retrieves password from LoginWindow
-            - Verifies password via SzvDecrypt
-            - Opens WorkOrderWindow if successful
+        Workflow:
+            - Retrieves password from input field
+            - Verifies password using SzvDecrypt
+            - Terminates BarTender processes
+            - Opens WorkOrderWindow on success
             - Shows warning on failure
         """
         password = self.login_window.password_input.text().strip()
@@ -93,16 +110,15 @@ class LoginController:
     def open_work_order_window(self):
         """
         Opens the WorkOrderWindow upon successful login.
-
-            - Fades out login window
-            - Pushes next window to stack
         """
         from controllers.work_order_controller import WorkOrderController
         self.work_order_controller = WorkOrderController(self.window_stack)
         self.window_stack.push(self.work_order_controller.work_order_window)
 
     def handle_exit(self):
-        """Closes the LoginWindow and exits the application."""
+        """
+        Closes the LoginWindow and exits the application.
+        """
         self.logger.info("Aplikace byla ukončena uživatelem.")
         self.login_window.effects.fade_out(self.login_window, duration=1000)
 
