@@ -1,11 +1,29 @@
 #!/usr/bin/env python3
+"""
+Main application launcher for the PackingLine system.
+
+Handles initialization of the Qt application, configuration validation,
+single-instance enforcement, global styling, and startup sequence including
+splash screen and login window.
+
+Version:
+    3.0.0.0
+"""
+
 __version__ = '3.0.0.0'
 
+# 🧱 Standard library
 import sys
+from configparser import ConfigParser
+
+# 🧩 Third-party libraries
 from PyQt6.QtWidgets import QApplication
+
+# 🧠 First-party (project-specific)
 from views.login_window import LoginWindow
-from controllers.login_controller import LoginController
 from views.splash_screen import SplashScreen
+from controllers.login_controller import LoginController
+
 from utils.window_stack import WindowStackManager
 from utils.ensure_logs_dir import ensure_logs_dir
 from utils.resources import resource_path, get_writable_path
@@ -13,7 +31,6 @@ from utils.system_info import log_system_info
 from utils.ensure_config_file import ensure_config_file
 from utils.single_instance import SingleInstanceChecker
 from utils.messenger import Messenger
-from configparser import ConfigParser
 from utils.path_validation import PathValidator
 from utils.logger import get_logger
 
@@ -23,11 +40,15 @@ window_stack = WindowStackManager()  # ✅ Window stack manager for navigation b
 
 def main():
     """
-    Main entry point of the application.
+    Initializes and launches the PackingLine desktop application.
 
-    - Initializes QApplication
-    - Creates and displays the LoginWindow
-    - Starts application event loop via app.exec()
+    Performs the following steps:
+        - Ensures only one instance of the app is running
+        - Applies global stylesheet if available
+        - Logs system information and verifies configuration file
+        - Validates paths from the config file
+        - Displays splash screen and launches login window
+        - Starts the Qt event loop
     """
     # 🔒 Single launch check
     checker = SingleInstanceChecker("LinebUniqueAppKey")
@@ -94,6 +115,8 @@ def main():
 
 if __name__ == "__main__":
     """
-    Checks if script is run directly (not imported).
+    Executes the application only if the script is run directly.
+
+    Prevents execution when imported as a module.
     """
     main()
