@@ -1,5 +1,12 @@
 # 🎛️ LoginController – handles login logic and post-authentication navigation
 
+"""
+Controller for managing user login in the PackingLine application.
+
+Handles password validation, post-authentication transitions, and process cleanup.
+Interacts with the LoginWindow UI and launches the WorkOrderController upon successful login.
+"""
+
 # 🧱 Standard library
 import subprocess
 import configparser

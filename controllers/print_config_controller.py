@@ -1,5 +1,12 @@
 # 🧩 PrintConfigController – handles config-based logic for trigger group resolution
 
+"""
+Provides logic for resolving trigger groups based on product names.
+
+Used during the printing workflow to determine which trigger groups apply to a given product,
+based on configuration mappings defined in 'ProductTriggerMapping'.
+"""
+
 # 🧠 First-party (project-specific)
 from utils.logger import get_logger
 
