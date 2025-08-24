@@ -8,7 +8,7 @@ import configparser
 # (none in this file)
 
 # 🧠 First-party (project-specific)
-from models.user_model import SzvDecrypt, get_value_prefix
+import models.user_model
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path, get_writable_path
