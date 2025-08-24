@@ -1,25 +1,58 @@
 # 🔐 LoginWindow – GUI login screen with password entry for ID card systems
 
+"""
+This module defines the LoginWindow class, which provides a graphical interface
+for user authentication via ID card scanning. It includes:
+- A password input field with hidden text
+- A login confirmation button
+- An exit button
+- Visual enhancements via WindowEffectsManager
+
+Used in conjunction with ControllerApp to handle login logic.
+"""
+
+# 🧱 Standard library (žádný zde)
+
+# 🎨 Third-party (PyQt6)
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QPalette, QColor, QPixmap, QIcon
+
+# 🧠 First-party (project-specific)
 from utils.window_effects_manager import WindowEffectsManager
 from utils.resources import resource_path
 
 
 class LoginWindow(QWidget):
     """
-    Class representing the application login window.
-        - Displays the password input field (hidden text)
-        - Has a button to confirm the login
-        - Linked to the 'ControllerApp' that processes the login
+    GUI window for user login via ID card.
+
+    Responsibilities:
+        - Display a password input field with hidden characters
+        - Show application logo and window icon
+        - Provide login and exit buttons
+        - Trigger login logic via ControllerApp
+        - Apply visual effects (fade-in, background color)
+
+    Args:
+        controller (object, optional): Reference to the controller managing login logic.
     """
 
     def __init__(self, controller=None):
         """
-        Initializes the 'LoginWindow' and sets its visual appearance.
-            - Receives a 'controller' that manages the login logic
-            - Sets the icon of the window
+        Initializes the LoginWindow and sets up its visual components.
+
+    Steps:
+        - Sets window title, size, and icon
+        - Applies background color and fade-in effect
+        - Loads and displays application logo
+        - Creates password input field with placeholder
+        - Adds login and exit buttons
+        - Connects Enter key to login action
+        - Applies layout and focuses input field
+
+    Args:
+        controller (object, optional): Controller instance for handling login logic.
         """
         super().__init__()
 

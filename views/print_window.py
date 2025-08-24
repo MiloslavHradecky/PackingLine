@@ -1,24 +1,60 @@
 # 🖨️ PrintWindow – UI for serial number input and print action
 
+"""
+This module defines the PrintWindow class, which provides a graphical interface
+for printing labels based on scanned serial numbers. It includes:
+- Display of work order and product information
+- Input field for serial number scanning
+- Buttons for printing and exiting
+- Visual enhancements via WindowEffectsManager
+
+Used in conjunction with a controller to handle print logic.
+"""
+
+# 🎨 Third-party (PyQt6)
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QFont, QPalette, QColor, QPixmap, QIcon
+
+# 🧠 First-party (project-specific)
 from utils.window_effects_manager import WindowEffectsManager
 from utils.resources import resource_path
 
 
 class PrintWindow(QWidget):
     """
-    Displays information about the work order and product and allows printing.
+    GUI window for printing product labels based on serial number input.
+
+    Responsibilities:
+        - Display work order and product name
+        - Provide input field for scanning serial numbers
+        - Trigger print action via button or Enter key
+        - Allow user to exit the window
+        - Apply visual effects and styling
+
+    Args:
+        order_code (str): Code of the active work order.
+        product_name (str): Human-readable name of the product.
+        controller (object, optional): Controller instance for handling print logic.
     """
 
     def __init__(self, order_code: str, product_name: str, controller=None):
         """
-        Initializes the PrintWindow and prepares UI.
+        Initializes the PrintWindow and sets up its visual components.
 
-            :param order_code: Code of the active work order
-            :param product_name: Human-readable product name
-            :param controller: Optional controlling logic class
+        Steps:
+            - Sets window title, size, and icon
+            - Displays order and product info in styled label
+            - Loads and shows logo
+            - Creates input field for serial number
+            - Adds print and exit buttons
+            - Connects Enter key to print action
+            - Applies layout and fade-in animation
+
+        Args:
+            order_code (str): Code of the active work order.
+            product_name (str): Human-readable product name.
+            controller (object, optional): Controller instance for handling print logic.
         """
         super().__init__()
 
@@ -106,7 +142,9 @@ class PrintWindow(QWidget):
 
     def reset_input_focus(self):
         """
-        Clears the input field and sets focus back to it.
+        Clears the serial number input field and sets focus back to it.
+
+        Used after a successful print or to reset the input state.
         """
         self.serial_number_input.clear()
         self.serial_number_input.setFocus()
