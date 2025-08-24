@@ -1,16 +1,37 @@
 # 📦 PrintLoaderController – handles loading of .lbl files based on config and order code
 
+"""
+Controller responsible for loading .lbl files based on order code and configuration.
+
+Provides error handling, logging, and user feedback via Messenger. Used by PrintController
+to retrieve label data for further processing.
+"""
+
+# 🧱 Standard library
+import configparser
 from pathlib import Path
+
+# 🧠 First-party (project-specific)
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
-import configparser
 
 
 class PrintLoaderController:
+    """
+    Loads .lbl files from disk using configuration-defined paths.
+
+    Attributes:
+        config (ConfigParser): Loaded configuration file.
+        messenger (Messenger): Displays messages and warnings to the user.
+        logger (Logger): Logs events and errors.
+    """
     def __init__(self, messenger: Messenger):
         """
-        Initializes loader with config and messenger for user feedback.
+        Initializes the loader with configuration and messenger.
+
+        Args:
+            messenger (Messenger): Messenger instance for user feedback.
         """
         config_path = get_config_path("config.ini")
         self.config = configparser.ConfigParser()
@@ -22,11 +43,14 @@ class PrintLoaderController:
 
     def load_lbl_file(self, order_code: str, reset_focus_callback=None) -> list[str]:
         """
-        Loads the .lbl file based on order_code and config path.
+        Loads a .lbl file based on the given order code.
 
-        :param order_code: Order code to locate the file
-        :param reset_focus_callback: Optional callback to reset input focus
-        :return: List of lines or empty list if not found
+        Args:
+            order_code (str): Order code used to locate the .lbl file.
+            reset_focus_callback (Callable, optional): Callback to reset UI focus.
+
+        Returns:
+            list[str]: List of lines from the .lbl file, or empty list if not found or error occurs.
         """
         raw_orders_path = self.config.get("Paths", "orders_path", fallback="")
 
