@@ -1,9 +1,37 @@
+# 🧠 PrintLogicController – handles saving and triggering print actions for different product types
+
+"""
+Controller responsible for saving structured output files and triggering label print actions.
+
+Supports multiple product types (Product, Control4, My2N) and uses configuration-defined paths
+to write output and create trigger files. Provides logging and user feedback via Messenger.
+"""
+
+# 🧱 Standard library
 from pathlib import Path
+
+# 🧠 First-party (project-specific)
 from utils.logger import get_logger
 
 
 class PrintLogicController:
+    """
+    Handles save-and-print logic for different product types.
+
+    Attributes:
+        config (ConfigParser): Loaded configuration file.
+        messenger (Messenger): Displays messages and errors to the user.
+        print_window (PrintWindow): Reference to the active print window.
+    """
     def __init__(self, config, messenger, print_window):
+        """
+        Initializes the logic controller.
+
+        Args:
+            config (ConfigParser): Configuration object.
+            messenger (Messenger): Messenger instance for user feedback.
+            print_window (PrintWindow): UI window reference.
+        """
         self.config = config
         self.logger = get_logger("PrintLogicController")
         self.messenger = messenger
@@ -11,11 +39,12 @@ class PrintLogicController:
 
     def product_save_and_print(self, header: str, record: str, trigger_values: list[str]) -> None:
         """
-        Extracts header and record for the scanned serial number and writes them to product output file.
+        Saves product header and record to output file and creates trigger files.
 
-            :param header: extracted header line
-            :param record: extracted record line
-            :param trigger_values: list of trigger filenames
+        Args:
+            header (str): Extracted header line.
+            record (str): Extracted record line.
+            trigger_values (list[str]): List of trigger filenames.
         """
         raw_output_path = self.config.get("ProductPaths", "output_file_path_product")
         if not raw_output_path:
@@ -46,14 +75,12 @@ class PrintLogicController:
 
     def control4_save_and_print(self, header: str, record: str, trigger_values: list[str]) -> None:
         """
-        Extracts header and record for the scanned serial number and writes them to Control4 output file.
+        Saves Control4 header and record to output file and creates trigger files.
 
-            - Searches for lines beginning with: SERIAL+I= and SERIAL+J= and SERIAL+K=
-            - If it finds both the header and the record, it writes them to the output file.
-
-            :param header: extracted header line
-            :param record: extracted record line
-            :param trigger_values: list of trigger filenames
+        Args:
+            header (str): Extracted header line.
+            record (str): Extracted record line.
+            trigger_values (list[str]): List of trigger filenames.
         """
         raw_output_path = self.config.get("Control4Paths", "output_file_path_c4_product")
         if not raw_output_path:
@@ -84,10 +111,11 @@ class PrintLogicController:
 
     def my2n_save_and_print(self, serial_number: str, token: str) -> None:
         """
-        Writes extracted My2N token and serial number to output file and creates trigger file.
+        Saves My2N serial number and token to output file and creates trigger file.
 
-            :param serial_number: serial number from input
-            :param token: extracted My2N token
+        Args:
+            serial_number (str): Serial number from input.
+            token (str): Extracted My2N token.
         """
         raw_output_path = self.config.get("My2nPaths", "output_file_path_my2n")
         if not raw_output_path:
@@ -117,7 +145,10 @@ class PrintLogicController:
 
     def _get_trigger_dir(self) -> Path | None:
         """
-        Returns trigger directory path from config.
+        Retrieves the trigger directory path from config.
+
+        Returns:
+            Path | None: Path object if valid, otherwise None.
         """
         raw_path = self.config.get("Paths", "trigger_path")
         if not raw_path:
