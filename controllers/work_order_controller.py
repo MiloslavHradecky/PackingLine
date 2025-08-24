@@ -32,7 +32,6 @@ class WorkOrderController:
         lbl_file (Path): Path to the .lbl file.
         nor_file (Path): Path to the .nor file.
         lines (list[str]): Parsed lines from .lbl file.
-        found_product_name (str): Product name extracted from .nor file.
     """
     def __init__(self, window_stack):
         """
@@ -63,7 +62,6 @@ class WorkOrderController:
 
         # 📄 Parsed data
         self.lines = None
-        self.found_product_name = None
 
         # 📌 Logger initialization
         self.logger = get_logger("WorkOrderController")
@@ -118,7 +116,6 @@ class WorkOrderController:
         # ❌ If file not found
         if not self.lbl_file.exists() or not self.nor_file.exists():
             self.lines = []
-            self.found_product_name = None
             self.logger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!")
             self.messenger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!", "Work Order Ctrl")
             self.reset_input_focus()
@@ -139,7 +136,6 @@ class WorkOrderController:
                         self.reset_input_focus()
                         return
 
-                    self.found_product_name = product_name
                     self.lines = self.load_file(self.lbl_file)
 
                     self.run_bartender_commander()

@@ -28,3 +28,10 @@
 {"timestamp": "2025-08-24 22:20:11,877", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"ptg\" není správné!"}
 {"timestamp": "2025-08-24 22:20:21,365", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
 {"timestamp": "2025-08-24 22:20:25,881", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-24 23:28:08,919", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86"}
+{"timestamp": "2025-08-24 23:28:08,926", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-24 23:28:08,949", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-24 23:28:17,222", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-24 23:28:25,022", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 6336"}
+{"timestamp": "2025-08-24 23:28:25,261", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-24 23:28:48,384", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}

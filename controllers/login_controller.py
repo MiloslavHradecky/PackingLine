@@ -56,7 +56,6 @@ class LoginController:
 
         # 📌 Initializing the 'SzvDecrypt' class to decrypt logins
         self.decrypter = models.user_model.SzvDecrypt()
-        self.selection_value_product = None
         self.value_prefix = None
 
         # 📌 Logger initialization

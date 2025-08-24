@@ -33,3 +33,11 @@
 2025-08-24 22:20:21,365 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
 2025-08-24 22:20:25,881 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-08-24 23:28:08,919 | INFO    | SystemInfo              | Aplikace v3.0.0.0 spuštěna | PC: HOME-BRIX | IP: 192.168.1.86
+2025-08-24 23:28:08,926 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\Home\Documents\Coding\Python\PyQt\PackingLine\config.ini
+2025-08-24 23:28:08,949 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-08-24 23:28:17,222 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-08-24 23:28:25,022 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 6336
+2025-08-24 23:28:25,261 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-08-24 23:28:48,384 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
