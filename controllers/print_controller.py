@@ -128,8 +128,8 @@ class PrintController:
         # === 3️⃣ Load corresponding .lbl file lines
         lbl_lines = self.loader.load_lbl_file(order_code=self.print_window.order_code)
         if not lbl_lines:
-            self.logger.error(f"Soubor .lbl nelze načíst nebo je prázdný!")
-            self.messenger.error(f"Soubor .lbl nelze načíst nebo je prázdný!", "Print Ctrl")
+            self.logger.error("Soubor .lbl nelze načíst nebo je prázdný!")
+            self.messenger.error("Soubor .lbl nelze načíst nebo je prázdný!", "Print Ctrl")
             self.delayed_restore_ui()
             return
 
@@ -199,8 +199,8 @@ class PrintController:
             output_path = Path(self.config.get("My2nPaths", "output_file_path_my2n"))
 
             if not reports_path or not output_path:
-                self.logger.error(f"Cesty k reportu nebo výstupu nejsou definovány.")
-                self.messenger.error(f"Chybí konfigurace cest pro My2N.", "Print Ctrl")
+                self.logger.error("Cesty k reportu nebo výstupu nejsou definovány.")
+                self.messenger.error("Chybí konfigurace cest pro My2N.", "Print Ctrl")
                 self.delayed_restore_ui()
                 return
 
