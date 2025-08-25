@@ -14,8 +14,8 @@ from pathlib import Path
 # 🧠 First-party (project-specific)
 from utils.logger import get_logger
 from utils.messenger import Messenger
-from views.work_order_window import WorkOrderWindow
 from utils.resources import get_config_path
+from views.work_order_window import WorkOrderWindow
 
 
 class WorkOrderController:
@@ -33,6 +33,7 @@ class WorkOrderController:
         nor_file (Path): Path to the .nor file.
         lines (list[str]): Parsed lines from .lbl file.
     """
+
     def __init__(self, window_stack):
         """
         Initializes controller logic, event binding, and config loading.
