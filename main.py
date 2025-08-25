@@ -17,7 +17,7 @@ import sys
 from configparser import ConfigParser
 
 # 🧩 Third-party libraries
-from PyQt6.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication  # pylint: disable=no-name-in-module
 
 # 🧠 First-party (project-specific)
 from views.login_window import LoginWindow
@@ -89,8 +89,8 @@ def main():
             log_file_txt = get_writable_path("logs/app.txt")
             with open(log_file_txt, "a", encoding="utf-8") as f:
                 f.write("\n")
-        except Exception as e:
-            logger.warning(f"Nepodařilo se zapsat prázdný řádek do logu: {e}")
+        except (OSError, IOError) as e:
+            logger.warning("Nepodařilo se zapsat prázdný řádek do logu: %s", e)
 
         sys.exit(1)
 
