@@ -22,7 +22,7 @@ class JsonFormatter(logging.Formatter):
     Custom formatter for logging in JSON format.
     """
 
-    def format(self, record):
+    def format(self, record):  # noqa
         log_record = {
             "timestamp": self.formatTime(record),
             "level": record.levelname,
