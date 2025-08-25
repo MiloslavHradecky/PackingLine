@@ -94,7 +94,7 @@ class SplashScreen(QSplashScreen):
         self._animate_fade_in()
         QTimer.singleShot(self.duration, lambda: self._finish(on_finish_callback))
 
-    def _animate_fade_in(self):
+    def _animate_fade_in(self):  # pylint: disable=attribute-defined-outside-init
         """
         Applies a fade-in animation to the splash screen.
         """
