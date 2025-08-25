@@ -84,6 +84,7 @@ class WorkOrderController:
             return
 
         try:
+            # pylint: disable=consider-using-with
             process = subprocess.Popen([str(commander_path), "/START", "/MIN=SystemTray", "/NOSPLASH", str(tl_file_path)], shell=True)
 
             self.logger.info(f"BarTender Commander spuštěn: {process.pid}")

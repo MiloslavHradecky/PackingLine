@@ -105,6 +105,7 @@ class SzvDecrypt:
         Returns:
             bool: True if password matches, False otherwise.
         """
+        # pylint: disable=global-statement
         global value_prefix  # ✅ Umožňuje upravit globální proměnnou
         try:
             decoded_data = self.decoding_file()
@@ -117,6 +118,7 @@ class SzvDecrypt:
                             self.value_surname = parts[2].strip()
                             self.value_name = parts[3].strip()
                             self.value_prefix = parts[4].strip()
+                            # pylint: disable=global-statement
                             global value_prefix
                             value_prefix = self.value_prefix  # ✅ Aktualizace globální proměnné
                             self.logger.info(f"Logged: {self.value_surname} {self.value_name} {self.value_prefix}")
