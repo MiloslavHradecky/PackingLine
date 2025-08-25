@@ -55,7 +55,7 @@ def main():
     if checker.is_running():
         app = QApplication([])
         messenger = Messenger(None)
-        messenger.error(f"Upozornění - Aplikace už běží!", "Main")
+        messenger.error("Upozornění - Aplikace už běží!", "Main")
         sys.exit(0)
 
     app = QApplication([])
@@ -79,7 +79,7 @@ def main():
     validator = PathValidator()
     if not validator.validate():
         messenger = Messenger(None)
-        messenger.error(f"Konfigurace obsahuje neplatné cesty. Aplikace bude ukončena.", "Main")
+        messenger.error("Konfigurace obsahuje neplatné cesty. Aplikace bude ukončena.", "Main")
 
         # 📌 Logger initialization
         logger = get_logger("Main")
@@ -114,9 +114,4 @@ def main():
 
 
 if __name__ == "__main__":
-    """
-    Executes the application only if the script is run directly.
-
-    Prevents execution when imported as a module.
-    """
     main()
