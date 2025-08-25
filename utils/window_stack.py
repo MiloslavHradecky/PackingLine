@@ -5,9 +5,11 @@ Provides a stack-based mechanism for managing visibility and lifecycle of PyQt6 
 Ensures only one window is visible at a time and restores previous windows when one is closed.
 """
 
+
 # 🧱 Standard library — none
 
 # 🧠 Third-party — assumed PyQt6 (not directly imported here)
+
 
 class WindowStackManager:
     """
@@ -16,6 +18,7 @@ class WindowStackManager:
     Attributes:
         _stack (list): Internal list representing the window stack.
     """
+
     def __init__(self):
         """
         Initializes an empty window stack.
