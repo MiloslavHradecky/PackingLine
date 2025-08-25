@@ -32,7 +32,6 @@ class Messenger:
             self.parent = parent
         else:
             self.parent = None
-        self.auto_info_box = None
 
     def center_dialog(self, dialog: QWidget):
         """

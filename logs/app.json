@@ -35,3 +35,18 @@
 {"timestamp": "2025-08-24 23:28:25,022", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 6336"}
 {"timestamp": "2025-08-24 23:28:25,261", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
 {"timestamp": "2025-08-24 23:28:48,384", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-08-25 14:45:40,089", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-25 14:45:40,094", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-25 14:45:40,116", "level": "WARNING", "module": "PathValidator", "message": "Cesta nebo soubor neexistuje: trigger_path → C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece"}
+{"timestamp": "2025-08-25 14:45:43,709", "level": "WARNING", "module": "PathValidator", "message": "Cesta nebo soubor neexistuje: tl_file_path → C:\\Users\\Home\\Documents\\Coding\\Python\\PyQt\\Spoustece\\TestLine.tl"}
+{"timestamp": "2025-08-25 14:46:13,122", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.29"}
+{"timestamp": "2025-08-25 14:46:13,128", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-08-25 14:46:13,156", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-08-25 14:46:20,481", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (pta) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-08-25 14:46:20,482", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo \"pta\" není správné!"}
+{"timestamp": "2025-08-25 14:46:27,300", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-08-25 14:46:34,541", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 24352"}
+{"timestamp": "2025-08-25 14:46:34,636", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-08-25 14:46:47,942", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-1757"}
+{"timestamp": "2025-08-25 14:46:47,961", "level": "INFO", "module": "PrintController", "message": "My2N token: RG77-EE3C-DM6E-PNJ7"}
+{"timestamp": "2025-08-25 14:46:58,343", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
