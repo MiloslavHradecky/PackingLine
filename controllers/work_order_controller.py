@@ -104,7 +104,7 @@ class WorkOrderController:
         # 📌 Processing of input
         value_input = self.work_order_window.work_order_input.text().strip().upper()
         if not value_input:
-            self.messenger.warning(f"Zadejte prosím výrobní příkaz!", "Work Order Ctrl")
+            self.messenger.warning("Zadejte prosím výrobní příkaz!", "Work Order Ctrl")
             self.reset_input_focus()
             return
 

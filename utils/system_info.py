@@ -13,6 +13,7 @@ import platform
 # 🧠 First-party
 from utils.logger import get_logger
 
+
 def log_system_info(version: str):
     """
     Logs system information including application version, computer name, and IP address.

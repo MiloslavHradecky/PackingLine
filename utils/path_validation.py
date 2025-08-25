@@ -65,10 +65,10 @@ class PathValidator:
                 self.missing.append((key, "chyba v configu"))
 
         if self.missing:
-            self.messenger.error(f"Následující cesty jsou neplatné nebo chybí soubor:", "Path Validation")
+            self.messenger.error("Následující cesty jsou neplatné nebo chybí soubor:", "Path Validation")
             for key, path in self.missing:
                 self.messenger.error(f"\n{key}\n{path}", "Path Validation")
             return False
 
-        self.logger.info(f"Všechny cesty v configu jsou validní.")
+        self.logger.info("Všechny cesty v configu jsou validní.")
         return True

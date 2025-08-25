@@ -25,6 +25,7 @@ class Validator:
         messenger (Messenger): Handles user-facing messages.
         logger: Logger instance for internal diagnostics.
     """
+
     def __init__(self, print_window):
         """
         Initializes the Validator with UI window, logger, and messenger.
@@ -52,7 +53,7 @@ class Validator:
         """
         pattern = r'^\d{2}-\d{4}-\d{4}$'
         if not re.fullmatch(pattern, serial_number):
-            self.messenger.info(f"Serial number must be in format 00-0000-0000.", "Validators")
+            self.messenger.info("Serial number must be in format 00-0000-0000.", "Validators")
             self.print_window.reset_input_focus()
             return False
         return True
@@ -74,7 +75,7 @@ class Validator:
         if missing_keys:
             joined = ', '.join(missing_keys)
             self.logger.error(f"Nebyly nalezeny všechny klíčové řádky: {joined}")
-            self.messenger.error(f"Některé klíčové řádky v souboru .lbl chybí!", "Validators")
+            self.messenger.error("Některé klíčové řádky v souboru .lbl chybí!", "Validators")
             self.print_window.reset_input_focus()
             return False
 
@@ -97,8 +98,8 @@ class Validator:
         try:
             index = header_fields.index('P Znacka balice')
             if index >= len(record_fields):
-                self.logger.error(f"Neplatný index pole 'P Znacka balice'")
-                self.messenger.error(f"Neplatný index pole v record.", "Validators")
+                self.logger.error("Neplatný index pole 'P Znacka balice'")
+                self.messenger.error("Neplatný index pole v record.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
@@ -108,7 +109,7 @@ class Validator:
 
         except ValueError:
             self.logger.error("Pole 'P Znacka balice' chybí.")
-            self.messenger.error(f"Pole v header nebylo nalezeno.", "Validators")
+            self.messenger.error("Pole v header nebylo nalezeno.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
@@ -234,7 +235,7 @@ class Validator:
         if missing_keys:
             joined = ', '.join(missing_keys)
             self.logger.error(f"Nebyly nalezeny všechny klíčové řádky: {joined}")
-            self.messenger.error(f"Některé klíčové řádky v souboru .lbl chybí!", "Validators")
+            self.messenger.error("Některé klíčové řádky v souboru .lbl chybí!", "Validators")
             self.print_window.reset_input_focus()
             return False
 
@@ -257,8 +258,8 @@ class Validator:
         """
         parts = serial_number.split('-')
         if len(parts) != 3:
-            self.logger.error(f"Neplatný formát serial number.")
-            self.messenger.error(f"Neplatný formát serial number.", "Validators")
+            self.logger.error("Neplatný formát serial number.")
+            self.messenger.error("Neplatný formát serial number.", "Validators")
             self.print_window.reset_input_focus()
             return None
 
@@ -278,8 +279,8 @@ class Validator:
             lines = source_file.read_text().splitlines()
             token_line = next((line for line in reversed(lines) if 'my2n token:' in line.lower()), None)
             if not token_line:
-                self.logger.error(f"V souboru nebyl nalezen žádný My2N token.")
-                self.messenger.error(f"V souboru nebyl nalezen žádný My2N token.", "Validators")
+                self.logger.error("V souboru nebyl nalezen žádný My2N token.")
+                self.messenger.error("V souboru nebyl nalezen žádný My2N token.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
@@ -290,8 +291,8 @@ class Validator:
 
             if prefix_index == -1:
                 # 📌 This should not happen, but just to be sure
-                self.logger.error(f"Chyba při zpracování řádku s tokenem.")
-                self.messenger.error(f"Chyba při zpracování řádku s tokenem.", "Validators")
+                self.logger.error("Chyba při zpracování řádku s tokenem.")
+                self.messenger.error("Chyba při zpracování řádku s tokenem.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
@@ -299,8 +300,8 @@ class Validator:
             token_value = token_line[prefix_index + len(token_prefix):].strip()
 
             if not token_value:
-                self.logger.error(f"My2N token je prázdný.")
-                self.messenger.error(f"My2N token byl nalezen, ale neobsahuje žádnou hodnotu.", "Validators")
+                self.logger.error("My2N token je prázdný.")
+                self.messenger.error("My2N token byl nalezen, ale neobsahuje žádnou hodnotu.", "Validators")
                 self.print_window.reset_input_focus()
                 return None
 
