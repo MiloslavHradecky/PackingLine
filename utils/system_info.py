@@ -35,4 +35,4 @@ def log_system_info(version: str):
     except OSError:
         computer_name = "Neznámý"
 
-    logger.info(f"Aplikace v{version} spuštěna | PC: {computer_name} | IP: {ip_address}")
+    logger.info("Aplikace v%s spuštěna | PC: %s | IP: %s", version, computer_name, ip_address)

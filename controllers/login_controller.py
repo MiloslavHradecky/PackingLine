@@ -79,7 +79,7 @@ class LoginController:
                            creationflags=subprocess.CREATE_NO_WINDOW)
 
         except subprocess.CalledProcessError as e:
-            self.logger.warning(f"Chyba při ukončování BarTender procesů: {str(e)}")
+            self.logger.warning("Chyba při ukončování BarTender procesů: %s", str(e))
             self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Login Ctrl")
 
     def handle_login(self):
@@ -102,12 +102,12 @@ class LoginController:
                 self.kill_bartender_processes()
                 self.open_work_order_window()
             else:
-                self.logger.warning(f'Zadané heslo "{password}" není správné!')
+                self.logger.warning("Zadané heslo '%s' není správné!", password)
                 self.messenger.warning("Zadané heslo není správné!", "Login Ctrl")
                 self.login_window.password_input.clear()
                 self.login_window.password_input.setFocus()
         except Exception as e:
-            self.logger.error(f'Neočekávaný problém: {str(e)}')
+            self.logger.error("Neočekávaný problém: %s", str(e))
             self.messenger.error(str(e), "Login Ctrl")
             self.login_window.password_input.clear()
             self.login_window.password_input.setFocus()
@@ -133,4 +133,4 @@ class LoginController:
             with open(log_file_txt, "a", encoding="utf-8") as f:
                 f.write("\n")
         except Exception as e:
-            self.logger.warning(f"Nepodařilo se zapsat prázdný řádek do logu: {e}")
+            self.logger.warning("Nepodařilo se zapsat prázdný řádek do logu: %s", str(e))

@@ -65,8 +65,8 @@ def ensure_config_file(path: str = "config.ini"):
         try:
             with config_path.open("w", encoding="utf-8") as config_file:
                 config.write(config_file)
-            logger.info(f"Konfigurační soubor vytvořen: {config_path}")
+            logger.info("Konfigurační soubor vytvořen: %s", config_path)
         except Exception as e:
-            logger.error(f"Chyba při vytváření konfiguračního souboru: {str(e)}")
+            logger.error("Chyba při vytváření konfiguračního souboru: %s", str(e))
     else:
-        logger.info(f"Konfigurační soubor již existuje: {config_path}")
+        logger.info("Konfigurační soubor již existuje: %s", config_path)

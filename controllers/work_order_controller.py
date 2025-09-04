@@ -87,10 +87,10 @@ class WorkOrderController:
             # pylint: disable=consider-using-with
             process = subprocess.Popen([str(commander_path), "/START", "/MIN=SystemTray", "/NOSPLASH", str(tl_file_path)], shell=True)
 
-            self.logger.info(f"BarTender Commander spuštěn: {process.pid}")
+            self.logger.info("BarTender Commander spuštěn: %s", process.pid)
 
         except Exception as e:
-            self.logger.error(f"Chyba při spuštění BarTender Commanderu: {str(e)}")
+            self.logger.error("Chyba při spuštění BarTender Commanderu: %s", str(e))
             self.messenger.error(f"Chyba při spuštění BarTender Commanderu: {str(e)}", "Work Order Ctrl")
 
     def work_order_button_click(self):
@@ -118,7 +118,7 @@ class WorkOrderController:
         # ❌ If file not found
         if not self.lbl_file.exists() or not self.nor_file.exists():
             self.lines = []
-            self.logger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!")
+            self.logger.warning("Soubor %s nebo %s nebyl nalezen!", self.lbl_file, self.nor_file)
             self.messenger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!", "Work Order Ctrl")
             self.reset_input_focus()
             return
@@ -133,7 +133,7 @@ class WorkOrderController:
                     product_name = parts[1].strip()
 
                     if nor_order_code != value_input:
-                        self.logger.warning(f"Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!")
+                        self.logger.warning("Výrobní příkaz v souboru .NOR (%s) neodpovídá zadanému vstupu (%s)!", nor_order_code, value_input)
                         self.messenger.warning(f"Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!", "Work Order Ctrl")
                         self.reset_input_focus()
                         return
@@ -142,16 +142,16 @@ class WorkOrderController:
 
                     self.run_bartender_commander()
                     self.open_app_window(order_code=value_input, product_name=product_name)
-                    self.logger.info(f"Příkaz: {value_input}")
+                    self.logger.info("Příkaz: %s", value_input)
                     self.reset_input_focus()
 
                 else:
-                    self.logger.warning(f"Řádek v souboru {self.nor_file} nemá očekávaný formát.")
+                    self.logger.warning("Řádek v souboru %s nemá očekávaný formát.", self.nor_file)
                     self.messenger.warning(f"Řádek v souboru {self.nor_file} nemá očekávaný formát.", "Work Order Ctrl")
                     self.reset_input_focus()
                     return
         except Exception as e:
-            self.logger.error(f"Neočekávaná chyba při zpracování .NOR souboru: {e}")
+            self.logger.error("Neočekávaná chyba při zpracování .NOR souboru: %s", str(e))
             self.messenger.error(f"Neočekávaná chyba při zpracování .NOR souboru: {e}", "Work Order Ctrl")
             self.reset_input_focus()
             return
@@ -169,7 +169,7 @@ class WorkOrderController:
         try:
             return file_path.read_text().splitlines()
         except Exception as e:
-            self.logger.error(f"Soubor {file_path} se nepodařilo načíst: {e}")
+            self.logger.error("Soubor %s se nepodařilo načíst: %s", file_path, str(e))
             self.messenger.error(f"Soubor {file_path} se nepodařilo načíst: {e}", "Work Order Ctrl")
             return []
 
@@ -201,7 +201,7 @@ class WorkOrderController:
             subprocess.run('taskkill /f /im bartend.exe 1>nul 2>nul', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
 
         except subprocess.CalledProcessError as e:
-            self.logger.error(f"Chyba při ukončování BarTender procesů: {str(e)}")
+            self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
             self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Work Order Ctrl")
 
     def handle_exit(self):

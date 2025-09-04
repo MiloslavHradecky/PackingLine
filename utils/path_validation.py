@@ -56,11 +56,11 @@ class PathValidator:
                 raw = self.config.get("Paths", key)
                 path = get_config_path(raw)
                 if not path.exists():
-                    self.logger.warning(f"Cesta nebo soubor neexistuje: {key} → {path}")
+                    self.logger.warning("Cesta nebo soubor neexistuje: %s → %s", key, path)
                     self.messenger.warning(f"Cesta nebo soubor neexistuje:\n{path}", "Path Validation")
                     self.missing.append((key, path))
             except Exception as e:
-                self.logger.error(f"Chyba při čtení '{key}': {e}")
+                self.logger.error("Chyba při čtení %s: %s", key, str(e))
                 self.messenger.error(f"Chyba při čtení '{key}': {e}", "Path Validation")
                 self.missing.append((key, "chyba v configu"))
 

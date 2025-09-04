@@ -69,7 +69,7 @@ class PrintLogicController:
                 target_file.touch(exist_ok=True)
 
         except Exception as e:
-            self.logger.error(f"Chyba zápisu: {str(e)}")
+            self.logger.error("Chyba zápisu: %s", str(e))
             self.messenger.error(f"Chyba zápisu: {str(e)}", "Print Logic Ctrl")
             self.print_window.reset_input_focus()
 
@@ -105,7 +105,7 @@ class PrintLogicController:
                 target_file.touch(exist_ok=True)
 
         except Exception as e:
-            self.logger.error(f"Chyba zápisu: {str(e)}")
+            self.logger.error("Chyba zápisu: %s", str(e))
             self.messenger.error(f"Chyba zápisu: {str(e)}", "Print Logic Ctrl")
             self.print_window.reset_input_focus()
 
@@ -139,7 +139,7 @@ class PrintLogicController:
             trigger_file.touch(exist_ok=True)
 
         except Exception as e:
-            self.logger.error(f"Chyba zápisu: {str(e)}")
+            self.logger.error("Chyba zápisu: %s", str(e))
             self.messenger.error(f"Chyba zápisu: {str(e)}", "Print Logic Ctrl")
             self.print_window.reset_input_focus()
 
@@ -159,7 +159,7 @@ class PrintLogicController:
 
         path = Path(raw_path)
         if not path.exists():
-            self.logger.error(f"Trigger složka neexistuje: {path}")
+            self.logger.error("Trigger složka neexistuje: %s", str(path))
             self.messenger.error(f"Trigger složka neexistuje: {path}", "Print Logic Ctrl")
             self.print_window.reset_input_focus()
             return None

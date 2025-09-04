@@ -165,7 +165,7 @@ class PrintController:
             self.logic.product_save_and_print(header, new_record, trigger_values)
 
             # === 6️⃣ Log success
-            self.logger.info(f"{self.product_name} {self.serial_input}")
+            self.logger.info("%s %s", self.product_name, self.serial_input)
 
         # 📌 Execute control4-save-and-print functions as needed
         if 'control4' in triggers and lbl_lines:
@@ -191,7 +191,7 @@ class PrintController:
             self.logic.control4_save_and_print(header, record, trigger_values)
 
             # === 5️⃣ Log entry
-            self.logger.info(f"Control4 {self.serial_input}")
+            self.logger.info("Control4 %s", self.serial_input)
 
         # 📌 Execute my2n-save-and-print functions as needed
         if 'my2n' in triggers:
@@ -210,7 +210,7 @@ class PrintController:
                 return
 
             self.logic.my2n_save_and_print(self.serial_input, token)
-            self.logger.info(f"My2N token: {token}")
+            self.logger.info("My2N token: %s", token)
 
         self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=3000)
         self.restore_ui()

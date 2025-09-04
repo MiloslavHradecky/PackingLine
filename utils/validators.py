@@ -74,7 +74,7 @@ class Validator:
 
         if missing_keys:
             joined = ', '.join(missing_keys)
-            self.logger.error(f"Nebyly nalezeny všechny klíčové řádky: {joined}")
+            self.logger.error("Nebyly nalezeny všechny klíčové řádky: %s", joined)
             self.messenger.error("Některé klíčové řádky v souboru .lbl chybí!", "Validators")
             self.print_window.reset_input_focus()
             return False
@@ -136,7 +136,7 @@ class Validator:
                 record = line.split('E=')[1].strip()
 
         if not header or not record:
-            self.logger.error(f"Nebyly nalezeny hlavička nebo záznam pro '{serial}'.")
+            self.logger.error("Nebyly nalezeny hlavička nebo záznam pro '%s'.", serial)
             self.messenger.error(f"Nebyly nalezeny hlavička nebo záznam pro '{serial}'.", "Validators")
             self.print_window.reset_input_focus()
             return None
@@ -161,7 +161,7 @@ class Validator:
                 values = [val.strip() for val in raw_value.split(';') if val.strip()]
                 return values
 
-        self.logger.error(f"Řádek \'{key_b}\' nebyl nalezen.")
+        self.logger.error("Řádek '%s' nebyl nalezen.", key_b)
         self.messenger.error(f"Řádek \'{key_b}\' nebyl nalezen.", "Validators")
         self.print_window.reset_input_focus()
         return None
@@ -189,7 +189,7 @@ class Validator:
                 record = line.split('K=')[1].strip()
 
         if not header or not record:
-            self.logger.error(f"Nebyly nalezeny J/K řádky pro serial '{serial}'.")
+            self.logger.error("Nebyly nalezeny J/K řádky pro serial '%s'.", serial)
             self.messenger.error(f"Nebyly nalezeny J/K řádky pro serial '{serial}'.", "Validators")
             self.print_window.reset_input_focus()
             return None
@@ -213,7 +213,7 @@ class Validator:
                 raw_value = line.split('I=')[1]
                 return [val.strip() for val in raw_value.split(';') if val.strip()]
 
-        self.logger.error(f"Řádek \'{key_i}\' nebyl nalezen.")
+        self.logger.error("Řádek '%s' nebyl nalezen.", key_i)
         self.messenger.error(f"Řádek \'{key_i}\' nebyl nalezen.", "Validators")
         self.print_window.reset_input_focus()
         return None
@@ -234,7 +234,7 @@ class Validator:
 
         if missing_keys:
             joined = ', '.join(missing_keys)
-            self.logger.error(f"Nebyly nalezeny všechny klíčové řádky: {joined}")
+            self.logger.error("Nebyly nalezeny všechny klíčové řádky: %s", joined)
             self.messenger.error("Některé klíčové řádky v souboru .lbl chybí!", "Validators")
             self.print_window.reset_input_focus()
             return False
@@ -270,7 +270,7 @@ class Validator:
 
         source_file = reports_path / subdir1 / subdir2 / file_name
         if not source_file.exists():
-            self.logger.error(f"Report soubor {source_file} neexistuje.")
+            self.logger.error("Report soubor %s neexistuje.", str(source_file))
             self.messenger.error(f"Report soubor {source_file} neexistuje.", "Validators")
             self.print_window.reset_input_focus()
             return None
@@ -308,7 +308,7 @@ class Validator:
             return token_value
 
         except Exception as e:
-            self.logger.error(f"Chyba čtení nebo extrakce: {str(e)}")
+            self.logger.error("Chyba čtení nebo extrakce: %s", str(e))
             self.messenger.error(f'{str(e)}', "Validators")
             self.print_window.reset_input_focus()
             return None

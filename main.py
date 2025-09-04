@@ -7,10 +7,10 @@ single-instance enforcement, global styling, and startup sequence including
 splash screen and login window.
 
 Version:
-    3.0.0.0
+    3.1.0.0
 """
 
-__version__ = '3.0.0.0'
+__version__ = '3.1.0.0'
 
 # 🧱 Standard library
 import sys
