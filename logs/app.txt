@@ -78,3 +78,14 @@
 2025-09-04 14:40:38,625 | INFO    | PrintController         | My2N token: UVAD-RZLW-XXVY-OC4S
 2025-09-04 14:40:53,423 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+2025-09-04 15:22:32,248 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-04 15:22:32,253 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\GitWork\Python\PyQt\PackingLine\config.ini
+2025-09-04 15:22:32,276 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-04 15:22:40,144 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-04 15:22:48,022 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 3936
+2025-09-04 15:22:48,080 | INFO    | WorkOrderController     | Příkaz: 24H7308
+2025-09-04 15:23:07,306 | INFO    | PrintLogicController    | Starý soubor byl smazán: C:\GitWork\Python\PyQt\Etikety\02 product.txt
+2025-09-04 15:23:07,310 | INFO    | PrintController         | 9155211C 54-5301-8056
+2025-09-04 15:23:07,322 | INFO    | PrintController         | My2N token: W6S3-WOHD-KSEU-BURL
+2025-09-04 15:23:25,053 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+

@@ -56,6 +56,14 @@ class PrintLogicController:
         output_path = Path(raw_output_path)
 
         try:
+            # 🧹 Delete the file if it exists
+            if output_path.exists():
+                try:
+                    output_path.unlink()
+                    self.logger.info("Starý soubor byl smazán: %s", output_path)
+                except Exception as delete_error:
+                    self.logger.warning("Nepodařilo se smazat soubor %s: %s", output_path, str(delete_error))
+
             with output_path.open('w') as file:
                 file.write(header + '\n')
                 file.write(record + '\n')
