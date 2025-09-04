@@ -50,3 +50,12 @@
 {"timestamp": "2025-08-25 14:46:47,942", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-1757"}
 {"timestamp": "2025-08-25 14:46:47,961", "level": "INFO", "module": "PrintController", "message": "My2N token: RG77-EE3C-DM6E-PNJ7"}
 {"timestamp": "2025-08-25 14:46:58,343", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-04 12:56:21,106", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.0.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-04 12:56:21,111", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\GitWork\\Python\\PyQt\\PackingLine\\config.ini"}
+{"timestamp": "2025-09-04 12:56:21,137", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-04 12:56:39,516", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: Hradecký Milan Hm"}
+{"timestamp": "2025-09-04 12:56:59,822", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 7108"}
+{"timestamp": "2025-09-04 12:56:59,902", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 24H7308"}
+{"timestamp": "2025-09-04 12:57:50,757", "level": "INFO", "module": "PrintController", "message": "9155211C 54-5301-8056"}
+{"timestamp": "2025-09-04 12:57:50,771", "level": "INFO", "module": "PrintController", "message": "My2N token: W6S3-WOHD-KSEU-BURL"}
+{"timestamp": "2025-09-04 12:59:44,687", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
