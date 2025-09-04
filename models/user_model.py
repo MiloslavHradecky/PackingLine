@@ -22,17 +22,17 @@ from utils.messenger import Messenger
 from utils.resources import get_config_path, resolve_path
 
 # 📌 Global variable holding the value prefix
-value_prefix = None
+VALUE_PREFIX = None
 
 
 def get_value_prefix():
     """
-    Returns the current value of the global 'value_prefix'.
+    Returns the current value of the global 'VALUE_PREFIX'.
 
     Returns:
-        str | None: The current value of 'value_prefix'.
+        str | None: The current value of 'VALUE_PREFIX'.
     """
-    return value_prefix
+    return VALUE_PREFIX
 
 
 class SzvDecrypt:
@@ -64,13 +64,13 @@ class SzvDecrypt:
         raw_path = self.config.get('Paths', 'szv_input_file')
         self.szv_input_file = resolve_path(raw_path)
 
-        # 📌 Inicializace loggeru
+        # 📌 Logger initialization
         self.logger = get_logger("SzvDecrypt")
 
         # 📌 Messenger initialization
         self.messenger = Messenger()
 
-        # 📌 Uchovávání dekódovaných hodnot
+        # 📌 Storing decoded values
         self.value_surname = None
         self.value_name = None
         self.value_prefix = None
@@ -89,8 +89,8 @@ class SzvDecrypt:
         int_xor = len(encoded_data) % 32
         decoded_data = bytearray(len(encoded_data))
 
-        for i in range(len(encoded_data)):
-            decoded_data[i] = encoded_data[i] ^ (int_xor ^ 0x6)
+        for i, byte in enumerate(encoded_data):
+            decoded_data[i] = byte ^ (int_xor ^ 0x6)
             int_xor = (int_xor + 5) % 32
 
         return decoded_data.decode('windows-1250').split('\x15')
@@ -106,7 +106,7 @@ class SzvDecrypt:
             bool: True if password matches, False otherwise.
         """
         # pylint: disable=global-statement
-        global value_prefix  # ✅ Umožňuje upravit globální proměnnou
+        global VALUE_PREFIX  # ✅ Allows you to modify a global variable
         try:
             decoded_data = self.decoding_file()
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
@@ -119,23 +119,19 @@ class SzvDecrypt:
                             self.value_name = parts[3].strip()
                             self.value_prefix = parts[4].strip()
                             # pylint: disable=global-statement
-                            global value_prefix
-                            value_prefix = self.value_prefix  # ✅ Aktualizace globální proměnné
-                            self.logger.info(f"Logged: {self.value_surname} {self.value_name} {self.value_prefix}")
+                            global VALUE_PREFIX
+                            VALUE_PREFIX = self.value_prefix  # ✅ Updating a global variable
+                            self.logger.info("Logged: %s %s %s", self.value_surname, self.value_name, self.value_prefix)
                             return True
-                        else:
-                            self.logger.warning(f"Řádek neobsahuje dostatek částí: {decoded_line[1]}")
-                            return False
-                    else:
-                        self.logger.warning(f"Řádek neobsahuje další části: {decoded_line}")
+                        self.logger.warning("Řádek neobsahuje dostatek částí: %s", decoded_line[1])
                         return False
-
-            self.logger.warning(f"Zadané heslo ({password}) nebylo nalezeno v souboru ({self.szv_input_file}).")
-
+                    self.logger.warning("Řádek neobsahuje další části: %s", decoded_line)
+                    return False
+            self.logger.warning("Zadané heslo (%s) nebylo nalezeno v souboru (%s).", password, self.szv_input_file)
             return False
 
-        except Exception as e:
-            self.logger.error(f"Neočekávaná chyba při ověřování hesla: {str(e)}")
+        except (FileNotFoundError, ValueError, IndexError, AttributeError) as e:
+            self.logger.error("Neočekávaná chyba při ověřování hesla: %s", str(e))
             self.messenger.error(f"{str(e)}", "Přihlášení")
             return False
 
@@ -153,8 +149,8 @@ class SzvDecrypt:
                     byte_array = bytearray.fromhex(line.strip())
                     decoded_line = self.decoding_line(byte_array)
                     decoded_lines.append([hashlib.sha256(decoded_line[0].encode()).hexdigest(), ','.join(decoded_line)])
-        except Exception as e:
-            self.logger.error(f"Při čtení souboru došlo k chybě: {str(e)}")
+        except (FileNotFoundError, ValueError, OSError, IndexError, AttributeError) as e:
+            self.logger.error("Při čtení souboru došlo k chybě: %s", str(e))
             self.messenger.error(f"{str(e)}", "Přihlášení")
             return False
 
