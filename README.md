@@ -27,6 +27,11 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 ```
 📦 PackingLine/
 │
+├── audit/
+│   ├── audit.py
+│   ├── audit_report_xxxx-xx-xx_xx-xx.txt
+│   └── vulture_whitelist.txt
+│
 ├── controllers/
 │   ├── login_controller.py
 │   ├── print_config_controller.py
@@ -38,6 +43,7 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │
 ├── docs/
 │   ├── home_terminal.md
+│   ├── pyproject.md
 │   ├── scheme.txt
 │   └── work_terminal.md
 │
@@ -47,6 +53,14 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │
 ├── models/
 │   └── user_model.py
+│
+├── packingline.egg-info/
+│   ├── dependency_links.txt
+│   ├── entry_points.txt
+│   ├── PKG-INFO
+│   ├── requires.txt
+│   ├── SOURCES.txt
+│   └── top_level.txt
 │
 ├── settings/
 │   ├── config.ini
@@ -86,11 +100,18 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │   ├── splash_screen.py
 │   └── work_order_window.py
 │
+├── .flake8
 ├── .gitignore
+├── .pylintrc
 ├── config.ini
+├── dev-requirements.in
+├── dev-requirements.txt
 ├── LICENSE
 ├── main.py
+├── pyproject.toml
 ├── README.md
+├── requirements.in
+├── requirements.txt
 └── version.txt
 ```
 

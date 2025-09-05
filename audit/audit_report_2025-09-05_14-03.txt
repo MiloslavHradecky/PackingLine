@@ -8,12 +8,22 @@
 
 🧠 PYLINT — hloubková analýza
 ------------------------------------------------------------
-📄 .\vulture_whitelist.py
-
-📄 .\controllers\login_controller.py
+📄 main.py
 
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\main.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\controllers\login_controller.py
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.83/10, +0.17)
 
 
 📄 .\controllers\print_config_controller.py
@@ -42,8 +52,8 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 📄 .\controllers\work_order_controller.py
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.90/10, +0.10)
 
 
 📄 .\models\user_model.py

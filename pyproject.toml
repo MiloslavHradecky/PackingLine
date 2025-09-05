@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=80.9.0", "wheel>=0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "packingline"
+version = "3.1.0"
+description = "EOL Line-B 2N"
+authors = [{ name = "MiloslavHradecky", email = "miloslavhradecky76@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "markdown>=3.9",
+    "pyqt6>=6.9.1",
+    "pyqt6-qt6>=6.9.2",
+    "pyqt6-sip>=13.10.2",
+    "qtwidgets>=1.1"
+]
+
+[tool.setuptools]
+packages = ["controllers", "models", "utils", "views"]
+include-package-data = true
+
+[project.scripts]
+packingline = "main:main"
