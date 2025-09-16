@@ -20,7 +20,9 @@ from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
 from utils.validators import Validator
+
 from views.print_window import PrintWindow
+
 from controllers.print_logic_controller import PrintLogicController
 from controllers.print_loader_controller import PrintLoaderController
 from controllers.print_config_controller import PrintConfigController

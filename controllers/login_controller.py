@@ -16,9 +16,10 @@ import configparser
 
 # 🧠 First-party (project-specific)
 import models.user_model
+
 from utils.logger import get_logger
 from utils.messenger import Messenger
-from utils.resources import get_config_path, get_writable_path
+from utils.resources import get_config_path
 
 
 class LoginController:
@@ -126,11 +127,3 @@ class LoginController:
         """
         self.logger.info("Aplikace byla ukončena uživatelem.")
         self.login_window.effects.fade_out(self.login_window, duration=1000)
-
-        # 📌 Adding a blank line to the TXT log
-        try:
-            log_file_txt = get_writable_path("logs/app.txt")
-            with open(log_file_txt, "a", encoding="utf-8") as f:
-                f.write("\n")
-        except Exception as e:
-            self.logger.warning("Nepodařilo se zapsat prázdný řádek do logu: %s", str(e))
