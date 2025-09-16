@@ -1,25 +1,54 @@
+# 🛠️ create_config.py – Generates default configuration file for the application
+
 import configparser
 from io import StringIO
 
 config = configparser.ConfigParser()
-config.optionxform = str
+config.optionxform = str  # ✅ Preserve key casing
 
-config['Paths'] = {
-    'szv_input_file': 'T:/Prikazy/DataTPV/SZV.dat',
-    'csv_input_file': 'T:/Prikazy/DataTPV/ManualLabelPrint/Databaze/MLP.csv',
-    'csv_output_file': 'T:/Prikazy/DataTPV/ManualLabelPrint/Etikety/label.csv',
-    'bartender_path': 'C:/Program Files (x86)/Seagull/BarTender Suite/bartend.exe',
-    'label_folder': 'T:/Prikazy/DataTPV/ManualLabelPrint/Etikety/',
-    'orders_folder': 'T:/Prikazy/',
-    'archiv_file_path': 'T:/Prikazy/DataTPV/ManualLabelPrint/Archiv/'
+# 📌 Section: Window – application title
+config["Window"] = {
+    "title": "2N IP Verso 2.0"
 }
 
-# 📌 Write configuration to StringIO for testing
+# 📁 Section: Paths – system paths and references
+config["Paths"] = {
+    "reports_path": "T:/reporty/",
+    "orders_path": "T:/Prikazy/",
+    "trigger_path": "T:/Prikazy/DataTPV/IPVerso2.0/PackingLine/Spoustece/",
+    "szv_input_file": "T:/Prikazy/DataTPV/SZV.dat",
+    "bartender_path": "C:/Program Files (x86)/Seagull/BarTender Suite/bartend.exe",
+    "commander_path": "C:/Program Files (x86)/Seagull/BarTender Suite/Cmdr.exe",
+    "tl_file_path": "T:/Prikazy/DataTPV/IPVerso2.0/PackingLine/Spoustece/PackingLine.tl"
+}
+
+# 📦 Section: ProductPaths – standard product output
+config["ProductPaths"] = {
+    "output_file_path_product": "T:/Prikazy/DataTPV/IPVerso2.0/PackingLine/Etikety/02 product.txt"
+}
+
+# 🎯 Section: Control4Paths – special product for Control4
+config["Control4Paths"] = {
+    "output_file_path_c4_product": "T:/Prikazy/DataTPV/IPVerso2.0/PackingLine/Etikety/C4-SMART.txt"
+}
+
+# 🌐 Section: My2NPaths – product output for My2N platform
+config["My2nPaths"] = {
+    "output_file_path_my2n": "T:/Prikazy/DataTPV/IPVerso2.0/PackingLine/my2n.txt"
+}
+
+# 🔗 Section: ProductTriggerMapping – mapping codes to label templates
+config["ProductTriggerMapping"] = {
+    "product": "9155211, 9155211B, 9155211C, 9155211CB, 9155211C-C4, 9155211CB-C4, VSA-211C, VSA-211CB",
+    "control4": "9155211C-C4, 9155211CB-C4",
+    "my2n": "9155211, 9155211B, 9155211C, 9155211CB",
+}
+
+# 🧪 For testing: preview config content
 configfile = StringIO()
 config.write(configfile)
-
-# 📌 Output StringIO contents to verify functionality
 print(configfile.getvalue())
 
-with open('config.ini', mode='w', encoding="UTF-8") as file:
+# 💾 Save config to .ini file
+with open("config.ini", mode="w") as file:
     file.write(configfile.getvalue())
