@@ -125,3 +125,21 @@
 {"timestamp": "2025-09-16 22:43:38,035", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
 {"timestamp": "2025-09-16 22:45:04,976", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
 {"timestamp": "2025-09-16 22:45:04,977", "level": "ERROR", "module": "ConfigFileChecker", "message": "Konfigurační soubor chybí: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 22:48:48,681", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 22:48:48,683", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 22:48:48,688", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-16 22:48:55,937", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-16 22:49:05,117", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 14300"}
+{"timestamp": "2025-09-16 22:49:05,187", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 08S6192"}
+{"timestamp": "2025-09-16 22:49:41,394", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-16 23:09:21,977", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 23:09:21,979", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 23:09:21,983", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-16 23:09:33,630", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-16 23:20:59,577", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 23:20:59,579", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 23:20:59,584", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-16 23:21:09,730", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-16 23:21:17,171", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 5156"}
+{"timestamp": "2025-09-16 23:21:17,213", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 08S6192"}
+{"timestamp": "2025-09-16 23:21:57,732", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
