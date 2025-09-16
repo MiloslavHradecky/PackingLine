@@ -108,3 +108,20 @@
 {"timestamp": "2025-09-05 10:07:20,170", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: C:\\GitWork\\Python\\PyQt\\Etikety\\C4-SMART.txt"}
 {"timestamp": "2025-09-05 10:07:20,172", "level": "INFO", "module": "PrintController", "message": "Control4 54-5397-0261"}
 {"timestamp": "2025-09-05 10:07:31,439", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-16 22:08:26,380", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 22:08:26,382", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 22:08:26,388", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-16 22:08:45,362", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-16 22:15:42,688", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 22:15:42,689", "level": "INFO", "module": "EnsureConfig", "message": "Konfigurační soubor již existuje: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 22:15:42,694", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-16 22:16:33,506", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-16 22:16:46,936", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-16 22:16:54,015", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-16 22:41:22,204", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 22:41:22,206", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-16 22:41:22,211", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-16 22:43:30,838", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-16 22:43:38,035", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-16 22:45:04,976", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-16 22:45:04,977", "level": "ERROR", "module": "ConfigFileChecker", "message": "Konfigurační soubor chybí: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}

@@ -122,3 +122,27 @@
 2025-09-05 10:07:20,172 | INFO    | PrintController         | Control4 54-5397-0261
 2025-09-05 10:07:31,439 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+
+2025-09-16 22:08:26,380 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-16 22:08:26,382 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-16 22:08:26,388 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-16 22:08:45,362 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+
+2025-09-16 22:15:42,688 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-16 22:15:42,689 | INFO    | EnsureConfig            | Konfigurační soubor již existuje: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-16 22:15:42,694 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-16 22:16:33,506 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-16 22:16:46,936 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-16 22:16:54,015 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+
+2025-09-16 22:41:22,204 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-16 22:41:22,206 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-16 22:41:22,211 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-16 22:43:30,838 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-16 22:43:38,035 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+
+2025-09-16 22:45:04,976 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-16 22:45:04,977 | ERROR   | ConfigFileChecker       | Konfigurační soubor chybí: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
