@@ -1,17 +1,20 @@
-# 🚀 SplashScreen – animated startup screen with logo, text and spinner
-
 """
-This module defines the SplashScreen class, which displays an animated splash screen
-during application startup. It includes:
-- A logo image
-- A loading text label
-- A spinner animation (GIF)
-- Fade-in effect and timed dismissal
+📦 Module: splash_screen.py
+
+Defines the animated splash screen shown during application startup.
+
+Responsibilities:
+    - Display a logo and loading spinner (GIF)
+    - Animate fade-in effect
+    - Show loading message
+    - Automatically close after a set duration and trigger callback
 
 Used to enhance user experience during initialization.
+
+Author: Miloslav Hradecky
 """
 
-# 🎨 Third-party (PyQt6)
+# 🧩 Third-party libraries
 from PyQt6.QtWidgets import QSplashScreen, QLabel
 from PyQt6.QtGui import QPixmap, QMovie
 from PyQt6.QtCore import Qt, QTimer, QPropertyAnimation
@@ -22,33 +25,22 @@ from utils.resources import resource_path
 
 class SplashScreen(QSplashScreen):
     """
-    Animated splash screen shown during application startup.
+    ✨ Animated splash screen for application startup.
 
-    Responsibilities:
-        - Display logo and loading text
-        - Show spinner animation (GIF)
-        - Apply fade-in effect
-        - Automatically close after a set duration
-        - Trigger callback when finished
-
-    Args:
-        logo_path (str, optional): Path to the logo image.
-        spinner_path (str, optional): Path to the spinner GIF.
-        duration_ms (int): Duration to show splash screen in milliseconds.
+    Features:
+        - Logo display with smooth scaling
+        - Loading spinner (GIF animation)
+        - Fade-in effect using QPropertyAnimation
+        - Auto-close after specified duration
+        - Callback execution after finish
     """
     def __init__(self, logo_path=None, spinner_path=None, duration_ms=2000):
         """
-        Initializes the splash screen with logo, spinner, and fade-in effect.
-
-        Steps:
-            - Loads logo and spinner resources
-            - Sets window flags and opacity
-            - Creates and positions loading text label
-            - Starts spinner animation
+        Initializes the splash screen with logo, spinner, and fade-in animation.
 
         Args:
-            logo_path (str, optional): Path to logo image. Defaults to predefined asset.
-            spinner_path (str, optional): Path to spinner GIF. Defaults to predefined asset.
+            logo_path (Path or str, optional): Path to splash logo image.
+            spinner_path (Path or str, optional): Path to spinner GIF.
             duration_ms (int): Duration to display splash screen in milliseconds.
         """
         logo_path = resource_path("views/assets/splash_logo.png") if logo_path is None else logo_path
@@ -98,7 +90,7 @@ class SplashScreen(QSplashScreen):
         """
         Applies a fade-in animation to the splash screen.
         """
-        self.animation = QPropertyAnimation(self, b"windowOpacity")  # pylint: disable=attribute-defined-outside-init
+        self.animation: QPropertyAnimation = QPropertyAnimation(self, b"windowOpacity")
         self.animation.setDuration(1200)
         self.animation.setStartValue(0.0)
         self.animation.setEndValue(0.9)

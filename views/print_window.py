@@ -1,6 +1,6 @@
-# 🖨️ PrintWindow – UI for serial number input and print action
-
 """
+📦 Module: print_window.py
+
 This module defines the PrintWindow class, which provides a graphical interface
 for printing labels based on scanned serial numbers. It includes:
 - Display of work order and product information
@@ -9,11 +9,13 @@ for printing labels based on scanned serial numbers. It includes:
 - Visual enhancements via WindowEffectsManager
 
 Used in conjunction with a controller to handle print logic.
+
+Author: Miloslav Hradecky
 """
 
-# 🎨 Third-party (PyQt6)
+# 🧩 Third-party libraries
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QFont, QPalette, QColor, QPixmap, QIcon
 
 # 🧠 First-party (project-specific)
@@ -118,8 +120,11 @@ class PrintWindow(QWidget):
         # 🖨️ Print button
         self.print_button: QPushButton = QPushButton('Tisk')
 
-        # ❌ Back button
-        self.exit_button: QPushButton = QPushButton('Zpět')
+        # 📌 Back button
+        self.back_button: QPushButton = QPushButton('Zpět')
+
+        # 📌 Exit button
+        self.exit_button: QPushButton = QPushButton("Ukončit")
 
         # 📌 Enter triggers print
         self.serial_number_input.returnPressed.connect(self.print_button.click)
@@ -129,7 +134,13 @@ class PrintWindow(QWidget):
         layout.addWidget(self.logo)
         layout.addWidget(self.serial_number_input)
         layout.addWidget(self.print_button)
-        layout.addWidget(self.exit_button)
+
+        # 📌 Bottom layout for navigation buttons
+        bottom_layout = QHBoxLayout()
+        bottom_layout.addWidget(self.back_button)
+        bottom_layout.addWidget(self.exit_button)
+
+        layout.addLayout(bottom_layout)
 
         # 📦 Finalize layout
         self.setLayout(layout)

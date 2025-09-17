@@ -1,10 +1,12 @@
-# 🧠 PrintLogicController – handles saving and triggering print actions for different product types
-
 """
+📦 Module: print_logic_controller.py
+
 Controller responsible for saving structured output files and triggering label print actions.
 
 Supports multiple product types (Product, Control4, My2N) and uses configuration-defined paths
 to write output and create trigger files. Provides logging and user feedback via Messenger.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
@@ -64,9 +66,9 @@ class PrintLogicController:
                 except Exception as delete_error:
                     self.logger.warning("Nepodařilo se smazat soubor %s: %s", output_path, str(delete_error))
 
-            with output_path.open('w') as file:
-                file.write(header + '\n')
-                file.write(record + '\n')
+            with output_path.open("w") as file:
+                file.write(header + "\n")
+                file.write(record + "\n")
 
             trigger_dir = self._get_trigger_dir()
             if not trigger_dir:
@@ -108,9 +110,9 @@ class PrintLogicController:
                 except Exception as delete_error:
                     self.logger.warning("Nepodařilo se smazat soubor %s: %s", output_path, str(delete_error))
 
-            with output_path.open('w') as file:
-                file.write(header + '\n')
-                file.write(record + '\n')
+            with output_path.open("w") as file:
+                file.write(header + "\n")
+                file.write(record + "\n")
 
             trigger_dir = self._get_trigger_dir()
             if not trigger_dir:
@@ -151,7 +153,7 @@ class PrintLogicController:
                 except Exception as delete_error:
                     self.logger.warning("Nepodařilo se smazat soubor %s: %s", output_path, str(delete_error))
 
-            with output_path.open('w') as file:
+            with output_path.open("w") as file:
                 file.write('"L Vyrobni cislo dlouhe","L Bezpecnostni cislo","P Vyrobni cislo","P Bezpecnostni kod"\n')
                 file.write(f'"Serial number:","My2N Security Code:","{serial_number}","{token}"\n')
 
@@ -159,7 +161,7 @@ class PrintLogicController:
             if not trigger_dir:
                 return
 
-            trigger_file = trigger_dir / 'SF_MY2N_A'
+            trigger_file = trigger_dir / "SF_MY2N_A"
             trigger_file.touch(exist_ok=True)
 
         except Exception as e:

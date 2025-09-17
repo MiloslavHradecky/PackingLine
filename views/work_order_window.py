@@ -1,6 +1,6 @@
-# 📋 WorkOrderWindow – User interface for scanning work order codes
-
 """
+📦 Module: work_order_window.py
+
 This module defines the WorkOrderWindow class, which provides a graphical interface
 for entering or scanning a work order code (e.g., barcode or ID). It includes:
 - A styled input field
@@ -8,11 +8,13 @@ for entering or scanning a work order code (e.g., barcode or ID). It includes:
 - Application logo and visual effects
 
 Used during the initial phase of the workflow to identify the active work order.
+
+Author: Miloslav Hradecky
 """
 
-# 🎨 Third-party (PyQt6)
+# 🧩 Third-party libraries
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QPalette, QColor, QPixmap, QIcon
 
 # 🧠 First-party (project-specific)
@@ -56,7 +58,7 @@ class WorkOrderWindow(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
 
         # 📌 Title and dimensions
-        self.setWindowTitle('Work Order')
+        self.setWindowTitle("Work Order")
         self.setFixedSize(400, 500)
 
         self.effects = WindowEffectsManager()
@@ -68,7 +70,7 @@ class WorkOrderWindow(QWidget):
 
         # 📌 Setting the window background colour
         palette = QPalette()
-        palette.setColor(QPalette.ColorRole.Window, QColor('#D8E9F3'))
+        palette.setColor(QPalette.ColorRole.Window, QColor("#D8E9F3"))
         self.setPalette(palette)
 
         # 📌 Main window layout
@@ -84,19 +86,22 @@ class WorkOrderWindow(QWidget):
 
         # 📌 Work order input field
         self.work_order_input: QLineEdit = QLineEdit()
-        self.work_order_input.setPlaceholderText('Naskenujte pracovní příkaz')
+        self.work_order_input.setPlaceholderText("Naskenujte pracovní příkaz")
 
         # 📌 Placeholder color
         self.palette = self.work_order_input.palette()
-        self.placeholder_color = QColor('#757575')
+        self.placeholder_color = QColor("#757575")
         self.palette.setColor(QPalette.ColorRole.PlaceholderText, self.placeholder_color)
         self.work_order_input.setPalette(self.palette)
 
         # ⏭️ Continue button
-        self.next_button: QPushButton = QPushButton('Pokračuj')
+        self.next_button: QPushButton = QPushButton("Pokračuj")
 
-        # ❌ Back button
-        self.exit_button: QPushButton = QPushButton('Zpět')
+        # 📌 Back button
+        self.back_button: QPushButton = QPushButton("Zpět")
+
+        # 📌 Exit button
+        self.exit_button: QPushButton = QPushButton("Ukončit")
 
         # 📌 Enter triggers continue
         self.work_order_input.returnPressed.connect(self.next_button.click)
@@ -104,7 +109,13 @@ class WorkOrderWindow(QWidget):
         # 📦 Add widgets to layout
         layout.addWidget(self.work_order_input)
         layout.addWidget(self.next_button)
-        layout.addWidget(self.exit_button)
+
+        # 📌 Bottom layout for navigation buttons
+        bottom_layout = QHBoxLayout()
+        bottom_layout.addWidget(self.back_button)
+        bottom_layout.addWidget(self.exit_button)
+
+        layout.addLayout(bottom_layout)
 
         # 📌 Setting the window layout
         self.setLayout(layout)

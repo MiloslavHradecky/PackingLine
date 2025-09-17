@@ -1,19 +1,20 @@
-# 🔐 LoginWindow – GUI login screen with password entry for ID card systems
-
 """
-This module defines the LoginWindow class, which provides a graphical interface
-for user authentication via ID card scanning. It includes:
-- A password input field with hidden text
-- A login confirmation button
-- An exit button
-- Visual enhancements via WindowEffectsManager
+📦 Module: login_window.py
 
-Used in conjunction with ControllerApp to handle login logic.
+Defines the application's login window using PyQt6.
+
+Responsibilities:
+    - Display password input field (ID card scan)
+    - Show login and exit buttons
+    - Apply custom styling, icons, and fade-in effects
+    - Connect input to controller logic
+
+Used by ControllerApp to initiate authentication.
+
+Author: Miloslav Hradecky
 """
 
-# 🧱 Standard library (žádný zde)
-
-# 🎨 Third-party (PyQt6)
+# 🧩 Third-party libraries
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 from PyQt6.QtGui import QPalette, QColor, QPixmap, QIcon
@@ -25,34 +26,22 @@ from utils.resources import resource_path
 
 class LoginWindow(QWidget):
     """
-    GUI window for user login via ID card.
+    🔐 Login window for the application.
 
-    Responsibilities:
-        - Display a password input field with hidden characters
-        - Show application logo and window icon
-        - Provide login and exit buttons
-        - Trigger login logic via ControllerApp
-        - Apply visual effects (fade-in, background color)
-
-    Args:
-        controller (object, optional): Reference to the controller managing login logic.
+    Features:
+        - Password input field with hidden text
+        - Login and exit buttons
+        - Custom background, icon, and logo
+        - Fade-in animation on startup
+        - Connected to ControllerApp for authentication
     """
 
     def __init__(self, controller=None):
         """
-        Initializes the LoginWindow and sets up its visual components.
+        Initializes the LoginWindow and sets its visual appearance.
 
-    Steps:
-        - Sets window title, size, and icon
-        - Applies background color and fade-in effect
-        - Loads and displays application logo
-        - Creates password input field with placeholder
-        - Adds login and exit buttons
-        - Connects Enter key to login action
-        - Applies layout and focuses input field
-
-    Args:
-        controller (object, optional): Controller instance for handling login logic.
+        Args:
+            controller (object, optional): Controller responsible for handling login logic.
         """
         super().__init__()
 
@@ -60,7 +49,7 @@ class LoginWindow(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
 
         # 📌 Setting the window name and size
-        self.setWindowTitle('Přihlášení')
+        self.setWindowTitle("Přihlášení")
         self.setFixedSize(400, 500)
 
         self.effects = WindowEffectsManager()
@@ -72,7 +61,7 @@ class LoginWindow(QWidget):
 
         # 📌 Setting the window background colour
         palette = QPalette()
-        palette.setColor(QPalette.ColorRole.Window, QColor('#D8E9F3'))
+        palette.setColor(QPalette.ColorRole.Window, QColor("#D8E9F3"))
         self.setPalette(palette)
 
         # 📌 Main window layout
@@ -89,22 +78,22 @@ class LoginWindow(QWidget):
         # 📌 Password field (ID card)
         self.password_input: QLineEdit = QLineEdit()
         self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
-        self.password_input.setPlaceholderText('Naskenujte svoji ID kartu')
+        self.password_input.setPlaceholderText("Naskenujte svoji ID kartu")
 
         # 📌 Set text color for placeholder
         self.palette = self.password_input.palette()
-        self.placeholder_color = QColor('#757575')
+        self.placeholder_color = QColor("#757575")
         self.palette.setColor(QPalette.ColorRole.PlaceholderText, self.placeholder_color)
         self.password_input.setPalette(self.palette)
 
         # 📌 Login button
-        self.login_button: QPushButton = QPushButton('Přihlásit se')
+        self.login_button: QPushButton = QPushButton("Přihlásit se")
 
-        # 📌 'Exit' selection button
-        self.exit_button: QPushButton = QPushButton('Ukončit')
+        # 📌 "Exit" selection button
+        self.exit_button: QPushButton = QPushButton("Ukončit")
 
         # 📌 Linking the button to the login action
-        self.password_input.returnPressed.connect(self.login_button.click)  # 💡 Enter activates the button
+        self.password_input.returnPressed.connect(self.login_button.click)
 
         # 📌 Přidání prvků do hlavního layoutu
         layout.addWidget(self.password_input)

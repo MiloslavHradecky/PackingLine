@@ -170,3 +170,70 @@
 2025-09-16 23:21:17,213 | INFO    | WorkOrderController     | Příkaz: 08S6192
 2025-09-16 23:21:57,732 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
 
+
+2025-09-17 13:46:40,008 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 13:46:40,012 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 13:46:40,044 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 13:46:49,358 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 13:46:57,532 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 13:46:57,536 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 13:46:57,568 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 13:47:02,777 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 13:49:52,083 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 13:49:52,087 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 13:49:52,119 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 13:50:01,944 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 13:51:16,953 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 20544
+2025-09-17 13:51:17,033 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 13:52:18,092 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 14:03:16,182 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 14:03:16,186 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 14:03:16,219 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 14:03:22,924 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 14:27:23,777 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 14:27:23,781 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 14:27:23,804 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 14:27:29,992 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 14:27:51,579 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 14:35:23,605 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 14:35:23,609 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 14:35:23,639 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 14:35:29,455 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 14:35:55,385 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 14:50:07,117 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 14:50:07,121 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 14:50:07,151 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 14:50:15,324 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 14:50:27,309 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 14:50:31,289 | INFO    | WorkOrderController     | Aplikace byla ukončena uživatelem.
+
+2025-09-17 15:07:57,303 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 15:07:57,307 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 15:07:57,339 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 15:08:15,770 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 15:08:27,649 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 6448
+2025-09-17 15:08:27,709 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 15:09:09,163 | INFO    | WorkOrderController     | Aplikace byla ukončena uživatelem.
+
+2025-09-17 15:23:21,349 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 15:23:21,352 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 15:23:21,383 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 15:23:34,550 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 15:23:40,740 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 13716
+2025-09-17 15:23:40,812 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 15:23:54,544 | INFO    | WorkOrderController     | Aplikace byla ukončena uživatelem.
+
+2025-09-17 16:05:09,283 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-17 16:05:09,288 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 16:05:09,318 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 16:05:21,486 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 16:06:30,328 | WARNING | WorkOrderController     | Soubor T:\Prikazy\01K5306.lbl nebo T:\Prikazy\01K5306.nor nebyl nalezen!
+2025-09-17 16:06:40,781 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 9076
+2025-09-17 16:06:40,867 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 16:06:57,935 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.

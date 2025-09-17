@@ -1,19 +1,22 @@
-# 🖨️ PrintController – handles logic for serial input, validation, and print action
-
 """
+📦 Module: print_controller.py
+
 Controller for managing print operations in the PackingLine application.
 
 Handles serial number validation, .lbl file parsing, and dynamic printing logic
 based on configuration mappings. Supports multiple product types and printing
 protocols (product, control4, my2n), and interacts with the PrintWindow UI.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
+import subprocess
 import configparser
 from pathlib import Path
 
 # 🧩 Third-party libraries
-from PyQt6.QtCore import QTimer
+from PyQt6.QtCore import QTimer, QCoreApplication
 
 # 🧠 First-party (project-specific)
 from utils.logger import get_logger
@@ -85,6 +88,7 @@ class PrintController:
 
         # 🔗 linking the button to the method
         self.print_window.print_button.clicked.connect(self.print_button_click)
+        self.print_window.back_button.clicked.connect(self.handle_back)
         self.print_window.exit_button.clicked.connect(self.handle_exit)
 
     @property
@@ -136,7 +140,7 @@ class PrintController:
             return
 
         # 📌 Execute save-and-print functions as needed
-        if 'product' in triggers and lbl_lines:
+        if "product" in triggers and lbl_lines:
 
             # === 1️⃣ Validate presence of required lines B/D/E lines
             if not self.validator.validate_input_exists_for_product(lbl_lines, self.serial_input):
@@ -170,7 +174,7 @@ class PrintController:
             self.logger.info("%s %s", self.product_name, self.serial_input)
 
         # 📌 Execute control4-save-and-print functions as needed
-        if 'control4' in triggers and lbl_lines:
+        if "control4" in triggers and lbl_lines:
             # === 1️⃣ Validation of input lines I/J/K
             if not self.validator.validate_input_exists_for_control4(lbl_lines, self.serial_input):
                 self.delayed_restore_ui()
@@ -196,7 +200,7 @@ class PrintController:
             self.logger.info("Control4 %s", self.serial_input)
 
         # 📌 Execute my2n-save-and-print functions as needed
-        if 'my2n' in triggers:
+        if "my2n" in triggers:
             reports_path = Path(self.config.get("Paths", "reports_path"))
             output_path = Path(self.config.get("My2nPaths", "output_file_path_my2n"))
 
@@ -217,11 +221,32 @@ class PrintController:
         self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=3000)
         self.restore_ui()
 
+    def kill_bartender_processes(self):
+        """
+        Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
+        """
+        try:
+            subprocess.run("taskkill /f /im cmdr.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run("taskkill /f /im bartend.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+
+        except subprocess.CalledProcessError as e:
+            self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
+            self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Print Ctrl")
+
+    def handle_back(self):
+        """
+        Closes the product window and returns to the previous window in the stack.
+        """
+        self.print_window.effects.fade_out(self.print_window)
+
     def handle_exit(self):
         """
-        Handles exit button click by fading out the PrintWindow.
+        Terminates the application and fades out the product window.
         """
-        self.print_window.effects.fade_out(self.print_window, duration=500)
+        self.logger.info("Aplikace byla ukončena uživatelem.")
+        self.kill_bartender_processes()
+        self.window_stack.mark_exiting()
+        self.print_window.effects.fade_out(self.print_window, callback=QCoreApplication.instance().quit)
 
     def delayed_restore_ui(self, delay_ms=500):
         """

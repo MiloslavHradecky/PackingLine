@@ -1,9 +1,11 @@
-# 🧭 WorkOrderController – Manages scanning logic and transitions to printing
-
 """
+📦 Module: work_order_controller.py
+
 Controller responsible for handling work order input, validating associated files,
 and transitioning to the print phase. Also manages launching BarTender Commander
 and terminating related processes.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
@@ -11,10 +13,14 @@ import subprocess
 import configparser
 from pathlib import Path
 
+# 🧩 Third-party libraries
+from PyQt6.QtCore import QCoreApplication
+
 # 🧠 First-party (project-specific)
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
+
 from views.work_order_window import WorkOrderWindow
 
 
@@ -69,6 +75,7 @@ class WorkOrderController:
 
         # 📌 Linking the button to the method
         self.work_order_window.next_button.clicked.connect(self.work_order_button_click)
+        self.work_order_window.back_button.clicked.connect(self.handle_back)
         self.work_order_window.exit_button.clicked.connect(self.handle_exit)
 
     def run_bartender_commander(self) -> None:
@@ -95,7 +102,7 @@ class WorkOrderController:
 
     def work_order_button_click(self):
         """
-        Triggered on 'Continue' click.
+        Triggered on "Continue" click.
 
             - Validates input
             - Checks .lbl and .nor file existence
@@ -124,12 +131,12 @@ class WorkOrderController:
             return
 
         try:
-            with self.nor_file.open('r') as file:
+            with self.nor_file.open("r") as file:
                 first_line = file.readline().strip()
-                parts = first_line.split(';')
+                parts = first_line.split(";")
 
                 if len(parts) >= 2:
-                    nor_order_code = parts[0].lstrip('$').upper()
+                    nor_order_code = parts[0].lstrip("$").upper()
                     product_name = parts[1].strip()
 
                     if nor_order_code != value_input:
@@ -197,16 +204,25 @@ class WorkOrderController:
         Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
         """
         try:
-            subprocess.run('taskkill /f /im cmdr.exe 1>nul 2>nul', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-            subprocess.run('taskkill /f /im bartend.exe 1>nul 2>nul', shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run("taskkill /f /im cmdr.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run("taskkill /f /im bartend.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
 
         except subprocess.CalledProcessError as e:
             self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
             self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Work Order Ctrl")
 
-    def handle_exit(self):
+    def handle_back(self):
         """
-        Closes the current window with fade-out effect.
+        Closes the product window and returns to the previous window in the stack.
         """
         self.kill_bartender_processes()
-        self.work_order_window.effects.fade_out(self.work_order_window, duration=500)
+        self.work_order_window.effects.fade_out(self.work_order_window)
+
+    def handle_exit(self):
+        """
+        Terminates the application and fades out the product window.
+        """
+        self.logger.info("Aplikace byla ukončena uživatelem.")
+        self.kill_bartender_processes()
+        self.window_stack.mark_exiting()
+        self.work_order_window.effects.fade_out(self.work_order_window, callback=QCoreApplication.instance().quit)
