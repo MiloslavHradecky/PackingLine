@@ -38,8 +38,7 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │   ├── print_controller.py
 │   ├── print_loader_controller.py
 │   ├── print_logic_controller.py
-│   ├── work_order_controller.py
-│   └── product_controller.py
+│   └── work_order_controller.py
 │
 ├── docs/
 │   ├── home_terminal.md
@@ -47,30 +46,26 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │   ├── scheme.txt
 │   └── work_terminal.md
 │
-├── logs/
-│   ├── app.json
-│   └── app.txt
+├── installer/
+│   └── version.txt
 │
 ├── models/
 │   └── user_model.py
 │
-├── packingline.egg-info/
-│   ├── dependency_links.txt
-│   ├── entry_points.txt
-│   ├── PKG-INFO
-│   ├── requires.txt
-│   ├── SOURCES.txt
-│   └── top_level.txt
-│
 ├── settings/
 │   ├── config.ini
-│   ├── create_config.py
-│   ├── create_config_home_verso_2.0.py
-│   ├── create_config_work_test_verso_2.0.py
-│   └── create_test_config.py
+│   └── create_config.py
+│
+├── src/
+│   ├── logs/
+│   │   ├── app.json
+│   │   └── app.txt
+│   │
+│   ├── config.ini
+│   └── main.py
 │
 ├── utils/
-│   ├── ensure_config_file.py
+│   ├── config_checker.py
 │   ├── ensure_logs_dir.py
 │   ├── logger.py
 │   ├── messenger.py
@@ -103,16 +98,13 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 ├── .flake8
 ├── .gitignore
 ├── .pylintrc
-├── config.ini
 ├── dev-requirements.in
 ├── dev-requirements.txt
 ├── LICENSE
-├── main.py
 ├── pyproject.toml
 ├── README.md
 ├── requirements.in
-├── requirements.txt
-└── version.txt
+└── requirements.txt
 ```
 
 ---
