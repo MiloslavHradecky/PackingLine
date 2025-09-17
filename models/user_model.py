@@ -1,6 +1,6 @@
-# 🔐 SzvDecrypt – handles login verification by decrypting credentials stored in an encrypted file
-
 """
+📦 Module: user_model.py
+
 Handles login verification by decrypting credentials stored in an encrypted file.
 
 Provides functionality to:
@@ -9,6 +9,8 @@ Provides functionality to:
 - Extract user metadata (name, surname, prefix) upon successful login
 
 Used primarily by the LoginController during authentication.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library

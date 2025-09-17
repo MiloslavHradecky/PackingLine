@@ -120,6 +120,7 @@ class PrintController:
         """
 
         self.print_window.print_button.setDisabled(True)
+        self.print_window.back_button.setDisabled(True)
         self.print_window.exit_button.setDisabled(True)
         self.print_window.serial_number_input.setDisabled(True)
 
@@ -261,6 +262,7 @@ class PrintController:
         """
         QTimer.singleShot(delay_ms, lambda: (
             self.print_window.print_button.setDisabled(False),
+            self.print_window.back_button.setDisabled(False),
             self.print_window.exit_button.setDisabled(False),
             self.print_window.serial_number_input.setDisabled(False),
             self.print_window.reset_input_focus()
@@ -275,6 +277,7 @@ class PrintController:
         """
         QTimer.singleShot(delay_ms, lambda: (
             self.print_window.print_button.setDisabled(False),
+            self.print_window.back_button.setDisabled(False),
             self.print_window.exit_button.setDisabled(False),
             self.print_window.serial_number_input.setDisabled(False),
             self.print_window.reset_input_focus()

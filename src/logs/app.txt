@@ -327,3 +327,24 @@
 2025-09-17 22:00:56,566 | ERROR   | PrintConfigController   | Produkt '9151301CRP' není mapován na žádnou skupinu v configu.
 2025-09-17 22:01:07,431 | INFO    | WorkOrderController     | Zpracování zastaveno – produkt není mapován v configu.
 2025-09-17 22:01:16,142 | INFO    | WorkOrderController     | Aplikace byla ukončena uživatelem.
+
+2025-09-17 22:08:47,630 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 22:08:47,632 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 22:08:47,638 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 22:08:54,864 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 22:09:01,879 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 4816
+2025-09-17 22:09:01,921 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 22:09:31,620 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 22:19:25,681 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 22:19:25,683 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 22:19:25,688 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 22:20:11,901 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 22:20:18,534 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 13036
+2025-09-17 22:20:18,598 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 22:20:28,085 | ERROR   | Validators              | Nebyly nalezeny všechny klíčové řádky: 54-0000-0000B=, 54-0000-0000D=, 54-0000-0000E=
+2025-09-17 22:22:15,622 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\02 product.txt
+2025-09-17 22:22:15,631 | INFO    | PrintController         | 9151301CRP 54-5967-1546
+2025-09-17 22:22:15,635 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\my2n.txt
+2025-09-17 22:22:15,645 | INFO    | PrintController         | My2N token: GLRE-YRK5-FJTM-LAXL
+2025-09-17 22:24:06,754 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.

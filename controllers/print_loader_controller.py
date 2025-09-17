@@ -1,10 +1,12 @@
-# 📦 PrintLoaderController – handles loading of .lbl files based on config and order code
-
 """
+📦 Module: print_loader_controller.py
+
 Controller responsible for loading .lbl files based on order code and configuration.
 
 Provides error handling, logging, and user feedback via Messenger. Used by PrintController
 to retrieve label data for further processing.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library

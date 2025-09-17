@@ -1,5 +1,3 @@
-# 🧩 PrintConfigController – handles config-based logic for trigger group resolution
-
 """
 📦 Module: print_config_controller.py
 

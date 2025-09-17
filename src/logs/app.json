@@ -280,3 +280,22 @@
 {"timestamp": "2025-09-17 22:00:56,566", "level": "ERROR", "module": "PrintConfigController", "message": "Produkt '9151301CRP' není mapován na žádnou skupinu v configu."}
 {"timestamp": "2025-09-17 22:01:07,431", "level": "INFO", "module": "WorkOrderController", "message": "Zpracování zastaveno – produkt není mapován v configu."}
 {"timestamp": "2025-09-17 22:01:16,142", "level": "INFO", "module": "WorkOrderController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 22:08:47,630", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 22:08:47,632", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 22:08:47,638", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 22:08:54,864", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 22:09:01,879", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 4816"}
+{"timestamp": "2025-09-17 22:09:01,921", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 22:09:31,620", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 22:19:25,681", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 22:19:25,683", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 22:19:25,688", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 22:20:11,901", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 22:20:18,534", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 13036"}
+{"timestamp": "2025-09-17 22:20:18,598", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 22:20:28,085", "level": "ERROR", "module": "Validators", "message": "Nebyly nalezeny všechny klíčové řádky: 54-0000-0000B=, 54-0000-0000D=, 54-0000-0000E="}
+{"timestamp": "2025-09-17 22:22:15,622", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\02 product.txt"}
+{"timestamp": "2025-09-17 22:22:15,631", "level": "INFO", "module": "PrintController", "message": "9151301CRP 54-5967-1546"}
+{"timestamp": "2025-09-17 22:22:15,635", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
+{"timestamp": "2025-09-17 22:22:15,645", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
+{"timestamp": "2025-09-17 22:24:06,754", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}

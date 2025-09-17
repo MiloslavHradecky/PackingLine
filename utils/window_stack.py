@@ -14,7 +14,6 @@ Used by controllers to manage navigation between screens.
 Author: Miloslav Hradecky
 """
 
-
 class WindowStackManager:
     """
     🧭 Manages a stack of windows for navigation and visibility control.
