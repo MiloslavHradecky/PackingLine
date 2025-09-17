@@ -1,10 +1,15 @@
-# utils/resources.py
-
 """
-Utility functions for resolving file and directory paths.
+📦 Module: resources.py
 
-Handles both standard Python execution and PyInstaller-packed environments,
-ensuring correct access to bundled resources and writable locations.
+Utility functions for resolving file paths in both development and bundled (.exe) environments.
+
+Responsibilities:
+    - Locate resource files (e.g. icons, configs) regardless of runtime context
+    - Resolve paths from config.ini (absolute or relative)
+    - Provide writable paths for logs and outputs
+    - Ensure consistent file access across platforms
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
@@ -19,7 +24,7 @@ def resource_path(relative_path: str) -> Path:
     Supports both standard Python execution and PyInstaller-packed (.exe) environments.
 
     Args:
-        relative_path (str): Relative path to the resource (e.g. 'views/assets/icon.png').
+        relative_path (str): Relative path to the resource (e.g. "views/assets/icon.png").
 
     Returns:
         Path: Absolute path to the resource file.

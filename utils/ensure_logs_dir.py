@@ -1,9 +1,14 @@
-# utils/ensure_logs_dir.py
-
 """
-Utility for ensuring the existence of the logs directory.
+📦 Module: ensure_logs_dir.py
 
-Creates the specified directory if it doesn't already exist, including any necessary parent folders.
+Ensures that the logs directory exists and is writable.
+
+Responsibilities:
+    - Resolve the writable path for logs
+    - Create the directory if it doesn't exist
+    - Used during application startup to prepare logging infrastructure
+
+Author: Miloslav Hradecky
 """
 
 # 🧠 First-party (project-specific)

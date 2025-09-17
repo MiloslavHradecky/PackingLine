@@ -1,12 +1,19 @@
-# utils/messenger.py
-
 """
+📦 Module: messenger.py
+
 Utility class for displaying message dialogs in a PyQt6 application.
 
-Provides error, info, and warning dialogs, as well as timed non-blocking info popups.
+Responsibilities:
+    - Show error, info, and warning dialogs with consistent styling
+    - Center dialogs relative to parent or screen
+    - Display timed non-blocking info popups
+
+Used across controllers to provide user feedback.
+
+Author: Miloslav Hradecky
 """
 
-# 🎨 PyQt6 imports
+# 🧩 Third-party libraries
 from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget, QDialog, QLabel, QVBoxLayout
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QTimer, Qt
@@ -17,7 +24,12 @@ from utils.resources import resource_path
 
 class Messenger:
     """
-    Wrapper class for displaying various message dialogs with consistent styling.
+    🎙️ Wrapper class for displaying styled message dialogs in PyQt6.
+
+    Supports:
+        - Blocking dialogs: error, info, warning
+        - Non-blocking timed info popups
+        - Centering dialogs on parent or screen
     """
     icon_path = resource_path("views/assets/message.ico")
 

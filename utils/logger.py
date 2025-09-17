@@ -1,9 +1,16 @@
-# utils/logger.py
-
 """
+📦 Module: logger.py
+
 Utility for initializing and configuring application-wide logging.
 
-Provides a logger with both plain-text and JSON output, each with rotation.
+Responsibilities:
+    - Provide rotating log handlers for both plain-text and JSON formats
+    - Format logs with timestamps, levels, and module names
+    - Ensure log directory exists before writing
+
+Used throughout the application for consistent logging.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
@@ -19,7 +26,9 @@ from utils.resources import get_writable_path
 # --- Custom JSON formatter ---
 class JsonFormatter(logging.Formatter):
     """
-    Custom formatter for logging in JSON format.
+    🧾 Custom formatter for logging in JSON format.
+
+    Formats log records with timestamp, level, module, and message.
     """
 
     def format(self, record):  # noqa
@@ -55,13 +64,13 @@ def get_logger(name: str) -> logging.Logger:
 
     logger.setLevel(logging.DEBUG)
 
-    # TXT log with rotation
+    # 📌 TXT log with rotation
     txt_handler = RotatingFileHandler(log_file_txt, maxBytes=1_000_000, backupCount=5, encoding="utf-8")
     txt_formatter = logging.Formatter("%(asctime)s | %(levelname)-7s | %(name)-23s | %(message)s")
     txt_handler.setFormatter(txt_formatter)
     logger.addHandler(txt_handler)
 
-    # JSON log with rotation
+    # 📌 JSON log with rotation
     json_handler = RotatingFileHandler(log_file_json, maxBytes=1_000_000, backupCount=5, encoding="utf-8")
     json_handler.setFormatter(JsonFormatter())
     logger.addHandler(json_handler)

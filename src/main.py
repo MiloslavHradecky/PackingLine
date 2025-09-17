@@ -8,6 +8,8 @@ the splash screen and login window.
 
 Version:
     3.1.0.0
+
+Author: Miloslav Hradecky
 """
 
 __version__ = "3.1.0.0"
@@ -128,7 +130,7 @@ class AppLauncher:
         Displays the splash screen and launches the login window.
         """
         splash = SplashScreen()
-        messenger = Messenger(splash)  # noqa
+        _ = Messenger(splash)
 
         def launch_login():
             login_window = LoginWindow()

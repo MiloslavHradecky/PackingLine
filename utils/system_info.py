@@ -1,9 +1,14 @@
-# utils/system_info.py
-
 """
-Utility for logging basic system information at application startup.
+📦 Module: system_info_logger.py
 
-Captures and logs the current version, computer name, and IP address.
+Logs basic system information at application startup.
+
+Responsibilities:
+    - Retrieve local IP address and computer name
+    - Log version, hostname, and IP for diagnostics
+    - Used during initialization to trace environment context
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library

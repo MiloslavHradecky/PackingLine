@@ -1,9 +1,17 @@
-# utils/path_validation.py
-
 """
+📦 Module: path_validation.py
+
 Utility for validating file and directory paths defined in the configuration file.
 
-Checks whether required paths exist and reports missing or invalid entries via logging and GUI dialogs.
+Responsibilities:
+    - Load paths from the [Paths] section of config.ini
+    - Check existence of each path or file
+    - Log missing or invalid entries
+    - Notify user via Messenger dialogs
+
+Used during startup or diagnostics to ensure environment integrity.
+
+Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
@@ -17,7 +25,10 @@ from utils.resources import get_config_path
 
 class PathValidator:
     """
-    Validates critical paths defined in the configuration file under the [Paths] section.
+    🧭 Validates critical paths defined in the configuration file.
+
+    Checks whether required files and directories exist, logs issues,
+    and displays warnings to the user via Messenger.
     """
 
     def __init__(self):

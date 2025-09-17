@@ -1,18 +1,26 @@
-# utils/single_instance.py
-
 """
-Utility for enforcing single-instance execution of the application.
+📦 Module: single_instance_checker.py
 
-Uses QSharedMemory to detect if another instance is already running.
+Utility for preventing multiple instances of the application.
+
+Responsibilities:
+    - Use QSharedMemory to detect if another instance is already running
+    - Block duplicate launches by checking shared memory attachment
+    - Used during application startup to enforce single-instance behavior
+
+Author: Miloslav Hradecky
 """
 
-# 🎨 PyQt6
+# 🧩 Third-party libraries
 from PyQt6.QtCore import QSharedMemory
 
 
 class SingleInstanceChecker:
     """
-    Checks whether another instance of the application is already running.
+    🚫 Prevents multiple instances of the application using QSharedMemory.
+
+    Checks whether a shared memory block with a unique key is already attached.
+    If so, assumes another instance is running.
     """
 
     def __init__(self, key="LinebUniqueAppKey"):

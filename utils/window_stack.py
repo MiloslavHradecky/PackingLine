@@ -1,39 +1,47 @@
-# utils/window_stack.py
-
 """
-Provides a stack-based mechanism for managing visibility and lifecycle of PyQt6 windows.
-Ensures only one window is visible at a time and restores previous windows when one is closed.
+📦 Module: window_stack_manager.py
+
+Manages a stack of active windows in a PyQt6 application.
+
+Responsibilities:
+    - Push and pop windows with visibility control
+    - Hide previous window when a new one is shown
+    - Restore previous window when current is closed
+    - Handle graceful exit transitions
+
+Used by controllers to manage navigation between screens.
+
+Author: Miloslav Hradecky
 """
-
-
-# 🧱 Standard library — none
-
-# 🧠 Third-party — assumed PyQt6 (not directly imported here)
 
 
 class WindowStackManager:
     """
-    Manages a stack of windows, ensuring only the topmost window is visible.
+    🧭 Manages a stack of windows for navigation and visibility control.
 
-    Attributes:
-        _stack (list): Internal list representing the window stack.
+    Ensures only one window is visible at a time, and restores previous
+    windows when the current one is closed — unless the app is exiting.
     """
 
     def __init__(self):
         """
-        Initializes an empty window stack.
+        Initializes the window stack and exit flag.
         """
         self._stack = []
+        self._is_exiting = False
+
+    def mark_exiting(self):
+        """
+        Marks the application as exiting to prevent window restoration.
+        """
+        self._is_exiting = True
 
     def push(self, window):
         """
-        Pushes a new window onto the stack and displays it.
-
-        Hides the current top window (if any), connects the window's destroyed signal,
-        and shows the new window.
+        Adds a new window to the stack and hides the previous one.
 
         Args:
-            window: The PyQt6 window to push onto the stack.
+            window (QWidget): The window to show.
         """
         if self._stack:
             self._stack[-1].hide()
@@ -43,17 +51,17 @@ class WindowStackManager:
 
     def pop(self):
         """
-        Pops the top window from the stack and restores the previous one (if any).
+        Removes the top window from the stack and restores the previous one if applicable.
 
         Returns:
-            The window that was removed from the stack, or None if the stack was empty.
+            QWidget or None: The window that was removed.
         """
         if not self._stack:
             return None
 
         closing = self._stack.pop()
 
-        if self._stack:
+        if self._stack and not self._is_exiting:
             previous = self._stack[-1]
             if not previous.isVisible():
                 previous.show()
@@ -62,8 +70,16 @@ class WindowStackManager:
 
     def _on_window_closed(self):
         """
-        Internal slot called when a window is destroyed.
+        Handles cleanup when a window is closed.
 
-        Automatically pops the window from the stack.
+        Pops the window from the stack and restores the previous one unless exiting.
         """
-        self.pop()
+        if self._is_exiting:
+            return
+
+        if self._stack:
+            self._stack.pop()
+            if self._stack:
+                previous = self._stack[-1]
+                if not previous.isVisible():
+                    previous.show()
