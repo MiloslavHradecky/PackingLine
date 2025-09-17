@@ -8,22 +8,10 @@
 
 🧠 PYLINT — hloubková analýza
 ------------------------------------------------------------
-📄 main.py
-
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
-
-
-📄 .\main.py
-
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
-
-
 📄 .\controllers\login_controller.py
 
--------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.83/10, +0.17)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\controllers\print_config_controller.py
@@ -52,8 +40,8 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 📄 .\controllers\work_order_controller.py
 
--------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.90/10, +0.10)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\models\user_model.py
@@ -62,7 +50,13 @@ Your code has been rated at 10.00/10 (previous run: 9.90/10, +0.10)
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
-📄 .\utils\ensure_config_file.py
+📄 .\src\main.py
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.88/10, +0.12)
+
+
+📄 .\utils\config_checker.py
 
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
@@ -142,8 +136,8 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 📄 .\views\splash_screen.py
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.76/10, +0.24)
 
 
 📄 .\views\work_order_window.py

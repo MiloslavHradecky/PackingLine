@@ -37,6 +37,7 @@ from utils.messenger import Messenger
 from utils.path_validation import PathValidator
 from utils.logger import get_logger
 
+
 class AppLauncher:
     """
     🎯 Orchestrates the startup sequence of the PackingLine application.

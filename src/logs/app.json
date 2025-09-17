@@ -200,3 +200,7 @@
 {"timestamp": "2025-09-17 16:06:40,781", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 9076"}
 {"timestamp": "2025-09-17 16:06:40,867", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
 {"timestamp": "2025-09-17 16:06:57,935", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 16:33:38,827", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-17 16:33:38,832", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 16:33:38,867", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 16:33:45,300", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}

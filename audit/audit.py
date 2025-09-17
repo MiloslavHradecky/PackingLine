@@ -5,6 +5,8 @@ Spouští nástroje Vulture, Flake8 a Pylint nad aktuální složkou nebo soubor
 sbírá výstupy a ukládá je do souboru audit_report_<timestamp>.txt.
 
 Používá se pro ruční kontrolu čistoty a stylu kódu mimo hlavní aplikaci.
+
+Bash: python audit/audit.py
 """
 
 import os
@@ -13,7 +15,7 @@ from datetime import datetime
 
 # 🔍 Cesty a výjimky
 TARGET_PATH = "."
-EXCLUDED_DIRS = {"venv", ".venv", "__pycache__", ".git", "audit", "settings"}
+EXCLUDED_DIRS = {"venv", ".venv", "__pycache__", ".git", "audit", "settings", "build", "dist", "docs", "installer", "logs", "setup"}
 EXCLUDED_FILES = {
     "audit.py", "config.ini", "requirements.txt", "README.md",
     "vulture_whitelist.txt", "setup.py"

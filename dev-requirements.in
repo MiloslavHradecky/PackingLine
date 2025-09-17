@@ -1,4 +1,11 @@
-pip-tools
-pylint
-flake8
-vulture
+# Bash:
+#   pip-compile dev-requirements.in
+#   pip install -r dev-requirements.txt
+
+# Static analysis
+flake8>=7.3.0
+pylint>=3.3.8
+vulture>=2.14
+
+# Build tools
+pyinstaller>=6.16.0

@@ -48,6 +48,8 @@ class SplashScreen(QSplashScreen):
         pixmap = QPixmap(str(logo_path)).scaled(1200, 800, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         super().__init__(pixmap, Qt.WindowType.WindowStaysOnTopHint)
 
+        self.animation = None
+
         self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
         self.setWindowOpacity(0.0)
         self.duration = duration_ms
@@ -65,7 +67,7 @@ class SplashScreen(QSplashScreen):
         movie.start()
         self.spinner.setFixedSize(128, 128)
         self.spinner.setScaledContents(True)
-        self.spinner.setGeometry(self.width() // 2 - 64, self.height() - 200, 128, 128)  # pozice spinneru
+        self.spinner.setGeometry(self.width() // 2 - 64, self.height() - 200, 128, 128)
 
     def _resize_label(self):
         """
