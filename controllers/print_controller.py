@@ -130,6 +130,10 @@ class PrintController:
 
         # === 2️⃣ Resolve product trigger groups from config
         triggers = self.config_controller.get_trigger_groups_for_product(self.product_name)
+        if not triggers:
+            self.logger.warning("Zpracování zastaveno – produkt není mapován v configu.")
+            self.delayed_restore_ui()
+            return
 
         # === 3️⃣ Load corresponding .lbl file lines
         lbl_lines = self.loader.load_lbl_file(order_code=self.print_window.order_code)

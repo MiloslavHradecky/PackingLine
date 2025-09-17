@@ -94,8 +94,8 @@ class Validator:
         Returns:
             str | None: Modified record or None if injection fails.
         """
-        header_fields = header.split("','")
-        record_fields = record.split("','")
+        header_fields = header.split('","')
+        record_fields = record.split('","')
 
         try:
             index = header_fields.index("P Znacka balice")
@@ -107,7 +107,7 @@ class Validator:
 
             prefix = get_value_prefix()
             record_fields[index] = prefix
-            return "','".join(record_fields)
+            return '","'.join(record_fields)
 
         except ValueError:
             self.logger.error("Pole 'P Znacka balice' chybí.")

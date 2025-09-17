@@ -242,3 +242,88 @@
 2025-09-17 16:33:38,832 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
 2025-09-17 16:33:38,867 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
 2025-09-17 16:33:45,300 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 20:38:38,132 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 20:38:38,133 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 20:38:38,138 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 20:38:45,991 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 20:38:56,151 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 4152
+2025-09-17 20:38:56,219 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 20:41:43,045 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 20:52:45,657 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 20:52:45,658 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 20:52:45,666 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 20:52:53,058 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 20:53:00,664 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 12576
+2025-09-17 20:53:00,714 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 20:53:39,843 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 20:58:21,765 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 20:58:21,767 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 20:58:21,772 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 20:58:28,932 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 20:58:35,554 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 4680
+2025-09-17 20:58:35,593 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 20:59:54,233 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 21:03:28,639 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 21:03:28,641 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 21:03:28,647 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 21:03:35,164 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 21:03:41,810 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 6720
+2025-09-17 21:03:41,848 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 21:03:50,483 | ERROR   | Validators              | Nebyly nalezeny všechny klíčové řádky: 54-0000-0000B=, 54-0000-0000D=, 54-0000-0000E=
+2025-09-17 21:05:16,811 | ERROR   | Validators              | Pole 'P Znacka balice' chybí.
+2025-09-17 21:06:32,456 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 21:09:13,843 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 21:09:13,845 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 21:09:13,850 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 21:09:22,697 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 21:09:30,602 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 11088
+2025-09-17 21:09:30,652 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 21:09:40,574 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\02 product.txt
+2025-09-17 21:09:40,583 | INFO    | PrintController         | 9151301CRP 54-5967-1546
+2025-09-17 21:09:40,587 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\my2n.txt
+2025-09-17 21:09:40,596 | INFO    | PrintController         | My2N token: GLRE-YRK5-FJTM-LAXL
+2025-09-17 21:18:32,851 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\02 product.txt
+2025-09-17 21:18:32,861 | INFO    | PrintController         | 9151301CRP 54-5967-1546
+2025-09-17 21:18:32,872 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\my2n.txt
+2025-09-17 21:18:32,886 | INFO    | PrintController         | My2N token: GLRE-YRK5-FJTM-LAXL
+2025-09-17 21:23:15,134 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 21:31:57,564 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 21:31:57,566 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 21:31:57,571 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 21:32:03,406 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 21:32:10,674 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 8132
+2025-09-17 21:32:10,720 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 21:32:40,539 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 21:47:11,284 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 21:47:11,286 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 21:47:11,291 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 21:47:18,819 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 21:47:31,011 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 5096
+2025-09-17 21:47:31,062 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-17 21:47:40,042 | ERROR   | PrintConfigController   | Produkt '9151301CRP' není mapován na žádnou skupinu.
+2025-09-17 21:48:02,273 | WARNING | PrintController         | Zpracování zastaveno – produkt není mapován v configu.
+2025-09-17 21:48:47,010 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-17 21:56:29,323 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 21:56:29,325 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 21:56:29,330 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 21:56:35,071 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 21:56:46,311 | ERROR   | PrintConfigController   | Produkt '9151301CRP' není mapován na žádnou skupinu.
+2025-09-17 21:57:13,295 | INFO    | WorkOrderController     | Zpracování zastaveno – produkt není mapován.
+2025-09-17 21:57:13,295 | ERROR   | WorkOrderController     | Neočekávaná chyba při zpracování .NOR souboru: 'NoneType' object has no attribute 'reset_input_focus'
+2025-09-17 21:57:23,887 | INFO    | WorkOrderController     | Aplikace byla ukončena uživatelem.
+
+2025-09-17 22:00:42,856 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75
+2025-09-17 22:00:42,858 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\Users\MiloslavHradecky\GitHome\Python\PyQt\PackingLine\src\config.ini
+2025-09-17 22:00:42,863 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-17 22:00:49,142 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-17 22:00:56,566 | ERROR   | PrintConfigController   | Produkt '9151301CRP' není mapován na žádnou skupinu v configu.
+2025-09-17 22:01:07,431 | INFO    | WorkOrderController     | Zpracování zastaveno – produkt není mapován v configu.
+2025-09-17 22:01:16,142 | INFO    | WorkOrderController     | Aplikace byla ukončena uživatelem.

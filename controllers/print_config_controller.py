@@ -1,10 +1,14 @@
 # 🧩 PrintConfigController – handles config-based logic for trigger group resolution
 
 """
+📦 Module: print_config_controller.py
+
 Provides logic for resolving trigger groups based on product names.
 
 Used during the printing workflow to determine which trigger groups apply to a given product,
 based on configuration mappings defined in 'ProductTriggerMapping'.
+
+Author: Miloslav Hradecky
 """
 
 # 🧠 First-party (project-specific)
@@ -32,30 +36,34 @@ class PrintConfigController:
         self.messenger = messenger
         self.logger = get_logger("PrintConfigController")
 
-    def get_trigger_groups_for_product(self, product_name: str) -> list[str]:
+    def get_trigger_groups_for_product(self, product_name: str) -> list[str] | None:
         """
         Retrieves all trigger groups that include the specified product name.
 
-        The method checks the 'ProductTriggerMapping' section in the config file
-        and returns all group names where the product is listed.
+        If no group contains the product, logs error, shows message, and returns None.
 
         Args:
             product_name (str): Product name to search for.
 
         Returns:
-            list[str]: List of matching trigger group names.
+            list[str] | None: List of matching trigger group names, or None if not found.
         """
-        matching = []
-
         if not self.config.has_section("ProductTriggerMapping"):
             self.logger.warning("Sekce 'ProductTriggerMapping' nebyla nalezena v configu.")
             self.messenger.warning("Sekce 'ProductTriggerMapping' nebyla nalezena v configu.", "Print Config Ctrl")
-            return matching
+            return None
+
+        matching = []
 
         for group_name in self.config.options("ProductTriggerMapping"):
             raw_list = self.config.get("ProductTriggerMapping", group_name)
-            items = [item.strip() for item in raw_list.split(",")]
+            items = [item.strip() for item in raw_list.split(",") if item.strip()]
             if product_name in items:
                 matching.append(group_name)
+
+        if not matching:
+            self.logger.error("Produkt '%s' není mapován na žádnou skupinu v configu.", product_name)
+            self.messenger.error(f"Produkt '{product_name}' není mapován na žádnou skupinu v configu!", "Print Config Ctrl")
+            return None
 
         return matching

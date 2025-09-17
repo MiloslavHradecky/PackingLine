@@ -22,6 +22,7 @@ from utils.messenger import Messenger
 from utils.resources import get_config_path
 
 from views.work_order_window import WorkOrderWindow
+from controllers.print_config_controller import PrintConfigController
 
 
 class WorkOrderController:
@@ -69,6 +70,12 @@ class WorkOrderController:
 
         # 📄 Parsed data
         self.lines = None
+
+        # 📌 Initialization of print config
+        self.config_controller = PrintConfigController(
+            config=self.config,
+            messenger=self.messenger
+        )
 
         # 📌 Logger initialization
         self.logger = get_logger("WorkOrderController")
@@ -142,6 +149,12 @@ class WorkOrderController:
                     if nor_order_code != value_input:
                         self.logger.warning("Výrobní příkaz v souboru .NOR (%s) neodpovídá zadanému vstupu (%s)!", nor_order_code, value_input)
                         self.messenger.warning(f"Výrobní příkaz v souboru .NOR ({nor_order_code}) neodpovídá zadanému vstupu ({value_input})!", "Work Order Ctrl")
+                        self.reset_input_focus()
+                        return
+
+                    groups = self.config_controller.get_trigger_groups_for_product(product_name)
+                    if not groups:
+                        self.logger.info("Zpracování zastaveno – produkt není mapován v configu.")
                         self.reset_input_focus()
                         return
 

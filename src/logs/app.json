@@ -204,3 +204,79 @@
 {"timestamp": "2025-09-17 16:33:38,832", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
 {"timestamp": "2025-09-17 16:33:38,867", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
 {"timestamp": "2025-09-17 16:33:45,300", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 20:38:38,132", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 20:38:38,133", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 20:38:38,138", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 20:38:45,991", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 20:38:56,151", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 4152"}
+{"timestamp": "2025-09-17 20:38:56,219", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 20:41:43,045", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 20:52:45,657", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 20:52:45,658", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 20:52:45,666", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 20:52:53,058", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 20:53:00,664", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 12576"}
+{"timestamp": "2025-09-17 20:53:00,714", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 20:53:39,843", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 20:58:21,765", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 20:58:21,767", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 20:58:21,772", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 20:58:28,932", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 20:58:35,554", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 4680"}
+{"timestamp": "2025-09-17 20:58:35,593", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 20:59:54,233", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 21:03:28,639", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 21:03:28,641", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 21:03:28,647", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 21:03:35,164", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 21:03:41,810", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 6720"}
+{"timestamp": "2025-09-17 21:03:41,848", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 21:03:50,483", "level": "ERROR", "module": "Validators", "message": "Nebyly nalezeny všechny klíčové řádky: 54-0000-0000B=, 54-0000-0000D=, 54-0000-0000E="}
+{"timestamp": "2025-09-17 21:05:16,811", "level": "ERROR", "module": "Validators", "message": "Pole 'P Znacka balice' chybí."}
+{"timestamp": "2025-09-17 21:06:32,456", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 21:09:13,843", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 21:09:13,845", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 21:09:13,850", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 21:09:22,697", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 21:09:30,602", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 11088"}
+{"timestamp": "2025-09-17 21:09:30,652", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 21:09:40,574", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\02 product.txt"}
+{"timestamp": "2025-09-17 21:09:40,583", "level": "INFO", "module": "PrintController", "message": "9151301CRP 54-5967-1546"}
+{"timestamp": "2025-09-17 21:09:40,587", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
+{"timestamp": "2025-09-17 21:09:40,596", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
+{"timestamp": "2025-09-17 21:18:32,851", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\02 product.txt"}
+{"timestamp": "2025-09-17 21:18:32,861", "level": "INFO", "module": "PrintController", "message": "9151301CRP 54-5967-1546"}
+{"timestamp": "2025-09-17 21:18:32,872", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
+{"timestamp": "2025-09-17 21:18:32,886", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
+{"timestamp": "2025-09-17 21:23:15,134", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 21:31:57,564", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 21:31:57,566", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 21:31:57,571", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 21:32:03,406", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 21:32:10,674", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 8132"}
+{"timestamp": "2025-09-17 21:32:10,720", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 21:32:40,539", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 21:47:11,284", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 21:47:11,286", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 21:47:11,291", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 21:47:18,819", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 21:47:31,011", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 5096"}
+{"timestamp": "2025-09-17 21:47:31,062", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-17 21:47:40,042", "level": "ERROR", "module": "PrintConfigController", "message": "Produkt '9151301CRP' není mapován na žádnou skupinu."}
+{"timestamp": "2025-09-17 21:48:02,273", "level": "WARNING", "module": "PrintController", "message": "Zpracování zastaveno – produkt není mapován v configu."}
+{"timestamp": "2025-09-17 21:48:47,010", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 21:56:29,323", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 21:56:29,325", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 21:56:29,330", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 21:56:35,071", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 21:56:46,311", "level": "ERROR", "module": "PrintConfigController", "message": "Produkt '9151301CRP' není mapován na žádnou skupinu."}
+{"timestamp": "2025-09-17 21:57:13,295", "level": "INFO", "module": "WorkOrderController", "message": "Zpracování zastaveno – produkt není mapován."}
+{"timestamp": "2025-09-17 21:57:13,295", "level": "ERROR", "module": "WorkOrderController", "message": "Neočekávaná chyba při zpracování .NOR souboru: 'NoneType' object has no attribute 'reset_input_focus'"}
+{"timestamp": "2025-09-17 21:57:23,887", "level": "INFO", "module": "WorkOrderController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-17 22:00:42,856", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: DESKTOP-MH | IP: 192.168.1.75"}
+{"timestamp": "2025-09-17 22:00:42,858", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\Users\\MiloslavHradecky\\GitHome\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-17 22:00:42,863", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-17 22:00:49,142", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-17 22:00:56,566", "level": "ERROR", "module": "PrintConfigController", "message": "Produkt '9151301CRP' není mapován na žádnou skupinu v configu."}
+{"timestamp": "2025-09-17 22:01:07,431", "level": "INFO", "module": "WorkOrderController", "message": "Zpracování zastaveno – produkt není mapován v configu."}
+{"timestamp": "2025-09-17 22:01:16,142", "level": "INFO", "module": "WorkOrderController", "message": "Aplikace byla ukončena uživatelem."}
