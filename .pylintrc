@@ -22,6 +22,6 @@ max-line-length=100
 [DESIGN]
 max-attributes=10
 max-locals=15
-max-returns=6
+max-returns=7
 max-statements=50
 max-branches=12

@@ -17,7 +17,7 @@ from PyQt6.QtCore import QSharedMemory
 
 class SingleInstanceChecker:
     """
-    🚫 Prevents multiple instances of the application using QSharedMemory.
+    Prevents multiple instances of the application using QSharedMemory.
 
     Checks whether a shared memory block with a unique key is already attached.
     If so, assumes another instance is running.

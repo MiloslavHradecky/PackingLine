@@ -18,7 +18,7 @@ from PyQt6.QtWidgets import QMessageBox, QApplication, QWidget, QDialog, QLabel,
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QTimer, Qt
 
-# 🧠 First-party
+# 🧠 First-party (project-specific)
 from utils.resources import resource_path
 
 

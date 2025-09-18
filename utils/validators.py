@@ -1,8 +1,8 @@
 """
 📦 Module: validators.py
 
-Validator module for checking input formats, extracting values from .lbl files,
-and injecting data into records. Provides error logging and user messaging.
+Validates input formats, extracts values from .lbl files, and injects data into records.
+Provides error logging and user messaging. Used during the print workflow.
 
 Author: Miloslav Hradecky
 """
@@ -14,44 +14,29 @@ from pathlib import Path
 # 🧠 First-party
 from utils.logger import get_logger
 from utils.messenger import Messenger
+
 from models.user_model import get_value_prefix
 
 
 class Validator:
     """
-    Validator class for checking input formats, extracting structured data from .lbl files,
-    and injecting values into records. Provides error logging and user feedback via Messenger.
-
-    Attributes:
-        print_window: UI window reference for user interaction.
-        messenger (Messenger): Handles user-facing messages.
-        logger: Logger instance for internal diagnostics.
+    Validates serial formats and extracts structured data from .lbl files.
+    Handles missing fields, injection logic, and user feedback.
     """
 
     def __init__(self, print_window):
         """
-        Initializes the Validator with UI window, logger, and messenger.
-
-        Args:
-            print_window: Reference to the UI window for user interaction.
+        Initializes validator with UI window, messenger, and logger.
         """
+        # 📌 Initialization
         self.print_window = print_window
-
-        # 📌 Messenger initialization
         self.messenger = Messenger(self.print_window)
-
-        # 📌 Logger initialization
         self.logger = get_logger("Validators")
 
     def validate_serial_format(self, serial_number: str) -> bool:
         """
-        Validates the serial number format "00-0000-0000".
-
-        Args:
-            serial_number (str): Serial number to validate.
-
-        Returns:
-            bool: True if valid, False otherwise.
+        Checks if serial number matches expected format "00-0000-0000".
+        Shows message and resets focus on failure.
         """
         pattern = r"^\d{2}-\d{4}-\d{4}$"
         if not re.fullmatch(pattern, serial_number):
@@ -62,14 +47,8 @@ class Validator:
 
     def validate_input_exists_for_product(self, lbl_lines: list[str], serial: str) -> bool:
         """
-        Validates that required lines (B=, D=, E=) exist for a given serial number.
-
-        Args:
-            lbl_lines (list[str]): Lines from the .lbl file.
-            serial (str): Serial number to check.
-
-        Returns:
-            bool: True if all lines exist, False otherwise.
+        Checks if B=, D=, and E= lines exist for the given serial number.
+        Logs and alerts if any are missing.
         """
         keys = [f"{serial}B=", f"{serial}D=", f"{serial}E="]
         missing_keys = [key for key in keys if not any(line.startswith(key) for line in lbl_lines)]
@@ -85,14 +64,8 @@ class Validator:
 
     def validate_and_inject_balice(self, header: str, record: str) -> str | None:
         """
-        Injects prefix into the "P Znacka balice" field in the record.
-
-        Args:
-            header (str): Header line from .lbl file.
-            record (str): Record line from .lbl file.
-
-        Returns:
-            str | None: Modified record or None if injection fails.
+        Injects value prefix into 'P Znacka balice' field in the record.
+        Returns modified record or None on failure.
         """
         header_fields = header.split('","')
         record_fields = record.split('","')
@@ -117,14 +90,8 @@ class Validator:
 
     def extract_header_and_record(self, lbl_lines: list[str], serial: str) -> tuple[str, str] | None:
         """
-        Extracts D= and E= lines for a given serial number.
-
-        Args:
-            lbl_lines (list[str]): Lines from the .lbl file.
-            serial (str): Serial number to extract.
-
-        Returns:
-            tuple[str, str] | None: Header and record if found, else None.
+        Extracts D= and E= lines for the given serial number.
+        Returns header and record tuple or None if missing.
         """
         key_d = f"{serial}D="
         key_e = f"{serial}E="
@@ -147,14 +114,8 @@ class Validator:
 
     def extract_trigger_values(self, lbl_lines: list[str], serial: str) -> list[str] | None:
         """
-        Extracts values from B= line for a given serial number.
-
-        Args:
-            lbl_lines (list[str]): Lines from the .lbl file.
-            serial (str): Serial number to extract.
-
-        Returns:
-            list[str] | None: List of values or None if not found.
+        Extracts values from B= line for the given serial number.
+        Returns list of values or None if line is missing.
         """
         key_b = f"{serial}B="
         for line in lbl_lines:
@@ -171,13 +132,7 @@ class Validator:
     def extract_header_and_record_c4(self, lbl_lines: list[str], serial: str) -> tuple[str, str] | None:
         """
         Extracts J= and K= lines for Control4 serial number.
-
-        Args:
-            lbl_lines (list[str]): Lines from the .lbl file.
-            serial (str): Serial number to extract.
-
-        Returns:
-            tuple[str, str] | None: Header and record if found, else None.
+        Returns header and record tuple or None if missing.
         """
         key_j = f"{serial}J="
         key_k = f"{serial}K="
@@ -201,13 +156,7 @@ class Validator:
     def extract_trigger_values_c4(self, lbl_lines: list[str], serial: str) -> list[str] | None:
         """
         Extracts values from I= line for Control4 serial number.
-
-        Args:
-            lbl_lines (list[str]): Lines from the .lbl file.
-            serial (str): Serial number to extract.
-
-        Returns:
-            list[str] | None: List of values or None if not found.
+        Returns list of values or None if line is missing.
         """
         key_i = f"{serial}I="
         for line in lbl_lines:
@@ -222,14 +171,8 @@ class Validator:
 
     def validate_input_exists_for_control4(self, lbl_lines: list[str], serial: str) -> bool:
         """
-        Validates that required lines (I=, J=, K=) exist for Control4 serial number.
-
-        Args:
-            lbl_lines (list[str]): Lines from the .lbl file.
-            serial (str): Serial number to check.
-
-        Returns:
-            bool: True if all lines exist, False otherwise.
+        Checks if I=, J=, and K= lines exist for Control4 serial number.
+        Logs and alerts if any are missing.
         """
         keys = [f"{serial}I=", f"{serial}J=", f"{serial}K="]
         missing_keys = [key for key in keys if not any(line.startswith(key) for line in lbl_lines)]
@@ -245,72 +188,43 @@ class Validator:
 
     def extract_my2n_token(self, serial_number: str, reports_path: Path) -> str | None:
         """
-        Extracts the My2N token from a report file based on the serial number.
+        Extracts My2N token from report file based on serial number.
 
-        The method constructs the expected file path using the serial number format "00-0000-0000",
-        then searches the file for a line containing "my2n token:" (case-insensitive).
-        If found, it extracts and returns the token value.
-
-        Args:
-            serial_number (str): Serial number in format "00-0000-0000".
-            reports_path (Path): Base path to the reports directory.
-
-        Returns:
-            str | None: Extracted token string if found, otherwise None.
+        Searches for 'my2n token:' line and returns extracted value.
+        Returns None if file is missing or token not found.
         """
-        parts = serial_number.split("-")
-        if len(parts) != 3:
-            self.logger.error("Neplatný formát serial number.")
-            self.messenger.error("Neplatný formát serial number.", "Validators")
+        def abort_token_extraction(message: str) -> None:
+            self.logger.error(message)
+            self.messenger.error(message, "Validators")
             self.print_window.reset_input_focus()
-            return None
 
-        base_code = parts[1] + parts[2]
-        file_name = f"{base_code}.{parts[0]}"
-        subdir1 = f"20{parts[0]}"
-        subdir2 = parts[1]
+        sn_parts = serial_number.split("-")
+        if len(sn_parts) != 3:
+            return abort_token_extraction("Neplatný formát serial number.")
 
-        source_file = reports_path / subdir1 / subdir2 / file_name
+        base_code = sn_parts[1] + sn_parts[2]
+        source_file = reports_path / f"20{sn_parts[0]}" / sn_parts[1] / f"{base_code}.{sn_parts[0]}"
+
         if not source_file.exists():
-            self.logger.error("Report soubor %s neexistuje.", str(source_file))
-            self.messenger.error(f"Report soubor {source_file} neexistuje.", "Validators")
-            self.print_window.reset_input_focus()
-            return None
+            return abort_token_extraction(f"Report soubor {source_file} neexistuje.")
 
         try:
             lines = source_file.read_text().splitlines()
             token_line = next((line for line in reversed(lines) if "my2n token:" in line.lower()), None)
             if not token_line:
-                self.logger.error("V souboru nebyl nalezen žádný My2N token.")
-                self.messenger.error("V souboru nebyl nalezen žádný My2N token.", "Validators")
-                self.print_window.reset_input_focus()
-                return None
+                return abort_token_extraction("V souboru nebyl nalezen žádný My2N token.")
 
             # 🧠 Find the position of the token in the line (case-insensitive search, but case-sensitive extraction)
-            token_prefix = "my2n token:"
-            lower_line = token_line.lower()
-            prefix_index = lower_line.find(token_prefix)
-
+            prefix_index = token_line.lower().find("my2n token:")
             if prefix_index == -1:
-                # 📌 This should not happen, but just to be sure
-                self.logger.error("Chyba při zpracování řádku s tokenem.")
-                self.messenger.error("Chyba při zpracování řádku s tokenem.", "Validators")
-                self.print_window.reset_input_focus()
-                return None
+                return abort_token_extraction("Chyba při zpracování řádku s tokenem.")
 
             # ✂️ Extract the token from the original line
-            token_value = token_line[prefix_index + len(token_prefix):].strip()
-
+            token_value = token_line[prefix_index + len("my2n token:"):].strip()
             if not token_value:
-                self.logger.error("My2N token je prázdný.")
-                self.messenger.error("My2N token byl nalezen, ale neobsahuje žádnou hodnotu.", "Validators")
-                self.print_window.reset_input_focus()
-                return None
+                return abort_token_extraction("My2N token byl nalezen, ale neobsahuje žádnou hodnotu.")
 
             return token_value
 
         except Exception as e:
-            self.logger.error("Chyba čtení nebo extrakce: %s", str(e))
-            self.messenger.error(f"{str(e)}", "Validators")
-            self.print_window.reset_input_focus()
-            return None
+            return abort_token_extraction(f"Chyba čtení nebo extrakce: {str(e)}")

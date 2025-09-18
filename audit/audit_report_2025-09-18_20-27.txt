@@ -129,12 +129,9 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\utils\validators.py
-************* Module validators
-utils\validators.py:246:4: R0914: Too many local variables (16/15) (too-many-locals)
-utils\validators.py:246:4: R0911: Too many return statements (7/6) (too-many-return-statements)
 
-------------------------------------------------------------------
-Your code has been rated at 9.87/10 (previous run: 9.87/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.85/10, +0.15)
 
 
 📄 .\utils\window_effects_manager.py

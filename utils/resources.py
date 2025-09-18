@@ -4,10 +4,10 @@
 Utility functions for resolving file paths in both development and bundled (.exe) environments.
 
 Responsibilities:
-    - Locate resource files (e.g. icons, configs) regardless of runtime context
-    - Resolve paths from config.ini (absolute or relative)
-    - Provide writable paths for logs and outputs
-    - Ensure consistent file access across platforms
+- Locate resource files regardless of runtime context
+- Resolve paths from config.ini (absolute or relative)
+- Provide writable paths for logs and outputs
+- Ensure consistent file access across platforms
 
 Author: Miloslav Hradecky
 """
@@ -19,15 +19,8 @@ from pathlib import Path
 
 def resource_path(relative_path: str) -> Path:
     """
-    Resolves the absolute path to a bundled resource file.
-
-    Supports both standard Python execution and PyInstaller-packed (.exe) environments.
-
-    Args:
-        relative_path (str): Relative path to the resource (e.g. "views/assets/icon.png").
-
-    Returns:
-        Path: Absolute path to the resource file.
+    Resolves absolute path to a resource file.
+    Supports both standard execution and PyInstaller-packed (.exe) environments.
     """
     try:
         base_path = Path(sys._MEIPASS)  # type: ignore
@@ -40,16 +33,8 @@ def resource_path(relative_path: str) -> Path:
 
 def resolve_path(config_value: str) -> Path:
     """
-    Resolves a path from config.ini. Returns absolute path.
-
-    If the path is already absolute, returns it directly.
-    If it's relative, resolves it using resource_path().
-
-    Args:
-        config_value (str): Path from config.ini (absolute or relative).
-
-    Returns:
-        Path: Absolute path to the resource.
+    Resolves config-defined path to an absolute path.
+    Handles both absolute and relative inputs.
     """
     path = Path(config_value)
     if path.is_absolute():
@@ -59,27 +44,15 @@ def resolve_path(config_value: str) -> Path:
 
 def get_writable_path(relative_path: str) -> Path:
     """
-    Returns a writable path relative to the executable or script location.
-
-    Typically used for logs, outputs, or temporary files.
-
-    Args:
-        relative_path (str): Relative path to the writable file or folder.
-
-    Returns:
-        Path: Absolute writable path.
+    Returns writable path relative to the script or executable location.
+    Used for logs, outputs, or temp files.
     """
     return Path(sys.argv[0]).resolve().parent / relative_path
 
 
 def get_config_path(filename: str = "config.ini") -> Path:
     """
-    Returns the path to the configuration file.
-
-    Args:
-        filename (str): Name of the config file (default: "config.ini").
-
-    Returns:
-        Path: Absolute path to the config file.
+    Returns absolute path to the configuration file.
+    Defaults to 'config.ini' in the current executable directory.
     """
     return Path(sys.argv[0]).resolve().parent / filename
