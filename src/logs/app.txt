@@ -364,3 +364,11 @@
 2025-09-18 12:17:13,309 | INFO    | BartenderUtils          | BarTender Commander spuštěn: 21408
 2025-09-18 12:17:13,358 | INFO    | WorkOrderController     | Příkaz: 01K5360
 2025-09-18 12:17:23,791 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-18 14:11:02,231 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-18 14:11:02,235 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-18 14:11:02,263 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-18 14:11:08,931 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-18 14:11:14,838 | INFO    | BartenderUtils          | BarTender Commander spuštěn: 13668
+2025-09-18 14:11:14,894 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-18 14:11:23,581 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.

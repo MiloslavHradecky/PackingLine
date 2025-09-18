@@ -313,3 +313,10 @@
 {"timestamp": "2025-09-18 12:17:13,309", "level": "INFO", "module": "BartenderUtils", "message": "BarTender Commander spuštěn: 21408"}
 {"timestamp": "2025-09-18 12:17:13,358", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
 {"timestamp": "2025-09-18 12:17:23,791", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-18 14:11:02,231", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-18 14:11:02,235", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-18 14:11:02,263", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-18 14:11:08,931", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-18 14:11:14,838", "level": "INFO", "module": "BartenderUtils", "message": "BarTender Commander spuštěn: 13668"}
+{"timestamp": "2025-09-18 14:11:14,894", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-18 14:11:23,581", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}

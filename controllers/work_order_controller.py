@@ -19,11 +19,10 @@ from PyQt6.QtCore import QCoreApplication
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
-from utils.bartender_utils import BartenderUtils
+from utils.order_data import OrderData
+from utils.app_services import AppServices
 
 from views.work_order_window import WorkOrderWindow
-
-from controllers.print_config_controller import PrintConfigController
 
 
 class WorkOrderController:
@@ -36,10 +35,6 @@ class WorkOrderController:
         work_order_window (WorkOrderWindow): UI window for work order input.
         messenger (Messenger): Displays messages and errors to the user.
         logger (Logger): Logs events and errors.
-        orders_dir (Path): Directory containing .lbl and .nor files.
-        lbl_file (Path): Path to the .lbl file.
-        nor_file (Path): Path to the .nor file.
-        lines (list[str]): Parsed lines from .lbl file.
     """
 
     def __init__(self, window_stack):
@@ -65,24 +60,12 @@ class WorkOrderController:
         self.messenger = Messenger(self.work_order_window)
 
         # 📂 Paths and file references
-        self.orders_dir = None
-        self.lbl_file = None
-        self.nor_file = None
-
-        # 📄 Parsed data
-        self.lines = None
-
-        # 📌 Initialization of print config
-        self.config_controller = PrintConfigController(
-            config=self.config,
-            messenger=self.messenger
-        )
+        self.order_data = OrderData()
 
         # 📌 Logger initialization
         self.logger = get_logger("WorkOrderController")
 
-        # 📌 Bartender initialization
-        self.bartender = BartenderUtils(messenger=self.messenger, config=self.config)
+        self.services = AppServices(config=self.config, messenger=self.messenger)
 
         # 📌 Linking the button to the method
         self.work_order_window.next_button.clicked.connect(self.work_order_button_click)
@@ -107,20 +90,18 @@ class WorkOrderController:
             return
 
         # 📁 Construct paths
-        self.orders_dir = Path("T:/Prikazy")
-        self.lbl_file = self.orders_dir / f"{value_input}.lbl"
-        self.nor_file = self.orders_dir / f"{value_input}.nor"
+        self.order_data.set_files(value_input)
 
         # ❌ If file not found
-        if not self.lbl_file.exists() or not self.nor_file.exists():
-            self.lines = []
-            self.logger.warning("Soubor %s nebo %s nebyl nalezen!", self.lbl_file, self.nor_file)
-            self.messenger.warning(f"Soubor {self.lbl_file} nebo {self.nor_file} nebyl nalezen!", "Work Order Ctrl")
+        if not self.order_data.lbl_file.exists() or not self.order_data.nor_file.exists():
+            self.order_data.lines = []
+            self.logger.warning("Soubor %s nebo %s nebyl nalezen!", self.order_data.lbl_file, self.order_data.nor_file)
+            self.messenger.warning(f"Soubor {self.order_data.lbl_file} nebo {self.order_data.nor_file} nebyl nalezen!", "Work Order Ctrl")
             self.reset_input_focus()
             return
 
         try:
-            with self.nor_file.open("r") as file:
+            with self.order_data.nor_file.open("r") as file:
                 first_line = file.readline().strip()
                 parts = first_line.split(";")
 
@@ -134,22 +115,24 @@ class WorkOrderController:
                         self.reset_input_focus()
                         return
 
-                    groups = self.config_controller.get_trigger_groups_for_product(product_name)
+                    groups = self.services.config_controller.get_trigger_groups_for_product(product_name)
                     if not groups:
                         self.logger.info("Zpracování zastaveno – produkt není mapován v configu.")
                         self.reset_input_focus()
                         return
 
-                    self.lines = self.load_file(self.lbl_file)
+                    self.order_data.lines = self.load_file(self.order_data.lbl_file)
 
-                    self.bartender.run_commander()
+                    bartender = self.services.bartender_cls(messenger=self.messenger, config=self.config)
+                    bartender.run_commander()
+
                     self.open_app_window(order_code=value_input, product_name=product_name)
                     self.logger.info("Příkaz: %s", value_input)
                     self.reset_input_focus()
 
                 else:
-                    self.logger.warning("Řádek v souboru %s nemá očekávaný formát.", self.nor_file)
-                    self.messenger.warning(f"Řádek v souboru {self.nor_file} nemá očekávaný formát.", "Work Order Ctrl")
+                    self.logger.warning("Řádek v souboru %s nemá očekávaný formát.", self.order_data.nor_file)
+                    self.messenger.warning(f"Řádek v souboru {self.order_data.nor_file} nemá očekávaný formát.", "Work Order Ctrl")
                     self.reset_input_focus()
                     return
         except Exception as e:
@@ -198,7 +181,8 @@ class WorkOrderController:
         """
         Closes the product window and returns to the previous window in the stack.
         """
-        self.bartender.kill_processes()
+        bartender = self.services.bartender_cls(messenger=self.messenger, config=self.config)
+        bartender.kill_processes()
         self.work_order_window.effects.fade_out(self.work_order_window)
 
     def handle_exit(self):
@@ -206,6 +190,7 @@ class WorkOrderController:
         Terminates the application and fades out the product window.
         """
         self.logger.info("Aplikace byla ukončena uživatelem.")
-        self.bartender.kill_processes()
+        bartender = self.services.bartender_cls(messenger=self.messenger, config=self.config)
+        bartender.kill_processes()
         self.window_stack.mark_exiting()
         self.work_order_window.effects.fade_out(self.work_order_window, callback=QCoreApplication.instance().quit)

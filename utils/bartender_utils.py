@@ -13,6 +13,7 @@ import subprocess
 # 🧠 First-party (project-specific)
 from utils.logger import get_logger
 
+
 class BartenderUtils:
     """
     Utility class for managing BarTender-related processes.
