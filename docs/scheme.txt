@@ -15,7 +15,6 @@
 │
 ├── docs/
 │   ├── home_terminal.md
-│   ├── pyproject.md
 │   ├── scheme.txt
 │   └── work_terminal.md
 │
@@ -78,7 +77,6 @@
 ├── dev-requirements.in
 ├── dev-requirements.txt
 ├── LICENSE
-├── pyproject.toml
 ├── README.md
 ├── requirements.in
 └── requirements.txt

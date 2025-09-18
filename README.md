@@ -42,7 +42,6 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │
 ├── docs/
 │   ├── home_terminal.md
-│   ├── pyproject.md
 │   ├── scheme.txt
 │   └── work_terminal.md
 │
@@ -105,7 +104,6 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 ├── dev-requirements.in
 ├── dev-requirements.txt
 ├── LICENSE
-├── pyproject.toml
 ├── README.md
 ├── requirements.in
 └── requirements.txt
