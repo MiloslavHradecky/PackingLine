@@ -1,9 +1,8 @@
 """
 📦 Module: work_order_controller.py
 
-Controller responsible for handling work order input, validating associated files,
-and transitioning to the print phase. Also manages launching BarTender Commander
-and terminating related processes.
+Handles work order input, validates associated files, and transitions to the print phase.
+Also manages launching BarTender Commander and terminating related processes.
 
 Author: Miloslav Hradecky
 """
@@ -27,22 +26,14 @@ from views.work_order_window import WorkOrderWindow
 
 class WorkOrderController:
     """
-    Handles scanning logic, file validation, and transition to PrintController.
+    Validates work order input and launches the print workflow.
 
-    Attributes:
-        config (ConfigParser): Loaded configuration file.
-        window_stack (WindowStackManager): Navigation stack for UI windows.
-        work_order_window (WorkOrderWindow): UI window for work order input.
-        messenger (Messenger): Displays messages and errors to the user.
-        logger (Logger): Logs events and errors.
+    Handles file checks, parsing, and BarTender orchestration.
     """
 
     def __init__(self, window_stack):
         """
-        Initializes controller logic, event binding, and config loading.
-
-        Args:
-            window_stack (WindowStackManager): UI navigation stack.
+        Initializes controller, loads config, and connects UI signals.
         """
         # 📌 Loading the configuration file
         config_path = get_config_path("config.ini")
@@ -69,10 +60,8 @@ class WorkOrderController:
         """
         Triggered on "Continue" click.
 
-            - Validates input
-            - Checks .lbl and .nor file existence
-            - Parses .nor file and validates order
-            - Loads label content and launches PrintController
+        Validates input, checks file existence, parses .nor file,
+        and launches PrintController if all checks pass.
         """
         # 📌 Processing of input
         value_input = self.work_order_window.work_order_input.text().strip().upper()
@@ -135,13 +124,9 @@ class WorkOrderController:
 
     def load_file(self, file_path: Path) -> list[str]:
         """
-        Loads text content from file.
+        Reads lines from a given file path.
 
-        Args:
-            file_path (Path): Path to the file.
-
-        Returns:
-            list[str]: Lines from the file or empty list on error.
+        Returns empty list on error.
         """
         try:
             return file_path.read_text().splitlines()
@@ -152,11 +137,7 @@ class WorkOrderController:
 
     def open_app_window(self, order_code, product_name):
         """
-        Instantiates PrintController and launches next window.
-
-        Args:
-            order_code (str): Order code for the print job.
-            product_name (str): Product name extracted from .nor file.
+        Instantiates PrintController and opens the print window.
         """
         from controllers.print_controller import PrintController
         self.print_controller = PrintController(self.window_stack, order_code, product_name)

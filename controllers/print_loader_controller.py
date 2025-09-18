@@ -1,10 +1,10 @@
 """
 📦 Module: print_loader_controller.py
 
-Controller responsible for loading .lbl files based on order code and configuration.
+Loads .lbl files based on order code and configuration.
 
-Provides error handling, logging, and user feedback via Messenger. Used by PrintController
-to retrieve label data for further processing.
+Provides error handling, logging, and user feedback via Messenger.
+Used by PrintController to retrieve label data for further processing.
 
 Author: Miloslav Hradecky
 """
@@ -21,19 +21,13 @@ from utils.resources import get_config_path
 
 class PrintLoaderController:
     """
-    Loads .lbl files from disk using configuration-defined paths.
+    Loads .lbl files from disk using configured paths.
 
-    Attributes:
-        config (ConfigParser): Loaded configuration file.
-        messenger (Messenger): Displays messages and warnings to the user.
-        logger (Logger): Logs events and errors.
+    Handles missing files, read errors, and provides user feedback.
     """
     def __init__(self, messenger: Messenger):
         """
-        Initializes the loader with configuration and messenger.
-
-        Args:
-            messenger (Messenger): Messenger instance for user feedback.
+        Initializes loader with config and messenger for error reporting.
         """
         config_path = get_config_path("config.ini")
         self.config = configparser.ConfigParser()
@@ -45,14 +39,10 @@ class PrintLoaderController:
 
     def load_lbl_file(self, order_code: str, reset_focus_callback=None) -> list[str]:
         """
-        Loads a .lbl file based on the given order code.
+        Loads .lbl file for the given order code.
 
-        Args:
-            order_code (str): Order code used to locate the .lbl file.
-            reset_focus_callback (Callable, optional): Callback to reset UI focus.
-
-        Returns:
-            list[str]: List of lines from the .lbl file, or empty list if not found or error occurs.
+        Handles missing paths, file absence, and read errors.
+        Returns list of lines or empty list on failure.
         """
         raw_orders_path = self.config.get("Paths", "orders_path", fallback="")
 

@@ -1,10 +1,10 @@
 """
 📦 Module: print_logic_controller.py
 
-Controller responsible for saving structured output files and triggering label print actions.
+Handles saving structured output files and triggering label print actions.
 
-Supports multiple product types (Product, Control4, My2N) and uses configuration-defined paths
-to write output and create trigger files. Provides logging and user feedback via Messenger.
+Supports multiple product types (Product, Control4, My2N) and uses configuration-defined paths.
+Provides logging and user feedback via Messenger.
 
 Author: Miloslav Hradecky
 """
@@ -18,21 +18,13 @@ from utils.logger import get_logger
 
 class PrintLogicController:
     """
-    Handles save-and-print logic for different product types.
+    Executes save-and-print operations for different product types.
 
-    Attributes:
-        config (ConfigParser): Loaded configuration file.
-        messenger (Messenger): Displays messages and errors to the user.
-        print_window (PrintWindow): Reference to the active print window.
+    Handles file writing, trigger creation, and error reporting.
     """
     def __init__(self, config, messenger, print_window):
         """
-        Initializes the logic controller.
-
-        Args:
-            config (ConfigParser): Configuration object.
-            messenger (Messenger): Messenger instance for user feedback.
-            print_window (PrintWindow): UI window reference.
+        Initializes logic controller with config, messenger, and print window reference.
         """
         self.config = config
         self.logger = get_logger("PrintLogicController")
@@ -43,10 +35,7 @@ class PrintLogicController:
         """
         Saves product header and record to output file and creates trigger files.
 
-        Args:
-            header (str): Extracted header line.
-            record (str): Extracted record line.
-            trigger_values (list[str]): List of trigger filenames.
+        Handles file overwrite and error reporting.
         """
         raw_output_path = self.config.get("ProductPaths", "output_file_path_product")
         if not raw_output_path:
@@ -87,10 +76,7 @@ class PrintLogicController:
         """
         Saves Control4 header and record to output file and creates trigger files.
 
-        Args:
-            header (str): Extracted header line.
-            record (str): Extracted record line.
-            trigger_values (list[str]): List of trigger filenames.
+        Handles file overwrite and error reporting.
         """
         raw_output_path = self.config.get("Control4Paths", "output_file_path_c4_product")
         if not raw_output_path:
@@ -131,9 +117,7 @@ class PrintLogicController:
         """
         Saves My2N serial number and token to output file and creates trigger file.
 
-        Args:
-            serial_number (str): Serial number from input.
-            token (str): Extracted My2N token.
+        Handles file overwrite and error reporting.
         """
         raw_output_path = self.config.get("My2nPaths", "output_file_path_my2n")
         if not raw_output_path:
@@ -171,10 +155,9 @@ class PrintLogicController:
 
     def _get_trigger_dir(self) -> Path | None:
         """
-        Retrieves the trigger directory path from config.
+        Retrieves and validates trigger directory path from config.
 
-        Returns:
-            Path | None: Path object if valid, otherwise None.
+        Returns None if path is missing or invalid.
         """
         raw_path = self.config.get("Paths", "trigger_path")
         if not raw_path:
