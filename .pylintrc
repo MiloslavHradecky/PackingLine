@@ -17,11 +17,11 @@ disable=
 
 
 [FORMAT]
-max-line-length=200
+max-line-length=100
 
 [DESIGN]
-max-attributes=12
-max-locals=20
-max-returns=20
-max-statements=60
-max-branches=16
+max-attributes=7
+max-locals=15
+max-returns=6
+max-statements=50
+max-branches=12

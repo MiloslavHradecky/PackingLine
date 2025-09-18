@@ -27,5 +27,8 @@ class OrderData:
         self.lines = None
 
     def set_files(self, order_code: str):
+        """
+        Sets .lbl and .nor file paths based on the given order code.
+        """
         self.lbl_file = self.orders_dir / f"{order_code}.lbl"
         self.nor_file = self.orders_dir / f"{order_code}.nor"

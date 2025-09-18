@@ -4,15 +4,16 @@
 
 🧼 FLAKE8 — styl a chyby
 ------------------------------------------------------------
-.\utils\bartender_utils.py:16:1: E302 expected 2 blank lines, found 1
-.\utils\window_stack.py:17:1: E302 expected 2 blank lines, found 1
+
 
 🧠 PYLINT — hloubková analýza
 ------------------------------------------------------------
 📄 .\controllers\login_controller.py
+************* Module login_controller
+controllers\login_controller.py:24:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 9.78/10 (previous run: 10.00/10, -0.22)
 
 
 📄 .\controllers\print_config_controller.py
@@ -22,9 +23,14 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\controllers\print_controller.py
+************* Module print_controller
+controllers\print_controller.py:33:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
+controllers\print_controller.py:103:4: R0911: Too many return statements (12/6) (too-many-return-statements)
+controllers\print_controller.py:103:4: R0912: Too many branches (15/12) (too-many-branches)
+controllers\print_controller.py:103:4: R0915: Too many statements (54/50) (too-many-statements)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 9.64/10 (previous run: 10.00/10, -0.36)
 
 
 📄 .\controllers\print_loader_controller.py
@@ -41,10 +47,10 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 📄 .\controllers\work_order_controller.py
 ************* Module work_order_controller
-controllers\work_order_controller.py:29:0: R0902: Too many instance attributes (13/12) (too-many-instance-attributes)
+controllers\work_order_controller.py:28:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
 
 -------------------------------------------------------------------
-Your code has been rated at 9.90/10 (previous run: 10.00/10, -0.10)
+Your code has been rated at 9.89/10 (previous run: 10.00/10, -0.11)
 
 
 📄 .\models\user_model.py
@@ -59,12 +65,16 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
-📄 .\utils\bartender_utils.py
-************* Module bartender_utils
-utils\bartender_utils.py:66:22: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+📄 .\utils\app_services.py
 
------------------------------------
-Your code has been rated at 9.71/10
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\bartender_utils.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\utils\config_checker.py
@@ -86,6 +96,12 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\utils\messenger.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\order_data.py
 
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
@@ -116,9 +132,12 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\utils\validators.py
+************* Module validators
+utils\validators.py:246:4: R0914: Too many local variables (16/15) (too-many-locals)
+utils\validators.py:246:4: R0911: Too many return statements (7/6) (too-many-return-statements)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 9.87/10 (previous run: 10.00/10, -0.13)
 
 
 📄 .\utils\window_effects_manager.py
@@ -134,15 +153,19 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\views\login_window.py
+************* Module login_window
+views\login_window.py:27:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 9.77/10 (previous run: 10.00/10, -0.23)
 
 
 📄 .\views\print_window.py
+************* Module print_window
+views\print_window.py:26:0: R0902: Too many instance attributes (12/7) (too-many-instance-attributes)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 9.86/10 (previous run: 10.00/10, -0.14)
 
 
 📄 .\views\splash_screen.py
@@ -152,7 +175,9 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\views\work_order_window.py
+************* Module work_order_window
+views\work_order_window.py:25:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 9.79/10 (previous run: 10.00/10, -0.21)
 
