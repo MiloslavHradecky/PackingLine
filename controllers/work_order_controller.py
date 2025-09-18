@@ -50,21 +50,14 @@ class WorkOrderController:
         self.config.optionxform = str  # 💡 Ensures letter size is maintained
         self.config.read(config_path)
 
-        # 📌 Saving references to application windows
+        # 📌 Initialization
         self.window_stack = window_stack
         self.work_order_window = WorkOrderWindow(controller=self)
         self.print_controller = None
         self.print_window = None
-
-        # 🔔 User feedback system
         self.messenger = Messenger(self.work_order_window)
-
-        # 📂 Paths and file references
         self.order_data = OrderData()
-
-        # 📌 Logger initialization
         self.logger = get_logger("WorkOrderController")
-
         self.services = AppServices(config=self.config, messenger=self.messenger)
 
         # 📌 Linking the button to the method
@@ -81,7 +74,6 @@ class WorkOrderController:
             - Parses .nor file and validates order
             - Loads label content and launches PrintController
         """
-
         # 📌 Processing of input
         value_input = self.work_order_window.work_order_input.text().strip().upper()
         if not value_input:

@@ -320,3 +320,18 @@
 {"timestamp": "2025-09-18 14:11:14,838", "level": "INFO", "module": "BartenderUtils", "message": "BarTender Commander spuštěn: 13668"}
 {"timestamp": "2025-09-18 14:11:14,894", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
 {"timestamp": "2025-09-18 14:11:23,581", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-18 14:35:28,590", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-18 14:35:28,595", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-18 14:35:28,625", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-18 14:36:38,425", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-18 14:36:43,920", "level": "INFO", "module": "BartenderUtils", "message": "BarTender Commander spuštěn: 2144"}
+{"timestamp": "2025-09-18 14:36:43,975", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-18 14:36:53,531", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\02 product.txt"}
+{"timestamp": "2025-09-18 14:36:53,553", "level": "INFO", "module": "PrintController", "message": "9151301CRP 54-5967-1546"}
+{"timestamp": "2025-09-18 14:36:53,567", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
+{"timestamp": "2025-09-18 14:36:53,579", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
+{"timestamp": "2025-09-18 14:40:29,516", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\02 product.txt"}
+{"timestamp": "2025-09-18 14:40:29,543", "level": "INFO", "module": "PrintController", "message": "9151301CRP 54-5967-1546"}
+{"timestamp": "2025-09-18 14:40:29,562", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
+{"timestamp": "2025-09-18 14:40:29,585", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
+{"timestamp": "2025-09-18 14:48:18,369", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}

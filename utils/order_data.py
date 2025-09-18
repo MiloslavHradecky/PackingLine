@@ -9,6 +9,7 @@ Author: Miloslav Hradecky
 
 from pathlib import Path
 
+
 class OrderData:
     """
     Container for work order file paths and parsed content.

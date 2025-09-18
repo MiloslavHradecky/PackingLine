@@ -1,0 +1,169 @@
+🔍 VULTURE — nevyužitý kód
+------------------------------------------------------------
+
+
+🧼 FLAKE8 — styl a chyby
+------------------------------------------------------------
+.\utils\order_data.py:12:1: E302 expected 2 blank lines, found 1
+
+🧠 PYLINT — hloubková analýza
+------------------------------------------------------------
+📄 .\controllers\login_controller.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\controllers\print_config_controller.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\controllers\print_controller.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\controllers\print_loader_controller.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\controllers\print_logic_controller.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\controllers\work_order_controller.py
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.90/10, +0.10)
+
+
+📄 .\models\user_model.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\src\main.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\app_services.py
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+
+📄 .\utils\bartender_utils.py
+************* Module bartender_utils
+utils\bartender_utils.py:67:22: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+
+------------------------------------------------------------------
+Your code has been rated at 9.71/10 (previous run: 9.71/10, +0.00)
+
+
+📄 .\utils\config_checker.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\ensure_logs_dir.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\logger.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\messenger.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\order_data.py
+************* Module order_data
+utils\order_data.py:28:4: C0116: Missing function or method docstring (missing-function-docstring)
+
+-----------------------------------
+Your code has been rated at 9.00/10
+
+
+📄 .\utils\path_validation.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\resources.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\single_instance.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\system_info.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\validators.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\window_effects_manager.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\utils\window_stack.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\views\login_window.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\views\print_window.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\views\splash_screen.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+📄 .\views\work_order_window.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+

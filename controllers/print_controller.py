@@ -22,13 +22,12 @@ from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
 from utils.validators import Validator
-from utils.bartender_utils import BartenderUtils
+from utils.app_services import AppServices
 
 from views.print_window import PrintWindow
 
 from controllers.print_logic_controller import PrintLogicController
 from controllers.print_loader_controller import PrintLoaderController
-from controllers.print_config_controller import PrintConfigController
 
 
 class PrintController:
@@ -43,7 +42,6 @@ class PrintController:
         messenger (Messenger): Displays messages and dialogs to the user.
         loader (PrintLoaderController): Loads .lbl files from disk.
         logic (PrintLogicController): Executes save-and-print operations.
-        config_controller (PrintConfigController): Resolves trigger groups from config.
     """
 
     def __init__(self, window_stack, order_code: str, product_name: str):
@@ -61,32 +59,20 @@ class PrintController:
         self.config.optionxform = str  # 💡 Ensures letter size is maintained
         self.config.read(config_path)
 
-        # 📌 Saving references to application windows
+        # 📌 Initialization
         self.window_stack = window_stack
         self.print_window = PrintWindow(order_code, product_name, controller=self)
         self.validator = Validator(self.print_window)
-
-        # 🔔 User feedback system
         self.messenger = Messenger(self.print_window)
         self.loader = PrintLoaderController(self.messenger)
-
-        # 📌 Logger initialization
         self.logger = get_logger("PrintController")
-
-        # 📌 Bartender initialization
-        self.bartender = BartenderUtils(messenger=self.messenger)
+        self.services = AppServices(config=self.config, messenger=self.messenger)
 
         # 📌 Initialization of print logic
         self.logic = PrintLogicController(
             config=self.config,
             messenger=self.messenger,
             print_window=self.print_window
-        )
-
-        # 📌 Initialization of print config
-        self.config_controller = PrintConfigController(
-            config=self.config,
-            messenger=self.messenger
         )
 
         # 🔗 linking the button to the method
@@ -129,7 +115,7 @@ class PrintController:
             return
 
         # === 2️⃣ Resolve product trigger groups from config
-        triggers = self.config_controller.get_trigger_groups_for_product(self.product_name)
+        triggers = self.services.config_controller.get_trigger_groups_for_product(self.product_name)
         if not triggers:
             self.logger.warning("Zpracování zastaveno – produkt není mapován v configu.")
             self.delayed_restore_ui()
@@ -236,7 +222,8 @@ class PrintController:
         Terminates the application and fades out the product window.
         """
         self.logger.info("Aplikace byla ukončena uživatelem.")
-        self.bartender.kill_processes()
+        bartender = self.services.bartender_cls(messenger=self.messenger, config=self.config)
+        bartender.kill_processes()
         self.window_stack.mark_exiting()
         self.print_window.effects.fade_out(self.print_window, callback=QCoreApplication.instance().quit)
 
