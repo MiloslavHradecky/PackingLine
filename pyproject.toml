@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "packingline"
-version = "3.1.0"
+version = "4.0.0"
 description = "EOL Line-B 2N"
 authors = [{ name = "MiloslavHradecky", email = "miloslavhradecky76@gmail.com" }]
 readme = "README.md"

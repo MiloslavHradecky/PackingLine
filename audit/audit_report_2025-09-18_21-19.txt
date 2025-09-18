@@ -130,8 +130,8 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 📄 .\utils\validators.py
 
--------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.85/10, +0.15)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\utils\window_effects_manager.py
@@ -153,11 +153,9 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\views\print_window.py
-************* Module print_window
-views\print_window.py:26:0: R0902: Too many instance attributes (12/10) (too-many-instance-attributes)
 
-------------------------------------------------------------------
-Your code has been rated at 9.86/10 (previous run: 9.86/10, +0.00)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
 📄 .\views\splash_screen.py

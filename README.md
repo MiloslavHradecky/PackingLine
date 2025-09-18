@@ -65,10 +65,14 @@ Structured according to MVC and distributed as an ".exe" file for Windows 11+.
 │   └── main.py
 │
 ├── utils/
+│   ├── app_services.py
+│   ├── bartender_utils.py
 │   ├── config_checker.py
 │   ├── ensure_logs_dir.py
 │   ├── logger.py
+│   ├── login_services.py
 │   ├── messenger.py
+│   ├── order_data.py
 │   ├── path_validation.py
 │   ├── resources.py
 │   ├── single_instance.py
