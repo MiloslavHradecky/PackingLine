@@ -4,10 +4,10 @@
 Defines the application's login window using PyQt6.
 
 Responsibilities:
-    - Display password input field (ID card scan)
-    - Show login and exit buttons
-    - Apply custom styling, icons, and fade-in effects
-    - Connect input to controller logic
+- Display password input field (ID card scan)
+- Show login and exit buttons
+- Apply custom styling, icons, and fade-in effects
+- Connect input to controller logic
 
 Used by ControllerApp to initiate authentication.
 
@@ -26,22 +26,16 @@ from utils.resources import resource_path
 
 class LoginWindow(QWidget):
     """
-    🔐 Login window for the application.
+    Login window for user authentication.
 
-    Features:
-        - Password input field with hidden text
-        - Login and exit buttons
-        - Custom background, icon, and logo
-        - Fade-in animation on startup
-        - Connected to ControllerApp for authentication
+    Displays password input, logo, and navigation buttons.
+    Applies fade-in effect and connects input to controller logic.
     """
 
     def __init__(self, controller=None):
         """
-        Initializes the LoginWindow and sets its visual appearance.
-
-        Args:
-            controller (object, optional): Controller responsible for handling login logic.
+        Initializes LoginWindow and sets up visual components.
+        Configures layout, styling, input field, buttons, and fade-in animation.
         """
         super().__init__()
 

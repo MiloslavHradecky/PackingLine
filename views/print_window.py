@@ -1,14 +1,15 @@
 """
 📦 Module: print_window.py
 
-This module defines the PrintWindow class, which provides a graphical interface
-for printing labels based on scanned serial numbers. It includes:
-- Display of work order and product information
-- Input field for serial number scanning
-- Buttons for printing and exiting
-- Visual enhancements via WindowEffectsManager
+Defines the PrintWindow class — a GUI for printing labels based on scanned serial numbers.
 
-Used in conjunction with a controller to handle print logic.
+Includes:
+- Display of work order and product info
+- Input field for serial number
+- Buttons for printing and exiting
+- Visual effects via WindowEffectsManager
+
+Used with a controller to handle print logic.
 
 Author: Miloslav Hradecky
 """
@@ -27,43 +28,20 @@ class PrintWindow(QWidget):
     """
     GUI window for printing product labels based on serial number input.
 
-    Responsibilities:
-        - Display work order and product name
-        - Provide input field for scanning serial numbers
-        - Trigger print action via button or Enter key
-        - Allow user to exit the window
-        - Apply visual effects and styling
-
-    Args:
-        order_code (str): Code of the active work order.
-        product_name (str): Human-readable name of the product.
-        controller (object, optional): Controller instance for handling print logic.
+    Displays order and product info, input field, and navigation buttons.
+    Triggers print logic and applies fade-in animation.
     """
 
     def __init__(self, order_code: str, product_name: str, controller=None):
         """
-        Initializes the PrintWindow and sets up its visual components.
-
-        Steps:
-            - Sets window title, size, and icon
-            - Displays order and product info in styled label
-            - Loads and shows logo
-            - Creates input field for serial number
-            - Adds print and exit buttons
-            - Connects Enter key to print action
-            - Applies layout and fade-in animation
-
-        Args:
-            order_code (str): Code of the active work order.
-            product_name (str): Human-readable product name.
-            controller (object, optional): Controller instance for handling print logic.
+        Initializes PrintWindow and sets up visual components.
+        Configures layout, input field, buttons, labels, and fade-in effect.
         """
         super().__init__()
 
         self.order_code = order_code
         self.product_name = product_name
         self.controller = controller
-
         self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
 
         # 🪟 Title and size

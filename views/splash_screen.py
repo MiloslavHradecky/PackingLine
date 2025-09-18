@@ -4,12 +4,12 @@
 Defines the animated splash screen shown during application startup.
 
 Responsibilities:
-    - Display a logo and loading spinner (GIF)
-    - Animate fade-in effect
-    - Show loading message
-    - Automatically close after a set duration and trigger callback
+- Display logo and loading spinner (GIF)
+- Animate fade-in effect
+- Show loading message
+- Auto-close after set duration and trigger callback
 
-Used to enhance user experience during initialization.
+Enhances user experience during initialization.
 
 Author: Miloslav Hradecky
 """
@@ -25,23 +25,15 @@ from utils.resources import resource_path
 
 class SplashScreen(QSplashScreen):
     """
-    ✨ Animated splash screen for application startup.
+    Animated splash screen for application startup.
 
-    Features:
-        - Logo display with smooth scaling
-        - Loading spinner (GIF animation)
-        - Fade-in effect using QPropertyAnimation
-        - Auto-close after specified duration
-        - Callback execution after finish
+    Displays logo, spinner, and loading message with fade-in effect.
+    Auto-closes after duration and triggers callback.
     """
     def __init__(self, logo_path=None, spinner_path=None, duration_ms=2000):
         """
-        Initializes the splash screen with logo, spinner, and fade-in animation.
-
-        Args:
-            logo_path (Path or str, optional): Path to splash logo image.
-            spinner_path (Path or str, optional): Path to spinner GIF.
-            duration_ms (int): Duration to display splash screen in milliseconds.
+        Initializes splash screen with logo, spinner, and fade-in animation.
+        Sets window flags, opacity, and layout.
         """
         logo_path = resource_path("views/assets/splash_logo.png") if logo_path is None else logo_path
         spinner_path = resource_path("views/assets/spinner.gif") if spinner_path is None else spinner_path
@@ -79,10 +71,8 @@ class SplashScreen(QSplashScreen):
 
     def start(self, on_finish_callback):
         """
-        Displays the splash screen with fade-in animation and closes after duration.
-
-        Args:
-            on_finish_callback (callable): Function to call after splash screen finishes.
+        Shows splash screen, applies fade-in, and closes after duration.
+        Executes callback after finish.
         """
         self.show()
         self._animate_fade_in()
@@ -100,10 +90,7 @@ class SplashScreen(QSplashScreen):
 
     def _finish(self, callback):
         """
-        Closes the splash screen and triggers the provided callback.
-
-        Args:
-            callback (callable): Function to execute after splash screen closes.
+        Closes splash screen and executes provided callback.
         """
         self.close()
         callback()

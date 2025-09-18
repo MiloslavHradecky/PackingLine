@@ -1,10 +1,11 @@
 """
 📦 Module: work_order_window.py
 
-This module defines the WorkOrderWindow class, which provides a graphical interface
-for entering or scanning a work order code (e.g., barcode or ID). It includes:
-- A styled input field
-- Buttons for continuing or exiting
+Defines the WorkOrderWindow class — a GUI for entering or scanning a work order code.
+
+Includes:
+- Styled input field
+- Navigation buttons
 - Application logo and visual effects
 
 Used during the initial phase of the workflow to identify the active work order.
@@ -26,31 +27,14 @@ class WorkOrderWindow(QWidget):
     """
     GUI window for scanning or entering a work order code.
 
-    Responsibilities:
-        - Display application logo and styled background
-        - Provide input field for scanning work order
-        - Include buttons to continue or exit
-        - Trigger controller logic via Enter key
-        - Apply fade-in visual effect
-
-    Args:
-        controller (object, optional): Controller instance for handling workflow logic.
+    Displays logo, styled input, and navigation buttons.
+    Triggers controller logic and applies fade-in effect.
     """
 
     def __init__(self, controller=None):
         """
-        Initializes the WorkOrderWindow and sets up its visual components.
-
-        Steps:
-            - Sets window title, size, and icon
-            - Loads and displays logo
-            - Creates input field with placeholder styling
-            - Adds continue and exit buttons
-            - Connects Enter key to continue action
-            - Applies layout and fade-in animation
-
-        Args:
-            controller (object, optional): Controller instance for handling workflow logic.
+        Initializes the WorkOrderWindow and sets up visual components.
+        Sets title, icon, layout, input field, buttons, and fade-in animation.
         """
         super().__init__()
 
