@@ -17,7 +17,7 @@ Author: Miloslav Hradecky
 
 class WindowStackManager:
     """
-    🧭 Manages a stack of windows for navigation and visibility control.
+    Manages a stack of windows for navigation and visibility control.
 
     Ensures only one window is visible at a time, and restores previous
     windows when the current one is closed — unless the app is exiting.

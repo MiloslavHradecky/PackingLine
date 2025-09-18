@@ -4,9 +4,9 @@
 Provides fade-in and fade-out animations for PyQt6 widgets.
 
 Responsibilities:
-    - Animate window opacity for smooth transitions
-    - Prevent garbage collection of active animations
-    - Support optional callbacks after fade-out
+- Animate window opacity for smooth transitions
+- Prevent garbage collection of active animations
+- Support optional callbacks after fade-out
 
 Used across controllers to enhance user experience.
 
@@ -19,24 +19,21 @@ from PyQt6.QtCore import QPropertyAnimation, QEasingCurve
 
 class WindowEffectsManager:
     """
-    💫 Manages fade-in and fade-out effects for PyQt6 widgets.
+    Manages fade-in and fade-out effects for PyQt6 widgets.
 
     Uses QPropertyAnimation to animate window opacity with easing curves.
     Prevents premature garbage collection by storing active animations.
     """
     def __init__(self):
         """
-        Initializes the WindowEffectsManager and prepares animation storage.
+        Initializes animation manager and prepares internal storage.
         """
         self._animations = {}
 
     def fade_in(self, widget, duration=700):
         """
-        Applies a fade-in effect to the given widget.
-
-        Args:
-            widget (QWidget): The widget to animate.
-            duration (int): Duration of the animation in milliseconds (default: 700).
+        Applies fade-in animation to the given widget.
+        Sets initial opacity, starts animation, and stores reference.
         """
         widget.setWindowOpacity(0.0)
         widget.show()
@@ -50,12 +47,8 @@ class WindowEffectsManager:
 
     def fade_out(self, widget, duration=700, callback=None):
         """
-        Applies a fade-out effect to the given widget and optionally calls a callback.
-
-        Args:
-            widget (QWidget): The widget to animate.
-            duration (int): Duration of the animation in milliseconds (default: 700).
-            callback (callable, optional): Function to call after fade-out completes.
+        Applies fade-out animation to the given widget.
+        Deletes widget after fade-out and optionally calls a callback.
         """
         animation: QPropertyAnimation = QPropertyAnimation(widget, b"windowOpacity")
         animation.setDuration(duration)
