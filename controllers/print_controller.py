@@ -11,7 +11,6 @@ Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
-import subprocess
 import configparser
 from pathlib import Path
 
@@ -23,6 +22,7 @@ from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
 from utils.validators import Validator
+from utils.bartender_utils import BartenderUtils
 
 from views.print_window import PrintWindow
 
@@ -73,6 +73,9 @@ class PrintController:
         # 📌 Logger initialization
         self.logger = get_logger("PrintController")
 
+        # 📌 Bartender initialization
+        self.bartender = BartenderUtils(messenger=self.messenger)
+
         # 📌 Initialization of print logic
         self.logic = PrintLogicController(
             config=self.config,
@@ -118,11 +121,7 @@ class PrintController:
         Validates input, resolves trigger groups, loads .lbl file,
         and executes appropriate save-and-print logic based on product type.
         """
-
-        self.print_window.print_button.setDisabled(True)
-        self.print_window.back_button.setDisabled(True)
-        self.print_window.exit_button.setDisabled(True)
-        self.print_window.serial_number_input.setDisabled(True)
+        self.print_window.disable_inputs()
 
         # === 1️⃣ Validate serial number input
         if not self.validator.validate_serial_format(self.serial_input):
@@ -226,18 +225,6 @@ class PrintController:
         self.messenger.auto_info_dialog("Zpracovávám požadavek...", timeout_ms=3000)
         self.restore_ui()
 
-    def kill_bartender_processes(self):
-        """
-        Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
-        """
-        try:
-            subprocess.run("taskkill /f /im cmdr.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-            subprocess.run("taskkill /f /im bartend.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-
-        except subprocess.CalledProcessError as e:
-            self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
-            self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Print Ctrl")
-
     def handle_back(self):
         """
         Closes the product window and returns to the previous window in the stack.
@@ -249,7 +236,7 @@ class PrintController:
         Terminates the application and fades out the product window.
         """
         self.logger.info("Aplikace byla ukončena uživatelem.")
-        self.kill_bartender_processes()
+        self.bartender.kill_processes()
         self.window_stack.mark_exiting()
         self.print_window.effects.fade_out(self.print_window, callback=QCoreApplication.instance().quit)
 
@@ -260,13 +247,7 @@ class PrintController:
         Args:
             delay_ms (int): Delay in milliseconds before restoring UI.
         """
-        QTimer.singleShot(delay_ms, lambda: (
-            self.print_window.print_button.setDisabled(False),
-            self.print_window.back_button.setDisabled(False),
-            self.print_window.exit_button.setDisabled(False),
-            self.print_window.serial_number_input.setDisabled(False),
-            self.print_window.reset_input_focus()
-        ))
+        QTimer.singleShot(delay_ms,  self.print_window.restore_inputs)
 
     def restore_ui(self, delay_ms=3000):
         """
@@ -275,10 +256,4 @@ class PrintController:
         Args:
             delay_ms (int): Delay in milliseconds before restoring UI.
         """
-        QTimer.singleShot(delay_ms, lambda: (
-            self.print_window.print_button.setDisabled(False),
-            self.print_window.back_button.setDisabled(False),
-            self.print_window.exit_button.setDisabled(False),
-            self.print_window.serial_number_input.setDisabled(False),
-            self.print_window.reset_input_focus()
-        ))
+        QTimer.singleShot(delay_ms,  self.print_window.restore_inputs)

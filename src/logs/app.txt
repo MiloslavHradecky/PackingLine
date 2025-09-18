@@ -348,3 +348,19 @@
 2025-09-17 22:22:15,635 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\my2n.txt
 2025-09-17 22:22:15,645 | INFO    | PrintController         | My2N token: GLRE-YRK5-FJTM-LAXL
 2025-09-17 22:24:06,754 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-18 11:11:27,059 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-18 11:11:27,064 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-18 11:11:27,087 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-18 11:11:34,608 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-18 11:11:42,049 | INFO    | WorkOrderController     | BarTender Commander spuštěn: 2440
+2025-09-18 11:11:42,144 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-18 11:12:15,971 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-18 12:17:00,728 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-18 12:17:00,731 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-18 12:17:00,762 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-18 12:17:08,031 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-18 12:17:13,309 | INFO    | BartenderUtils          | BarTender Commander spuštěn: 21408
+2025-09-18 12:17:13,358 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-18 12:17:23,791 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.

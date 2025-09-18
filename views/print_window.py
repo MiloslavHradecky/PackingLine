@@ -154,8 +154,25 @@ class PrintWindow(QWidget):
     def reset_input_focus(self):
         """
         Clears the serial number input field and sets focus back to it.
-
-        Used after a successful print or to reset the input state.
         """
         self.serial_number_input.clear()
         self.serial_number_input.setFocus()
+
+    def disable_inputs(self):
+        """
+        Disables all interactive input controls.
+        """
+        self.print_button.setDisabled(True)
+        self.back_button.setDisabled(True)
+        self.exit_button.setDisabled(True)
+        self.serial_number_input.setDisabled(True)
+
+    def restore_inputs(self):
+        """
+        Enables all interactive input controls and resets focus.
+        """
+        self.print_button.setDisabled(False)
+        self.back_button.setDisabled(False)
+        self.exit_button.setDisabled(False)
+        self.serial_number_input.setDisabled(False)
+        self.reset_input_focus()

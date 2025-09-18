@@ -299,3 +299,17 @@
 {"timestamp": "2025-09-17 22:22:15,635", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
 {"timestamp": "2025-09-17 22:22:15,645", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
 {"timestamp": "2025-09-17 22:24:06,754", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-18 11:11:27,059", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-18 11:11:27,064", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-18 11:11:27,087", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-18 11:11:34,608", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-18 11:11:42,049", "level": "INFO", "module": "WorkOrderController", "message": "BarTender Commander spuštěn: 2440"}
+{"timestamp": "2025-09-18 11:11:42,144", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-18 11:12:15,971", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-18 12:17:00,728", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-18 12:17:00,731", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-18 12:17:00,762", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-18 12:17:08,031", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-18 12:17:13,309", "level": "INFO", "module": "BartenderUtils", "message": "BarTender Commander spuštěn: 21408"}
+{"timestamp": "2025-09-18 12:17:13,358", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-18 12:17:23,791", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}

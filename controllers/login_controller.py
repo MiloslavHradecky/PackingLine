@@ -10,7 +10,6 @@ Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
-import subprocess
 import configparser
 
 # 🧠 First-party (project-specific)
@@ -19,6 +18,7 @@ import models.user_model
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
+from utils.bartender_utils import BartenderUtils
 
 
 class LoginController:
@@ -64,23 +64,12 @@ class LoginController:
         # 📌 Messenger initialization
         self.messenger = Messenger(self.login_window)
 
+        # 📌 Bartender initialization
+        self.bartender = BartenderUtils(messenger=self.messenger)
+
         # 📌 Linking the button to the method
         self.login_window.login_button.clicked.connect(self.handle_login)
         self.login_window.exit_button.clicked.connect(self.handle_exit)
-
-    def kill_bartender_processes(self):
-        """
-        Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
-        """
-        try:
-            subprocess.run('taskkill /f /im cmdr.exe 1>nul 2>nul', shell=True,
-                           creationflags=subprocess.CREATE_NO_WINDOW)
-            subprocess.run('taskkill /f /im bartend.exe 1>nul 2>nul', shell=True,
-                           creationflags=subprocess.CREATE_NO_WINDOW)
-
-        except subprocess.CalledProcessError as e:
-            self.logger.warning("Chyba při ukončování BarTender procesů: %s", str(e))
-            self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Login Ctrl")
 
     def handle_login(self):
         """
@@ -99,7 +88,7 @@ class LoginController:
         try:
             if self.decrypter.check_login(password):
                 self.value_prefix = models.user_model.get_value_prefix()
-                self.kill_bartender_processes()
+                self.bartender.kill_processes()
                 self.open_work_order_window()
             else:
                 self.logger.warning("Zadané heslo '%s' není správné!", password)

@@ -9,7 +9,6 @@ Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
-import subprocess
 import configparser
 from pathlib import Path
 
@@ -20,8 +19,10 @@ from PyQt6.QtCore import QCoreApplication
 from utils.logger import get_logger
 from utils.messenger import Messenger
 from utils.resources import get_config_path
+from utils.bartender_utils import BartenderUtils
 
 from views.work_order_window import WorkOrderWindow
+
 from controllers.print_config_controller import PrintConfigController
 
 
@@ -80,32 +81,13 @@ class WorkOrderController:
         # 📌 Logger initialization
         self.logger = get_logger("WorkOrderController")
 
+        # 📌 Bartender initialization
+        self.bartender = BartenderUtils(messenger=self.messenger, config=self.config)
+
         # 📌 Linking the button to the method
         self.work_order_window.next_button.clicked.connect(self.work_order_button_click)
         self.work_order_window.back_button.clicked.connect(self.handle_back)
         self.work_order_window.exit_button.clicked.connect(self.handle_exit)
-
-    def run_bartender_commander(self) -> None:
-        """
-        Launches BarTender Commander via system process.
-        """
-        commander_path = self.config.get("Paths", "commander_path")
-        tl_file_path = self.config.get("Paths", "tl_file_path")
-
-        if not commander_path or not tl_file_path:
-            self.logger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini")
-            self.messenger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini", "Work Order Ctrl")
-            return
-
-        try:
-            # pylint: disable=consider-using-with
-            process = subprocess.Popen([str(commander_path), "/START", "/MIN=SystemTray", "/NOSPLASH", str(tl_file_path)], shell=True)
-
-            self.logger.info("BarTender Commander spuštěn: %s", process.pid)
-
-        except Exception as e:
-            self.logger.error("Chyba při spuštění BarTender Commanderu: %s", str(e))
-            self.messenger.error(f"Chyba při spuštění BarTender Commanderu: {str(e)}", "Work Order Ctrl")
 
     def work_order_button_click(self):
         """
@@ -160,7 +142,7 @@ class WorkOrderController:
 
                     self.lines = self.load_file(self.lbl_file)
 
-                    self.run_bartender_commander()
+                    self.bartender.run_commander()
                     self.open_app_window(order_code=value_input, product_name=product_name)
                     self.logger.info("Příkaz: %s", value_input)
                     self.reset_input_focus()
@@ -212,23 +194,11 @@ class WorkOrderController:
         self.work_order_window.work_order_input.clear()
         self.work_order_window.work_order_input.setFocus()
 
-    def kill_bartender_processes(self):
-        """
-        Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
-        """
-        try:
-            subprocess.run("taskkill /f /im cmdr.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-            subprocess.run("taskkill /f /im bartend.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-
-        except subprocess.CalledProcessError as e:
-            self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
-            self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Work Order Ctrl")
-
     def handle_back(self):
         """
         Closes the product window and returns to the previous window in the stack.
         """
-        self.kill_bartender_processes()
+        self.bartender.kill_processes()
         self.work_order_window.effects.fade_out(self.work_order_window)
 
     def handle_exit(self):
@@ -236,6 +206,6 @@ class WorkOrderController:
         Terminates the application and fades out the product window.
         """
         self.logger.info("Aplikace byla ukončena uživatelem.")
-        self.kill_bartender_processes()
+        self.bartender.kill_processes()
         self.window_stack.mark_exiting()
         self.work_order_window.effects.fade_out(self.work_order_window, callback=QCoreApplication.instance().quit)
