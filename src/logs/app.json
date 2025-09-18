@@ -335,3 +335,25 @@
 {"timestamp": "2025-09-18 14:40:29,562", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
 {"timestamp": "2025-09-18 14:40:29,585", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
 {"timestamp": "2025-09-18 14:48:18,369", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-18 15:32:55,279", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-18 15:32:55,282", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-18 15:32:55,312", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-18 15:33:00,706", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo (ptg) nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-09-18 15:33:00,707", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo 'ptg' není správné!"}
+{"timestamp": "2025-09-18 15:33:05,759", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-18 15:33:12,166", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo () nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-09-18 15:33:12,167", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo '' není správné!"}
+{"timestamp": "2025-09-18 15:33:17,829", "level": "WARNING", "module": "SzvDecrypt", "message": "Zadané heslo () nebylo nalezeno v souboru (T:\\Prikazy\\DataTPV\\SZV.dat)."}
+{"timestamp": "2025-09-18 15:33:17,829", "level": "WARNING", "module": "LoginController", "message": "Zadané heslo '' není správné!"}
+{"timestamp": "2025-09-18 15:33:20,100", "level": "INFO", "module": "LoginController", "message": "Aplikace byla ukončena uživatelem."}
+{"timestamp": "2025-09-18 16:08:06,608", "level": "INFO", "module": "SystemInfo", "message": "Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26"}
+{"timestamp": "2025-09-18 16:08:06,611", "level": "INFO", "module": "ConfigFileChecker", "message": "Konfigurační soubor nalezen: C:\\GitWork\\Python\\PyQt\\PackingLine\\src\\config.ini"}
+{"timestamp": "2025-09-18 16:08:06,639", "level": "INFO", "module": "PathValidator", "message": "Všechny cesty v configu jsou validní."}
+{"timestamp": "2025-09-18 16:08:13,467", "level": "INFO", "module": "SzvDecrypt", "message": "Logged: PTG PTG PTG"}
+{"timestamp": "2025-09-18 16:08:19,346", "level": "INFO", "module": "BartenderUtils", "message": "BarTender Commander spuštěn: 12436"}
+{"timestamp": "2025-09-18 16:08:19,401", "level": "INFO", "module": "WorkOrderController", "message": "Příkaz: 01K5360"}
+{"timestamp": "2025-09-18 16:08:30,614", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\02 product.txt"}
+{"timestamp": "2025-09-18 16:08:30,637", "level": "INFO", "module": "PrintController", "message": "9151301CRP 54-5967-1546"}
+{"timestamp": "2025-09-18 16:08:30,651", "level": "INFO", "module": "PrintLogicController", "message": "Starý soubor byl smazán: T:\\Prikazy\\DataTPV\\Force2IP_X\\BaliciLinka\\Etikety\\my2n.txt"}
+{"timestamp": "2025-09-18 16:08:30,668", "level": "INFO", "module": "PrintController", "message": "My2N token: GLRE-YRK5-FJTM-LAXL"}
+{"timestamp": "2025-09-18 16:08:41,773", "level": "INFO", "module": "PrintController", "message": "Aplikace byla ukončena uživatelem."}

@@ -388,3 +388,27 @@
 2025-09-18 14:40:29,562 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\my2n.txt
 2025-09-18 14:40:29,585 | INFO    | PrintController         | My2N token: GLRE-YRK5-FJTM-LAXL
 2025-09-18 14:48:18,369 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.
+
+2025-09-18 15:32:55,279 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-18 15:32:55,282 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-18 15:32:55,312 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-18 15:33:00,706 | WARNING | SzvDecrypt              | Zadané heslo (ptg) nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-09-18 15:33:00,707 | WARNING | LoginController         | Zadané heslo 'ptg' není správné!
+2025-09-18 15:33:05,759 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-18 15:33:12,166 | WARNING | SzvDecrypt              | Zadané heslo () nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-09-18 15:33:12,167 | WARNING | LoginController         | Zadané heslo '' není správné!
+2025-09-18 15:33:17,829 | WARNING | SzvDecrypt              | Zadané heslo () nebylo nalezeno v souboru (T:\Prikazy\DataTPV\SZV.dat).
+2025-09-18 15:33:17,829 | WARNING | LoginController         | Zadané heslo '' není správné!
+2025-09-18 15:33:20,100 | INFO    | LoginController         | Aplikace byla ukončena uživatelem.
+
+2025-09-18 16:08:06,608 | INFO    | SystemInfo              | Aplikace v3.1.0.0 spuštěna | PC: HRADECKY-NB | IP: 10.0.17.26
+2025-09-18 16:08:06,611 | INFO    | ConfigFileChecker       | Konfigurační soubor nalezen: C:\GitWork\Python\PyQt\PackingLine\src\config.ini
+2025-09-18 16:08:06,639 | INFO    | PathValidator           | Všechny cesty v configu jsou validní.
+2025-09-18 16:08:13,467 | INFO    | SzvDecrypt              | Logged: PTG PTG PTG
+2025-09-18 16:08:19,346 | INFO    | BartenderUtils          | BarTender Commander spuštěn: 12436
+2025-09-18 16:08:19,401 | INFO    | WorkOrderController     | Příkaz: 01K5360
+2025-09-18 16:08:30,614 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\02 product.txt
+2025-09-18 16:08:30,637 | INFO    | PrintController         | 9151301CRP 54-5967-1546
+2025-09-18 16:08:30,651 | INFO    | PrintLogicController    | Starý soubor byl smazán: T:\Prikazy\DataTPV\Force2IP_X\BaliciLinka\Etikety\my2n.txt
+2025-09-18 16:08:30,668 | INFO    | PrintController         | My2N token: GLRE-YRK5-FJTM-LAXL
+2025-09-18 16:08:41,773 | INFO    | PrintController         | Aplikace byla ukončena uživatelem.

@@ -1,7 +1,7 @@
 """
 📦 Module: print_config_controller.py
 
-Provides logic for resolving trigger groups based on product names.
+Resolves trigger groups based on product names.
 
 Used during the printing workflow to determine which trigger groups apply to a given product,
 based on configuration mappings defined in 'ProductTriggerMapping'.
@@ -15,20 +15,11 @@ from utils.logger import get_logger
 
 class PrintConfigController:
     """
-    Controller responsible for resolving trigger groups based on product name.
-
-    Attributes:
-        config (ConfigParser): Loaded configuration object.
-        messenger (Messenger): UI messenger for displaying alerts.
-        logger (Logger): Logger instance for diagnostics.
+    Resolves trigger groups for a given product using configuration mappings.
     """
     def __init__(self, config, messenger):
         """
-        Initializes the PrintConfigController.
-
-        Args:
-            config (ConfigParser): Parsed configuration file.
-            messenger (Messenger): Messenger instance for user feedback.
+        Initializes config access, messenger, and logger for trigger resolution.
         """
         self.config = config
         self.messenger = messenger
@@ -36,15 +27,9 @@ class PrintConfigController:
 
     def get_trigger_groups_for_product(self, product_name: str) -> list[str] | None:
         """
-        Retrieves all trigger groups that include the specified product name.
+        Returns trigger groups that include the given product name.
 
-        If no group contains the product, logs error, shows message, and returns None.
-
-        Args:
-            product_name (str): Product name to search for.
-
-        Returns:
-            list[str] | None: List of matching trigger group names, or None if not found.
+        Logs and alerts if no match is found.
         """
         if not self.config.has_section("ProductTriggerMapping"):
             self.logger.warning("Sekce 'ProductTriggerMapping' nebyla nalezena v configu.")

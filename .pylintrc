@@ -20,7 +20,7 @@ disable=
 max-line-length=100
 
 [DESIGN]
-max-attributes=7
+max-attributes=10
 max-locals=15
 max-returns=6
 max-statements=50
