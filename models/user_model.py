@@ -4,11 +4,11 @@
 Handles login verification by decrypting credentials stored in an encrypted file.
 
 Provides functionality to:
-- Read and decode login data using XOR-based decryption
+- Decode login data using XOR-based decryption
 - Verify user passwords against SHA-256 hashes
-- Extract user metadata (name, surname, prefix) upon successful login
+- Extract user metadata upon successful login
 
-Used primarily by the LoginController during authentication.
+Used by LoginController during authentication.
 
 Author: Miloslav Hradecky
 """
@@ -29,50 +29,32 @@ VALUE_PREFIX = None
 
 def get_value_prefix():
     """
-    Returns the current value of the global 'VALUE_PREFIX'.
-
-    Returns:
-        str | None: The current value of 'VALUE_PREFIX'.
+    Returns the current global value prefix after successful login.
     """
     return VALUE_PREFIX
 
 
 class SzvDecrypt:
     """
-    Decrypts login credentials and verifies user authentication using SHA-256.
-
-    Responsibilities:
-        - Load encrypted login file from config
-        - Decode file contents using XOR-based logic
-        - Match input password against stored hashes
-        - Extract user metadata upon successful login
+    Decrypts login credentials and verifies user authentication.
+    Uses XOR decoding and SHA-256 matching to validate passwords and extract user metadata.
     """
 
     def __init__(self, config_file='config.ini'):
         """
-        Initializes the SzvDecrypt instance and loads configuration.
-
-        Args:
-            config_file (str): Path to the configuration file.
+        Initializes decryption logic, loads config, and prepares messenger and logger.
         """
-
         # 📌 Loading the configuration file
         config_path = get_config_path(config_file)
         self.config = configparser.ConfigParser()
         self.config.optionxform = str  # 💡 Ensures letter size is maintained
         self.config.read(config_path)
 
-        # 📌 Load path to encrypted login file
+        # 📌 Initialization
         raw_path = self.config.get('Paths', 'szv_input_file')
         self.szv_input_file = resolve_path(raw_path)
-
-        # 📌 Logger initialization
         self.logger = get_logger("SzvDecrypt")
-
-        # 📌 Messenger initialization
         self.messenger = Messenger()
-
-        # 📌 Storing decoded values
         self.value_surname = None
         self.value_name = None
         self.value_prefix = None
@@ -80,13 +62,9 @@ class SzvDecrypt:
     @staticmethod
     def decoding_line(encoded_data):
         """
-        Decodes a single line of encrypted data using XOR logic.
+        Decodes a single encrypted line using XOR logic.
 
-        Args:
-            encoded_data (bytearray): Encrypted byte data.
-
-        Returns:
-            list[str]: Decoded string segments.
+        Returns decoded segments split by delimiter.
         """
         int_xor = len(encoded_data) % 32
         decoded_data = bytearray(len(encoded_data))
@@ -99,13 +77,8 @@ class SzvDecrypt:
 
     def check_login(self, password):
         """
-        Verifies the given password against stored credentials.
-
-        Args:
-            password (str): Password entered by the user.
-
-        Returns:
-            bool: True if password matches, False otherwise.
+        Verifies input password against stored credentials.
+        Updates global prefix and user metadata on success.
         """
         # pylint: disable=global-statement
         global VALUE_PREFIX  # ✅ Allows you to modify a global variable
@@ -139,10 +112,9 @@ class SzvDecrypt:
 
     def decoding_file(self):
         """
-        Reads and decodes all lines from the encrypted input file.
+        Reads and decodes all lines from the encrypted login file.
 
-        Returns:
-            list[list[str]] | bool: List of decoded lines or False on error.
+        Returns list of decoded entries or False on error.
         """
         decoded_lines = []
         try:

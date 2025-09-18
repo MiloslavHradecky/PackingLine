@@ -1,8 +1,8 @@
 # version.txt
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(3, 1, 0, 0),
-    prodvers=(3, 1, 0, 0),
+    filevers=(4, 0, 0, 0),
+    prodvers=(4, 0, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x4,
@@ -17,11 +17,11 @@ VSVersionInfo(
           '040904B0',
           [StringStruct('CompanyName', 'MHLab'),
            StringStruct('FileDescription', 'EOL Line-B 2N'),
-           StringStruct('FileVersion', '3.1.0'),
+           StringStruct('FileVersion', '4.0.0'),
            StringStruct('InternalName', 'LineB'),
            StringStruct('OriginalFilename', 'LineB.exe'),
            StringStruct('ProductName', 'LineB'),
-           StringStruct('ProductVersion', '3.1.0')]
+           StringStruct('ProductVersion', '4.0.0')]
         ),
       ]
     ),

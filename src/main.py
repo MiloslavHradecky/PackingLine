@@ -7,12 +7,12 @@ enforcing single-instance behavior, applying global styles, and launching
 the splash screen and login window.
 
 Version:
-    3.1.0.0
+    4.0.0.0
 
 Author: Miloslav Hradecky
 """
 
-__version__ = "3.1.0.0"
+__version__ = "4.0.0.0"
 
 # 🧱 Standard library
 import sys
