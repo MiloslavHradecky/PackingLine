@@ -11,7 +11,7 @@ cd "C:\GitWork\Python\PyQt\PackingLine\"
 ### 2. Create a .spec file
 
 ```Powershell
-& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" --name=LineB --version-file=version.txt --noconfirm --onefile --noconsole --windowed --icon=views\assets\main.ico main.py
+& "C:\GitWork\Python\PyQt\PackingLine\.venv\Scripts\python.exe" "C:\GitWork\Python\PyQt\PackingLine\.venv\Scripts\pyinstaller.exe" --name=LineB --version-file=installer\version.txt --noconfirm --onefile --noconsole --windowed --icon=views\assets\main.ico src\main.py
 ```
 
 ### 3. Edit the created .spec file
@@ -21,7 +21,7 @@ cd "C:\GitWork\Python\PyQt\PackingLine\"
 
 
 a = Analysis(
-    ['main.py'],
+    ['src/main.py'],
     pathex=[],
     binaries=[],
     datas=[
@@ -38,7 +38,7 @@ a = Analysis(
         ('utils/', 'utils'),
         ('views/', 'views'),
     ],
-    hiddenimports=[],
+    hiddenimports=['logging.handlers', 'platform'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -67,7 +67,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='version.txt',
+    version='installer/version.txt',
     icon=['views/assets/main.ico'],
 )
 ```
@@ -75,5 +75,5 @@ exe = EXE(
 ### 4. Create an .exe
 
 ```Powershell
-& "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\hradecky\AppData\Local\Programs\Python\Python313\Scripts\pyinstaller.exe" LineB.spec
+& "C:\GitWork\Python\PyQt\PackingLine\.venv\Scripts\python.exe" "C:\GitWork\Python\PyQt\PackingLine\.venv\Scripts\pyinstaller.exe" LineB.spec
 ```
