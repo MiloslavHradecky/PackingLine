@@ -8,6 +8,7 @@ Author: Miloslav Hradecky
 """
 
 # 🧱 Standard library
+import time
 import subprocess
 
 # 🧠 First-party (project-specific)
@@ -34,10 +35,11 @@ class BartenderUtils:
 
     def kill_processes(self):
         """
-        Terminates all running BarTender instances (Cmdr.exe and bartend.exe).
+        Terminates all running BarTender instances (Commander.exe, Guardian.exe and bartend.exe).
         """
         try:
-            subprocess.run("taskkill /f /im cmdr.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run("taskkill /f /im Commander.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run("taskkill /f /im Guardian.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
             subprocess.run("taskkill /f /im bartend.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
         except subprocess.CalledProcessError as e:
             self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
@@ -55,22 +57,31 @@ class BartenderUtils:
             return
 
         commander_path = self.config.get("Paths", "commander_path", fallback=None)
-        tl_file_path = self.config.get("Paths", "tl_file_path", fallback=None)
+        guardian_path = self.config.get("Paths", "guardian_path", fallback=None)
 
-        if not commander_path or not tl_file_path:
-            self.logger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini")
+        if not commander_path or not guardian_path:
+            self.logger.error("Cesty k Commanderu nebo Guardianu nejsou dostupné v config.ini")
             if self.messenger:
-                self.messenger.error("Cesty k BarTender Commanderu nejsou dostupné v config.ini", "Bartender Utils")
+                self.messenger.error("Cesty k Commanderu nebo Guardianu nejsou dostupné v config.ini", "Bartender Utils")
             return
 
         try:
             # pylint: disable=consider-using-with
-            process = subprocess.Popen(
-                [str(commander_path), "/START", "/MIN=SystemTray", "/NOSPLASH", str(tl_file_path)],
+            commander_process = subprocess.Popen(
+                [str(commander_path), "/START", "/MIN=SystemTray", "/NOSPLASH"],
                 shell=True
             )
-            self.logger.info("BarTender Commander spuštěn: %s", process.pid)
+            self.logger.info("Commander spuštěn: PID %s", commander_process.pid)
+
+            time.sleep(1)
+
+            guardian_process = subprocess.Popen(
+                [str(guardian_path)],
+                shell=True
+            )
+            self.logger.info("Guardian watchdog spuštěn: PID %s", guardian_process.pid)
+
         except Exception as e:
-            self.logger.error("Chyba při spuštění BarTender Commanderu: %s", str(e))
+            self.logger.error("Chyba při spuštění Commanderu: %s", str(e))
             if self.messenger:
-                self.messenger.error(f"Chyba při spuštění BarTender Commanderu: {str(e)}", "Bartender Utils")
+                self.messenger.error(f"Chyba při spuštění Commanderu: {str(e)}", "Bartender Utils")

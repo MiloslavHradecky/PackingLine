@@ -15,11 +15,11 @@ config["Window"] = {
 config["Paths"] = {
     "reports_path": "T:/reporty/",
     "orders_path": "T:/Prikazy/",
-    "trigger_path": "T:/Prikazy/DataTPV/Force2IP_X/BaliciLinka/Spoustece/",
+    "trigger_path": "T:/Prikazy/DataTPV/Force2IP_X/BaliciLinka/Trigger/",
     "szv_input_file": "T:/Prikazy/DataTPV/SZV.dat",
     "bartender_path": "C:/Program Files (x86)/Seagull/BarTender Suite/bartend.exe",
-    "commander_path": "C:/Program Files (x86)/Seagull/BarTender Suite/Cmdr.exe",
-    "tl_file_path": "T:/Prikazy/DataTPV/Force2IP_X/BaliciLinka/Spoustece/Force2IP.tl"
+    "commander_path": "T:/Prikazy/DataTPV/Force2IP_X/BaliciLinka/commander/Commander.exe",
+    "guardian_path": "T:/Prikazy/DataTPV/Force2IP_X/BaliciLinka/guardian/Guardian.exe"
 }
 
 # 📦 Section: ProductPaths – standard product output

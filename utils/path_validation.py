@@ -51,7 +51,7 @@ class PathValidator:
             "szv_input_file",
             "bartender_path",
             "commander_path",
-            "tl_file_path"
+            "guardian_path"
         ]
         self.missing = []
 
