@@ -203,6 +203,8 @@ class PrintController:
         """
         Closes the product window and returns to the previous window in the stack.
         """
+        bartender = self.services.bartender_cls(messenger=self.messenger, config=self.config)
+        bartender.kill_processes()
         self.print_window.effects.fade_out(self.print_window)
 
     def handle_exit(self):
