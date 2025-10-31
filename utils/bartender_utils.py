@@ -38,13 +38,28 @@ class BartenderUtils:
         Terminates all running BarTender instances (Commander.exe, Guardian.exe and bartend.exe).
         """
         try:
-            subprocess.run("taskkill /f /im Commander.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-            subprocess.run("taskkill /f /im Guardian.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
-            subprocess.run("taskkill /f /im bartend.exe 1>nul 2>nul", shell=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.run(
+                "taskkill /f /im Commander.exe 1>nul 2>nul",
+                shell=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            subprocess.run(
+                "taskkill /f /im Guardian.exe 1>nul 2>nul",
+                shell=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            subprocess.run(
+                "taskkill /f /im bartend.exe 1>nul 2>nul",
+                shell=True,
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
         except subprocess.CalledProcessError as e:
             self.logger.error("Chyba při ukončování BarTender procesů: %s", str(e))
             if self.messenger:
-                self.messenger.error(f"Chyba při ukončování BarTender procesů: {str(e)}", "Bartender Utils")
+                self.messenger.error(
+                    f"Chyba při ukončování BarTender procesů: {str(e)}",
+                    "Bartender Utils"
+                )
 
     def run_commander(self):
         """
@@ -53,7 +68,10 @@ class BartenderUtils:
         if not self.config:
             self.logger.error("Konfigurace není dostupná pro spuštění Commanderu.")
             if self.messenger:
-                self.messenger.error("Konfigurace není dostupná pro spuštění Commanderu.", "Bartender Utils")
+                self.messenger.error(
+                    "Konfigurace není dostupná pro spuštění Commanderu.",
+                    "Bartender Utils"
+                )
             return
 
         commander_path = self.config.get("Paths", "commander_path", fallback=None)
@@ -62,7 +80,10 @@ class BartenderUtils:
         if not commander_path or not guardian_path:
             self.logger.error("Cesty k Commanderu nebo Guardianu nejsou dostupné v config.ini")
             if self.messenger:
-                self.messenger.error("Cesty k Commanderu nebo Guardianu nejsou dostupné v config.ini", "Bartender Utils")
+                self.messenger.error(
+                    "Cesty k Commanderu nebo Guardianu nejsou dostupné v config.ini",
+                    "Bartender Utils"
+                )
             return
 
         try:
@@ -84,4 +105,7 @@ class BartenderUtils:
         except Exception as e:
             self.logger.error("Chyba při spuštění Commanderu: %s", str(e))
             if self.messenger:
-                self.messenger.error(f"Chyba při spuštění Commanderu: {str(e)}", "Bartender Utils")
+                self.messenger.error(
+                    f"Chyba při spuštění Commanderu: {str(e)}",
+                    "Bartender Utils"
+                )
